@@ -15,6 +15,10 @@ public class TrabajadorGUI {
     String Categoria[]= {"1","2","3","4","5"};
     String st[]={"activo", "inactivo"};
     String turn[]={"matutino", "vespertino"};
+    JFrame x;
+    JPanel p;
+    public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, tfdir, tffin, tftce, tfema,tftca;
+    public JComboBox cb1, cb2, cb3, cb4, cb5, cb6, cb7;
     //Trabajador controllers;
     
     
@@ -49,27 +53,27 @@ public class TrabajadorGUI {
         JButton btn3= Builder.crearBoton(p, "Eliminar", new Rectangle(584, 547, 100, 27), null, true, true);
         JButton btn4= Builder.crearBoton(p, "Cambiar Foto", new Rectangle(556, 133, 100, 100), null, true, true);
         
-        JTextField tfrfc= Builder.crearTextField(p, new Rectangle(277, 128, 265, 17), null, null,null, null, true, true, true);
-        JTextField tfapp= Builder.crearTextField(p, new Rectangle(357, 157, 185, 17), null,null,null, null, true, true, true);
-        JTextField tfapm= Builder.crearTextField(p, new Rectangle(357, 173, 185, 17), null, null,null, null, true, true, true);
-        JTextField tfnom= Builder.crearTextField(p, new Rectangle(323, 213, 219, 17), null, null,null, null, true, true, true);
-        JTextField tfgen= Builder.crearTextField(p, new Rectangle(300, 236, 98, 17), null, null,null, null, true, true, true);
-        JTextField tfeda= Builder.crearTextField(p, new Rectangle(449, 236, 100, 17), null, null,null, null, true, true, true);
-        JTextField tffna= Builder.crearTextField(p, new Rectangle(323, 268, 265, 17), null, null,null, null, true, true, true);
-        JTextField tftca= Builder.crearTextField(p, new Rectangle(330, 369, 110, 17), null, null,null, null, true, true, true);
-        JTextField tfdir= Builder.crearTextField(p, new Rectangle(330, 466, 110, 17), null, null,null, null, true, true, true);
-        JTextField tffin= Builder.crearTextField(p, new Rectangle(335, 290, 110, 17), null, null,null, null, true, true, true);
-        JTextField tftce= Builder.crearTextField(p, new Rectangle(330, 397, 110, 17), null, null,null, null, true, true, true);
-        JTextField tfema= Builder.crearTextField(p, new Rectangle(330, 423,110, 17), null, null,null, null, true, true, true);
+         tfrfc= Builder.crearTextField(p, new Rectangle(277, 128, 265, 17), null, null,null, null, true, true, true);
+         tfapp= Builder.crearTextField(p, new Rectangle(357, 157, 185, 17), null,null,null, null, true, true, true);
+         tfapm= Builder.crearTextField(p, new Rectangle(357, 173, 185, 17), null, null,null, null, true, true, true);
+         tfnom= Builder.crearTextField(p, new Rectangle(323, 213, 219, 17), null, null,null, null, true, true, true);
+         tfgen= Builder.crearTextField(p, new Rectangle(300, 236, 98, 17), null, null,null, null, true, true, true);
+         tfeda= Builder.crearTextField(p, new Rectangle(449, 236, 100, 17), null, null,null, null, true, true, true);
+         tffna= Builder.crearTextField(p, new Rectangle(323, 268, 265, 17), null, null,null, null, true, true, true);
+         tftca= Builder.crearTextField(p, new Rectangle(330, 369, 110, 17), null, null,null, null, true, true, true);
+         tfdir= Builder.crearTextField(p, new Rectangle(330, 466, 110, 17), null, null,null, null, true, true, true);
+         tffin= Builder.crearTextField(p, new Rectangle(335, 290, 110, 17), null, null,null, null, true, true, true);
+         tftce= Builder.crearTextField(p, new Rectangle(330, 397, 110, 17), null, null,null, null, true, true, true);
+         tfema= Builder.crearTextField(p, new Rectangle(330, 423,110, 17), null, null,null, null, true, true, true);
        
-        JComboBox cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);
-        JComboBox cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
-        JComboBox cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
+         cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);
+         cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
+         cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
 
-        JComboBox cb4= Builder.crearComboBox(p, new Rectangle(543,380,125,17),Cargo, null, null,null);
-        JComboBox cb5= Builder.crearComboBox(p, new Rectangle(543,408,125,17),Categoria, null, null,null);
-        JComboBox cb6= Builder.crearComboBox(p, new Rectangle(543,443,125,17),st , null, null,null);
-        JComboBox cb7= Builder.crearComboBox(p, new Rectangle(543,478,40,17),turn , null, null,null);
+         cb4= Builder.crearComboBox(p, new Rectangle(543,380,125,17),Cargo, null, null,null);
+         cb5= Builder.crearComboBox(p, new Rectangle(543,408,125,17),Categoria, null, null,null);
+         cb6= Builder.crearComboBox(p, new Rectangle(543,443,125,17),st , null, null,null);
+         cb7= Builder.crearComboBox(p, new Rectangle(543,478,40,17),turn , null, null,null);
       
     }
     

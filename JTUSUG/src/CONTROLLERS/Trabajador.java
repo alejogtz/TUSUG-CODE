@@ -3,39 +3,40 @@ package CONTROLLERS;
 
 import java.sql.Date;
 import GUI.TrabajadorGUI;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Trabajador {
     TrabajadorGUI interfaz;
-    Conexion c;
+    Connection c = Conexion.getConexion();
     
-    public Trabajador(TrabajadorGUI ui, Conexion con){
+    public Trabajador(TrabajadorGUI ui){
         interfaz = ui;
-        c = con;
+       
     }
      
     
     public void agregaTrabajador(){
-        int rfc=interfaz.jfrfc.getText();
+        int rfc= Integer.parseInt(interfaz.tfrfc.getText());
+        String nombre= interfaz.tfnom.getText();
     }
     
-    public void addT(int rfc, String nss, String nombre, String apellidos, String domicilio, String curp, Date f_nac, Date f_cont, Date f_ter, String estado, String urlImage ){
+    public void addT(int rfc,  String nombre, String apellidos, String domicilio, String curp, Date f_nac, Date f_cont, Date f_ter, String estado, String urlImage ){
                 try { 
-            PreparedStatement pstm = c.getConexion().prepareStatement("insert into " +
+            PreparedStatement pstm = c.prepareStatement("insert into " +
                     "sistemaTusug.trabajador(rfc,nss,nombre,apellido,domicilio,curp,fecha_nacimiento,fecha_contratacion,fecha_terminacion,estado,url_img) " +
-                    " values(?,?,?,?,?,?,?,?,?,?,?)");
+                    " values(?,?,?,?,?,?,?,?,?,?)");
             pstm.setInt(1, rfc);
-            pstm.setString(2, nss);
-            pstm.setString(3, nombre);
-            pstm.setString(4, apellidos);
-            pstm.setString(5, domicilio);
-            pstm.setString(6,curp);
-            pstm.setDate(7, f_nac);
-            pstm.setDate(8, f_cont);
-            pstm.setDate(9, f_ter);
-            pstm.setString(10, estado);
-            pstm.setString(11, urlImage);
+            pstm.setString(2, nombre);
+            pstm.setString(3, apellidos);
+            pstm.setString(4, domicilio);
+            pstm.setString(5,curp);
+            pstm.setDate(6, f_nac);
+            pstm.setDate(7, f_cont);
+            pstm.setDate(8, f_ter);
+            pstm.setString(9, estado);
+            pstm.setString(10, urlImage);
             pstm.execute();
             pstm.close(); 
         } catch(SQLException e){

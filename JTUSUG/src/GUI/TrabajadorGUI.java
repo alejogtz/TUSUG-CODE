@@ -15,13 +15,13 @@ public class TrabajadorGUI {
     String Categoria[]= {"1","2","3","4","5"};
     String st[]={"activo", "inactivo"};
     String turn[]={"matutino", "vespertino"};
-    Trabajador controllers;
+    //Trabajador controllers;
     
     
     public TrabajadorGUI(){
-        this.controllers = controllers;
+        //this.controllers = controllers;
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
-        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/fondo ventana con logo.png", true);
+        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),null, true);
         JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(237,128,80, 17),null,null);
         JLabel jlapp= Builder.crearLabel(p, "Apellido Paterno: ", new Rectangle(237,157,150, 17),null, null);
         JLabel jlapm= Builder.crearLabel(p, "Apellido Materno: ", new Rectangle(237,173,150, 17),null, null);

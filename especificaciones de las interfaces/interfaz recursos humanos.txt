@@ -5,7 +5,7 @@ regresar al usuario a la ventana root. Si el usuario no entra como root sino com
 rol, no sera visible dicho boton al no ser necesario.
 >>JButton regresar:
 *Posicion: (335,523).
-*Tama�o: 32 x 32 px.
+*Tamaño: 32 x 32 px.
 
 
 
@@ -20,20 +20,26 @@ cluyendo ademas el label "Seleccione el icono de la seccion que desea visitar".
 *Posicion: (317,202).
 //Formato:
 -Fuente: Segoe UI.
--Tama�o fuente: 14 (texto centralizado).
+-Tamaño fuente: 14 (texto centralizado).
 
 >> JButton "trabajadores".
 *Posicion: (85,256).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "expedientes".
 *Posicion: (85,352).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "nuevos empleados".
 *Posicion: (379,256).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "activos e inactivos".
 *Posicion: (379,352).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
+
+>>JLabel "descripcion"
+*Posicion: (114,445).
+//Formato:
+-Fuente: Segoe UI.
+-Tamaño fuente: 14 (texto centralizado).

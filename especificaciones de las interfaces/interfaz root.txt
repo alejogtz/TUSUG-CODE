@@ -2,27 +2,28 @@ NOTA: Los primeros dos componentes seran los que no cambiaran de posicion o se d
 momento, estaran siempre disponibles.
 
 >>JLabel texto "Seleccione el icono de la seccion que desea visitar"
-*Fuente: Segoe UI    *Tama�o de fuente: 14.
+*Fuente: Segoe UI    *Tamaño de fuente: 14.
 *Posicion: (193,172).
 
 >>JButton "cerrar sesion".
 *Posicion: (460,506).
-*Tama�o: 201 x 63 px.
+*Tamaño: 201 x 63 px.
 
+*Tamaño de la ventana "ROOT": 700 x 600 px.
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 >> JButton "secretaria".
 *Posicion: (85,256).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "almacen".
 *Posicion: (85,352).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "mantenimiento".
 *Posicion: (379,256).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.
 
 >>JButton "Recursos humanos".
 *Posicion: (379,352).
-*Tama�o: 256 x 63 px.
+*Tamaño: 256 x 63 px.

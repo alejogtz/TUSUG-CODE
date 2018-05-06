@@ -112,6 +112,12 @@ public class AutobusGUI extends JFrame
                     controlador.ingresarAutobus();
                     break;
                 case "Modificar":
+                    break;             
+                case "cargarImagen":
+                    break;
+                case "Actualizar Lista":
+                    break;
+                case "Buscar":
                     break;
                 case "Eliminar":
                     break;

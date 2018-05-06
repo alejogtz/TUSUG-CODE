@@ -94,24 +94,35 @@ public class Trabajador {
          return m;
     }
     
-        public void (){try{
-         
-         String [] registros= new String[5];
-        String cons="select rfc from sistemaTusug.trabajador" ;
-        
-            Statement st= c.createStatement();
-            ResultSet rs = st.executeQuery(cons);
+        public void listaParametro(String rfc){try{
+            String [] registros= new String[9];
+            PreparedStatement pstm = c.prepareStatement("select * from sistemaTusug.trabajador where rfc=?");
+            pstm.setString(1, rfc);
+            ResultSet rs =  pstm.executeQuery();
             while(rs.next()){
                 registros[0]=rs.getString(1);
-                System.out.print(registros[0]);
-                m.add(registros[0]);
-                          
+                
+                registros[1]=rs.getString(2);
+                interfaz.tfnom.setText(registros[1]);
+                registros[2]=rs.getString(3);
+                interfaz.tfapp.setText(registros[2]);
+                registros[3]=rs.getString(4);
+                interfaz.tfapm.setText(registros[3]);
+                registros[4]=rs.getString(5);
+                interfaz.tfdir.setText(registros[4]);
+                registros[5]=rs.getString(6);
+                registros[6]=rs.getString(7);
+                registros[7]=rs.getString(8);
+                registros[8]=rs.getString(19);             
             }
+            
+        
+          
             
      }catch(Exception e){
                 System.out.println(e.getMessage());
      }     
-         return m;
+         
     }
     
     public static void main(String [] args){

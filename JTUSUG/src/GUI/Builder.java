@@ -157,9 +157,10 @@ public class Builder {
     }
     
     /**
-     * @param ui
-     * @param bounds
-     * @param
+     * @param Container ui
+     * @param Rectangle bounds
+     * @param String urlImg
+     * @param boolean opaque
      */
     public static JPanel crearPanel(Container ui, Rectangle bounds, String urlImg, boolean opaque) {
         JPanel panel = null;

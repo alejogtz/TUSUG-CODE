@@ -27,12 +27,16 @@ public class Autobus {
         } catch (SQLException ex) {
             System.err.println(
                     ex.getErrorCode());
-            Logger.getLogger(Autobus.class.getName()).log(Level.SEVERE, null, ex);            
+            Logger.getLogger(Autobus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void eliminarTrabajador(){
-        
+    public void borrarAutobus(){
+        cargarvariables();
+        try {
+            bd.borrarAutobusBy(null, matricula);
+        } catch (SQLException e) {
+        }
     }
     public void cargarvariables(){
         //matricula = ui.txt_matricula.getText().toLowerCase();

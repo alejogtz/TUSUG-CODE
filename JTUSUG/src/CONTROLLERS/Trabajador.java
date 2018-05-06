@@ -94,7 +94,7 @@ public class Trabajador {
          return m;
     }
     
-        public void (){try{
+        /*public void (){try{
          
          String [] registros= new String[5];
         String cons="select rfc from sistemaTusug.trabajador" ;
@@ -113,7 +113,7 @@ public class Trabajador {
      }     
          return m;
     }
-    
+    */
     public static void main(String [] args){
         Trabajador t = new Trabajador(null);
         t.listaTrabajador();

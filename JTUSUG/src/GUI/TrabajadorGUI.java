@@ -1,5 +1,6 @@
 package GUI;
 import CONTROLLERS.Trabajador;
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,16 +20,17 @@ public class TrabajadorGUI {
     String Categoria[]= {"1","2","3","4","5"};
     String st[]={"activo", "inactivo"};
     String turn[]={"matutino", "vespertino"};
+    private JComboBox<String> cb4;
     JFrame x;
     JPanel p;
     public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, tfdir, tffin, tftce, tfema,tftca;
-    public JComboBox cb1, cb2, cb3, cb4, cb5, cb6, cb7;
-    Trabajador controllers;
+    public JComboBox cb1, cb2, cb3, cb5, cb6, cb7;
+    Trabajador interfaz;
     LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
-    public TrabajadorGUI(Trabajador controllers){
+    public TrabajadorGUI(Trabajador i){
         
-        this.controllers = controllers;
+        interfaz=i;
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
         JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),null, true);
         JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(237,128,80, 17),null,null);
@@ -75,7 +77,11 @@ public class TrabajadorGUI {
          cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);  
          cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
          cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
-        
+         //cb4= Builder.crearComboBox(p, new Rectangle(500,311,72,17),, null, null,null);
+         cb4= new JComboBox<String>();
+         for (String d: interfaz.listaTrabajador()){
+             cb4.addItem(d);
+         }
          fecha1 = LocalDate.of(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 = LocalDate.now();
          System.out.println(fecha1);
@@ -91,16 +97,35 @@ public class TrabajadorGUI {
     ActionListener accion=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            //controllers.agregaTrabajador(tfrfc.getText()); 
+            interfaz.agregaTrabajador(); 
+            actualizarCombo(cb4);
         }
     };
     
     ActionListener accion2=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            controllers.eliminaTrabajador(); 
+            interfaz.modificaTrabajador();
+            //actualizarCombo(cb4);
         }
     };
+    
+    ActionListener accion3=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            interfaz.eliminaTrabajador(); 
+            actualizarCombo(cb4);
+        }
+    };
+    
+    
+    public void actualizarCombo(JComboBox combo){
+        combo.removeAllItems();
+        for(String s: interfaz.listaTrabajador()){
+            combo.addItem(s);
+        }
+    }
+    
     
      
     public static void main(String []agrs)

@@ -1,6 +1,7 @@
 package GUI;
 import CONTROLLERS.Trabajador;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.time.LocalDate;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 
 public class TrabajadorGUI {
     String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
@@ -24,17 +26,24 @@ public class TrabajadorGUI {
     private JComboBox<String> cb4;
     JFrame x;
     JPanel p;
+    public JLabel trabajadores;
     public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, tfdir, tffin, tftce, tfema,tftca;
-    public JComboBox cb1, cb2, cb3, cb5, cb6, cb7;
+    public JComboBox cb1, cb2, cb3, cb5, cb6, cb7,cbPuesto;
     Trabajador interfaz;
     LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
-    private JList lista;
+    public JList lista;
+    public JButton btInicio,btLT;
     public TrabajadorGUI(Trabajador i){
+        
         
         interfaz=i;
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
-        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),null, true);
+        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"C:\\Users\\BARTO\\Desktop\\PROYECTO\\TUSUG-CODE\\JTUSUG\\src\\imagenes\\fondo_ventana_2.png", true);
+        
+
+        //etiquetas
+        trabajadores = Builder.crearLabel(p, "Trabajadores", new Rectangle(65, 150, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(237,128,80, 17),null,null);
         JLabel jlapp= Builder.crearLabel(p, "Apellido Paterno: ", new Rectangle(237,157,150, 17),null, null);
         JLabel jlapm= Builder.crearLabel(p, "Apellido Materno: ", new Rectangle(237,173,150, 17),null, null);
@@ -57,6 +66,10 @@ public class TrabajadorGUI {
         JLabel jlsta= Builder.crearLabel(p, "Status :", new Rectangle(494, 443,50, 17), null,null);
         JLabel jltur= Builder.crearLabel(p, "Turno :", new Rectangle(495,478,50, 17), null,null);
         
+        
+        //botones
+        btInicio = Builder.crearButtonIcon(p, "Inicio","C:\\Users\\BARTO\\Desktop\\PROYECTO\\TUSUG-CODE\\JTUSUG\\src\\imagenes\\boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, true);
+        btInicio.setBorderPainted(false);
         JButton btn1= Builder.crearBoton(p, "Incorporar Empleado", new Rectangle(249, 547, 161, 27), null, true, true);
         btn1.addActionListener(accion);
         JButton btn2= Builder.crearBoton(p, "Modificar", new Rectangle(484, 547, 100, 27), null, true, true);
@@ -98,7 +111,7 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.agregaTrabajador(); 
-            actualizarCombo(cb4);
+            actualizarLista(lista);
         }
     };
     
@@ -106,7 +119,6 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.modificaTrabajador();
-            //actualizarCombo(cb4);
         }
     };
     
@@ -114,18 +126,29 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.eliminaTrabajador(); 
-            actualizarCombo(cb4);
+            actualizarLista(lista);
         }
     };
     
     
-    public void actualizarCombo(JComboBox combo){
-        combo.removeAllItems();
+    
+    
+    ActionListener accion4=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            interfaz.agregaTrabajador(); 
+            actualizarLista(lista);
+        }
+    };
+    
+    
+    public void actualizarLista(JList lista){
+        lista.removeAll();
+        
         for(String s: interfaz.listaTrabajador()){
-            combo.addItem(s);
+            lista.add(s,null);
         }
     }
-    
     
      
     public static void main(String []agrs)

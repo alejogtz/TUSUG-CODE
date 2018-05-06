@@ -48,11 +48,13 @@ create table trabajador
 	ap_paterno varchar(50),
 	ap_materno varchar(50),
 	domicilio varchar (100),
+	puesto varchar(30) not null,
 	fecha_nac date,
 	fecha_contratacion date,
 	estado varchar (6)not null, -- (Activo, Pasivo, Baja)
 	url_img varchar (100),
 	check(estado = 'activo'or estado = 'pasivo'or estado = 'baja'),
+	--check(puesto = 'activo'or puesto = 'pasivo'or puesto = 'baja')
 	check(fecha_nac<current_date)
 );
 

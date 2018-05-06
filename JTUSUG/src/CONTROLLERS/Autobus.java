@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package CONTROLLERS;
+
+import GUI.AutobusGUI;
 
 /**
  *
  * @author Alekhius
  */
 public class Autobus {
+    public AutobusGUI ui;
+    public Autobus(AutobusGUI ui){
+        this.ui = ui;
+    }
+    
+    public void ingresarAutobus(){
+        
+    }
+    
+    public void eliminarTrabajador(){
+        
+    }
     
 }

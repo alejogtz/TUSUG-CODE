@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.time.LocalDate;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
@@ -35,8 +37,9 @@ public class TrabajadorGUI {
     public LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
     public JList lista;
-    public JButton btInicio,btLT,btBuscar;
+    public JButton btInicio,btLT,btBuscar,btActualizar;
     public JScrollBar scroll;
+    public Date fecha,fechaA;
     public TrabajadorGUI(Trabajador i){
         
         
@@ -74,7 +77,7 @@ public class TrabajadorGUI {
         //botones
         btInicio = Builder.crearButtonIcon(p, "Inicio","src/imagenes/boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, false);
         btBuscar = Builder.crearButtonIcon(p, "Buscar","src/imagenes/buscar.png",new Rectangle(20, 215, 33, 32) , null,true,false);
-        
+        btActualizar = Builder.crearButtonIcon(p,"Buscar","src/imagenes/boton_actualizar_lista.png", new Rectangle(26, 446, 145, 36), null, true, false);
         JButton btn1= Builder.crearBoton(p, "Incorporar Empleado", new Rectangle(249, 547, 161, 27), null, true, true);
         btn1.addActionListener(accion);
         JButton btn2= Builder.crearBoton(p, "Modificar", new Rectangle(484, 547, 100, 27), null, true, true);
@@ -84,6 +87,7 @@ public class TrabajadorGUI {
         
         //Jtext
          buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25), null,null, null,null ,true, true, true);
+         
          tfrfc= Builder.crearTextField(p, new Rectangle(277, 128, 265, 17), null, null,null, null, true, true, true);
          tfapp= Builder.crearTextField(p, new Rectangle(357, 157, 185, 17), null,null,null, null, true, true, true);
          tfapm= Builder.crearTextField(p, new Rectangle(357, 173, 185, 17), null, null,null, null, true, true, true);
@@ -102,16 +106,20 @@ public class TrabajadorGUI {
          cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
          
          //lista
+         DefaultListModel modeloLista = new DefaultListModel();
          lista= new JList(interfaz.listaTrabajador().toArray());
+         lista.setModel(modeloLista);
          lista.setBounds(new Rectangle(14,236,176,198));
          lista.add(scroll);
          lista.setVisible(true);
          p.add(lista);
          
-         fecha1 = LocalDate.of(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
+         fecha = new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 = LocalDate.now();
-         System.out.println(fecha1);
-         System.out.println(fecha2);
+         fechaA = new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
+         
+         System.out.println(fecha);
+         System.out.println(fechaA);
                 
          cb4= Builder.crearComboBox(p, new Rectangle(543,380,125,17),Cargo, null, null,null);
          cb5= Builder.crearComboBox(p, new Rectangle(543,408,125,17),Categoria, null, null,null);
@@ -131,14 +139,14 @@ public class TrabajadorGUI {
     ActionListener accion2=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            interfaz.modificaTrabajador();
+           // interfaz.modificaTrabajador();
         }
     };
     
     ActionListener accion3=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            interfaz.eliminaTrabajador(); 
+            //interfaz.eliminaTrabajador(); 
             actualizarLista(lista);
         }
     };
@@ -167,5 +175,6 @@ public class TrabajadorGUI {
     public static void main(String []agrs)
     {
         TrabajadorGUI trabajador = new TrabajadorGUI(null);
+        
     }
 }

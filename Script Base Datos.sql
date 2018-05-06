@@ -11,9 +11,9 @@ create table refaccion(
 
 create table autobus(      
 	matricula  	varchar (10) primary key,
-	id					varchar(25),
-    marca              	varchar(50) not null,
-    numero_economico 	varchar(80) not null,      
+	id					varchar(30),
+    marca              	varchar(25) not null,
+    numero_economico 	varchar(25) not null,      
 	kilometraje			int,
 	asientos			int,
 	url_img				varchar(100)

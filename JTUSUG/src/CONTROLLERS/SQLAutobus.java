@@ -39,6 +39,8 @@ public class SQLAutobus {
         pst.setInt(6, asientos);
         pst.setString(7, url_img);
         int n = pst.executeUpdate();
+        System.err.println(
+                n);
     }
     // caso "matricula"
     public void borrarAutobusBy(String columnName, String arg) 

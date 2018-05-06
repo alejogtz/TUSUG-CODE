@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.time.LocalDate;
+import javax.swing.JList;
 
 public class TrabajadorGUI {
     String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
@@ -28,6 +29,7 @@ public class TrabajadorGUI {
     Trabajador interfaz;
     LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
+    private JList lista;
     public TrabajadorGUI(Trabajador i){
         
         interfaz=i;
@@ -77,11 +79,9 @@ public class TrabajadorGUI {
          cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);  
          cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
          cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
-         //cb4= Builder.crearComboBox(p, new Rectangle(500,311,72,17),, null, null,null);
-         cb4= new JComboBox<String>();
-         for (String d: interfaz.listaTrabajador()){
-             cb4.addItem(d);
-         }
+         
+         lista= new JList(interfaz.listaTrabajador().toArray());
+         
          fecha1 = LocalDate.of(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 = LocalDate.now();
          System.out.println(fecha1);

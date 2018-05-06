@@ -1,10 +1,10 @@
 package CONTROLLERS;
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 =======
 //URL de Descargar del Driver
 //https://jdbc.postgresql.org/download.html
 
->>>>>>> 8840b9aebe1899d36b9e81b4f8ec6aae7bbe557f
+>>>>>>> 8840b9aebe1899d36b9e81b4f8ec6aae7bbe557f*/
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

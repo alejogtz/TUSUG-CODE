@@ -1,12 +1,16 @@
 package GUI;
 import CONTROLLERS.Trabajador;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.time.LocalDate;
+
 public class TrabajadorGUI {
     String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
     String mes[]={"1","2","3","4","5","6","7", "8","9", "10", "11", "12"};
@@ -19,11 +23,12 @@ public class TrabajadorGUI {
     JPanel p;
     public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, tfdir, tffin, tftce, tfema,tftca;
     public JComboBox cb1, cb2, cb3, cb4, cb5, cb6, cb7;
-    //Trabajador controllers;
-    
-    
-    public TrabajadorGUI(){
-        //this.controllers = controllers;
+    Trabajador controllers;
+    LocalDate fecha1,fecha2;
+    public int dia1,mes1,anio1;
+    public TrabajadorGUI(Trabajador controllers){
+        
+        this.controllers = controllers;
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
         JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),null, true);
         JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(237,128,80, 17),null,null);
@@ -49,6 +54,7 @@ public class TrabajadorGUI {
         JLabel jltur= Builder.crearLabel(p, "Turno :", new Rectangle(495,478,50, 17), null,null);
         
         JButton btn1= Builder.crearBoton(p, "Incorporar Empleado", new Rectangle(249, 547, 161, 27), null, true, true);
+        btn1.addActionListener(accion);
         JButton btn2= Builder.crearBoton(p, "Modificar", new Rectangle(484, 547, 100, 27), null, true, true);
         JButton btn3= Builder.crearBoton(p, "Eliminar", new Rectangle(584, 547, 100, 27), null, true, true);
         JButton btn4= Builder.crearBoton(p, "Cambiar Foto", new Rectangle(556, 133, 100, 100), null, true, true);
@@ -66,10 +72,15 @@ public class TrabajadorGUI {
          tftce= Builder.crearTextField(p, new Rectangle(330, 397, 110, 17), null, null,null, null, true, true, true);
          tfema= Builder.crearTextField(p, new Rectangle(330, 423,110, 17), null, null,null, null, true, true, true);
        
-         cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);
+         cb1= Builder.crearComboBox(p, new Rectangle(349,311,52,17),dia , null, null,null);  
          cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
          cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
-
+        
+         fecha1 = LocalDate.of(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
+         fecha2 = LocalDate.now();
+         System.out.println(fecha1);
+         System.out.println(fecha2);
+                
          cb4= Builder.crearComboBox(p, new Rectangle(543,380,125,17),Cargo, null, null,null);
          cb5= Builder.crearComboBox(p, new Rectangle(543,408,125,17),Categoria, null, null,null);
          cb6= Builder.crearComboBox(p, new Rectangle(543,443,125,17),st , null, null,null);
@@ -77,9 +88,16 @@ public class TrabajadorGUI {
       
     }
     
+    ActionListener accion=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            controllers.agregaTrabajador(); 
+        }
+    };
+    
     
     public static void main(String []agrs)
     {
-        TrabajadorGUI trabajador = new TrabajadorGUI();
+        TrabajadorGUI trabajador = new TrabajadorGUI(null);
     }
 }

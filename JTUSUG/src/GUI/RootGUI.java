@@ -30,7 +30,7 @@ public class RootGUI {
     public RootGUI(){
         font = new Font("Segoe UI", Font.PLAIN, 14);
         listen = new CustomActionListener();
-        initComponents("secretaria");
+        //initComponents("secretaria");
     }
     
     public void initComponents(String rol){

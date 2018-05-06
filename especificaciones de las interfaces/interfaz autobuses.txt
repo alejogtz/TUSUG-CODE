@@ -1,0 +1,100 @@
+>>Tamaño ventana: (700,518).
+
+>>Boton inicio
+*Posicion: (14,63).
+*Tamaño: 101 x 43 px.
+
+
+>>Boton cerrar sesion
+*Posicion: (539,65).
+*Tamaño: 142 x 43 px.
+
+>>JLabel "buscar autobus"
+*Posicion: (36,132).
+*Tamaño: 132 x 20 px.
+
+>>Boton buscar 
+*Posicion: (26,185).
+*Tamaño: 32 x 32 px.
+
+>>JTextField buscador 
+*Posicion: (68,189).
+*Tamaño: 106 x 25 px.
+
+>>JList lista 
+*Posicion: (14,236).
+*Tamaño: 172 x 198 px.
+
+>>Boton actualizar_lista 
+*Posicion: (26,446).
+*Tamaño: 145 x 36 px.
+
+>>Boton nuevo autobus
+*Posicion: (218,136).
+*Tamaño: 32 x 32 px.
+
+
+>>Boton modificar datos
+*Posicion: (218,202).
+*Tamaño: 32 x 32 px.
+
+
+>>Boton eliminar
+*Posicion: (218,255).
+*Tamaño: 32 x 32 px.
+
+>>Boton agregar imagen
+*Posicion: (626,215).
+*Tamaño: 32 x 32 px.
+
+//NOTA: la fuente y el tamaño es lo mismo para todos los jlabel de los campos del trabajador.
+--Fuente: Segoe UI. --Tamaño fuente: 11.
+
+>>JLabel codigo de autobus
+*Posicion: (423,132).
+*Tamaño: 107 x 13 px.
+
+
+>>Imagen autobus
+*Posicion: (354,162).
+*Tamaño: 245 x 139 px.
+
+>>JLabel marca
+*Posicion: (344,355).
+*Tamaño: 35 x 13 px.
+
+>>JLabel numero economico
+*Posicion: (278,383).
+*Tamaño: 101 x 13 px.
+
+>>JLabel matricula
+*Posicion: (329,416).
+*Tamaño: 50 x 13 px.
+
+>>JLabel kilometraje
+*Posicion: (521,350).
+*Tamaño: 60 x 13 px.
+
+>>JLabel no. asientos
+*Posicion: (514,383).
+*Tamaño: 67 x 13 px.
+
+>>JTextField marca
+*Posicion: (389,345).
+*Tamaño: 108 x 23 px.
+
+>>JTextField numero economico
+*Posicion: (389,378).
+*Tamaño: 108 x 23 px.
+
+>>JTextField matricula
+*Posicion: (389,411).
+*Tamaño: 108 x 23 px.
+
+>>JTextField no. asientos
+*Posicion: (584,378).
+*Tamaño: 74 x 23 px.
+
+>>JTextField Kilometraje
+*Posicion: (584,345).
+*Tamaño: 74 x 23 px.

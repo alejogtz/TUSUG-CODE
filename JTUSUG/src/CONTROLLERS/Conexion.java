@@ -17,12 +17,11 @@ public class Conexion {
     }
 
     public void realizaConexion() {
-        String urlDatabase = "jdbc:postgresql://localhost:5432/sistemaTusug";
         try {
+            String urlDatabase = "jdbc:postgresql://localhost:5432/sistemaTusug";
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(urlDatabase, "postgres", "Gallardo.1997");
-        String urlDatabase = "jdbc:postgresql://localhost:5432/Tusug";
-        try {
+        urlDatabase = "jdbc:postgresql://localhost:5432/Tusug";
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
         } catch (SQLException e) {

@@ -6,11 +6,14 @@ import java.awt.*;
 //import GUI.PanelImagen;
 public class AutobusGUI extends JFrame 
 {
-    public JTextField lbBuscar; 
-    public JTextField lbMarca;
-    public JTextField lb_No_Eco;
-    public JTextField lbKm;
-    public JTextField lbMatricula;
+    public JTextField txt_buscar; 
+    public JTextField txt_marca;
+    public JTextField txt_No_Eco;
+    public JTextField txt_Km;
+    public JTextField txt_matricula;
+    public JTextField txt_id;
+    public JTextField txt_asientos;
+    public JFileChooser url_img;
     public AutobusGUI()
     {
 
@@ -30,16 +33,16 @@ public class AutobusGUI extends JFrame
         jl.setOpaque(false);
         this.add(jl);
         
-        lbBuscar=new JTextField(30);
-        lbBuscar=Builder.crearTextField(this, new Rectangle(381, 178, 274, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        lbMarca=new JTextField(25);
-        lbMarca=Builder.crearTextField(this, new Rectangle(305, 200, 351, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        lb_No_Eco=new JTextField(25);
-        lb_No_Eco=Builder.crearTextField(this, new Rectangle(401, 222, 255, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        lbKm=new JTextField(10);
-        lbKm=Builder.crearTextField(this, new Rectangle(374, 284, 161, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        lbMatricula=new JTextField(10);
-        lbMatricula=Builder.crearTextField(this, new Rectangle(365, 252, 292, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_buscar=new JTextField(30);
+        txt_buscar=Builder.crearTextField(this, new Rectangle(381, 178, 274, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_marca=new JTextField(25);
+        txt_marca=Builder.crearTextField(this, new Rectangle(305, 200, 351, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_No_Eco=new JTextField(25);
+        txt_No_Eco=Builder.crearTextField(this, new Rectangle(401, 222, 255, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_Km=new JTextField(10);
+        txt_Km=Builder.crearTextField(this, new Rectangle(374, 284, 161, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_matricula=new JTextField(10);
+        txt_matricula=Builder.crearTextField(this, new Rectangle(365, 252, 292, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         JLabel l3 = Builder.crearLabel(this, "Codigo autobus:",new Rectangle(254, 176, 271, 19),null,null);
         JLabel l4 = Builder.crearLabel(this, "Marca: ", new Rectangle( 254, 198, 55, 17),null,null);
         JLabel l5 = Builder.crearLabel(this, "Numero Economico:", new Rectangle(254, 220, 351, 17),null,null);

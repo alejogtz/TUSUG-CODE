@@ -94,9 +94,17 @@ public class AutobusGUI extends JFrame
                 case "Nuevo autobus":
                     controlador.ingresarAutobus();
                     break;
-                case "btnSecretaria":
+                //case "Detalle chofer":
+                //    break;                
+                case "cargarImagen":
                     break;
-                case "btnAlmacen":
+                case "Actualizar Lista":
+                    break;
+                case "Buscar":
+                    break;
+                case "Modificar":
+                    break;
+                case "Eliminar":
                     break;
             }
         }

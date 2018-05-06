@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import java.time.LocalDate;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollBar;
 
 public class TrabajadorGUI {
     String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
@@ -28,12 +29,14 @@ public class TrabajadorGUI {
     JPanel p;
     public JLabel trabajadores;
     public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, tfdir, tffin, tftce, tfema,tftca;
+    public JTextField buscador;
     public JComboBox cb1, cb2, cb3, cb5, cb6, cb7,cbPuesto;
     Trabajador interfaz;
     LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
     public JList lista;
-    public JButton btInicio,btLT;
+    public JButton btInicio,btLT,btBuscar;
+    public JScrollBar scroll;
     public TrabajadorGUI(Trabajador i){
         
         
@@ -43,7 +46,8 @@ public class TrabajadorGUI {
         
 
         //etiquetas
-        trabajadores = Builder.crearLabel(p, "Trabajadores", new Rectangle(65, 150, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        trabajadores = Builder.crearLabel(p, "Trabajadores", new Rectangle(65, 160, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        
         JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(237,128,80, 17),null,null);
         JLabel jlapp= Builder.crearLabel(p, "Apellido Paterno: ", new Rectangle(237,157,150, 17),null, null);
         JLabel jlapm= Builder.crearLabel(p, "Apellido Materno: ", new Rectangle(237,173,150, 17),null, null);
@@ -68,14 +72,18 @@ public class TrabajadorGUI {
         
         
         //botones
-        btInicio = Builder.crearButtonIcon(p, "Inicio","C:\\Users\\BARTO\\Desktop\\PROYECTO\\TUSUG-CODE\\JTUSUG\\src\\imagenes\\boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, true);
-        btInicio.setBorderPainted(false);
+        btInicio = Builder.crearButtonIcon(p, "Inicio","src/imagenes/boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, false);
+        btBuscar = Builder.crearButtonIcon(p, "Buscar","src/imagenes/buscar.png",new Rectangle(20, 215, 33, 32) , null,true,false);
+        
         JButton btn1= Builder.crearBoton(p, "Incorporar Empleado", new Rectangle(249, 547, 161, 27), null, true, true);
         btn1.addActionListener(accion);
         JButton btn2= Builder.crearBoton(p, "Modificar", new Rectangle(484, 547, 100, 27), null, true, true);
         JButton btn3= Builder.crearBoton(p, "Eliminar", new Rectangle(584, 547, 100, 27), null, true, true);
         JButton btn4= Builder.crearBoton(p, "Cambiar Foto", new Rectangle(556, 133, 100, 100), null, true, true);
         
+        
+        //Jtext
+         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25), null,null, null,null ,true, true, true);
          tfrfc= Builder.crearTextField(p, new Rectangle(277, 128, 265, 17), null, null,null, null, true, true, true);
          tfapp= Builder.crearTextField(p, new Rectangle(357, 157, 185, 17), null,null,null, null, true, true, true);
          tfapm= Builder.crearTextField(p, new Rectangle(357, 173, 185, 17), null, null,null, null, true, true, true);
@@ -93,7 +101,12 @@ public class TrabajadorGUI {
          cb2= Builder.crearComboBox(p, new Rectangle(406,311,56,17),mes , null, null,null);
          cb3= Builder.crearComboBox(p, new Rectangle(468,311,72,17),anio , null, null,null);
          
+         //lista
          lista= new JList(interfaz.listaTrabajador().toArray());
+         lista.setBounds(new Rectangle(14,236,176,198));
+         lista.add(scroll);
+         lista.setVisible(true);
+         p.add(lista);
          
          fecha1 = LocalDate.of(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 = LocalDate.now();

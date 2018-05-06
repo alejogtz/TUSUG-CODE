@@ -32,7 +32,7 @@ public class TrabajadorGUI {
     public JTextField buscador;
     public JComboBox cb1, cb2, cb3, cb5, cb6, cb7,cbPuesto;
     Trabajador interfaz;
-    LocalDate fecha1,fecha2;
+    public LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
     public JList lista;
     public JButton btInicio,btLT,btBuscar;
@@ -42,7 +42,7 @@ public class TrabajadorGUI {
         
         interfaz=i;
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
-        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"C:\\Users\\BARTO\\Desktop\\PROYECTO\\TUSUG-CODE\\JTUSUG\\src\\imagenes\\fondo_ventana_2.png", true);
+        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", true);
         
 
         //etiquetas

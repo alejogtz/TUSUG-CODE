@@ -19,6 +19,15 @@ public class Validador extends JFrame
             evt.consume();  
         jTextField1KeyReleased(evt,text);
     }
+    public static void validaAlfanumerico(java.awt.event.KeyEvent evt,JTextField text,int x)
+    {
+        Matcher m = Pattern.compile("[a-zA-ZáéíóúÁÉÍÓÚ1234567890-]+").matcher(Character.toString(evt.getKeyChar()));
+        if (!m.find())
+           evt.consume();
+        if(text.getText().length()>=x)
+            evt.consume();  
+        jTextField1KeyReleased(evt,text);
+    }
     public static void validaNum(java.awt.event.KeyEvent evt,JTextField text,int x)//Valida sólo numeros
     {                                                                               //x es la longitud
         Matcher m = Pattern.compile("[0-9]").matcher(Character.toString(evt.getKeyChar()));

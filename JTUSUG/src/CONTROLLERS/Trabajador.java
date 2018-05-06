@@ -8,11 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Trabajador {
     TrabajadorGUI interfaz;
-    
+   
     Connection c;
+    ArrayList<String> m;
     
     public Trabajador(TrabajadorGUI ui){
         interfaz = ui;
@@ -39,7 +41,7 @@ public class Trabajador {
     
     public void addT(int rfc,  String nombre, String ap_paterno,String ap_materno, String domicilio, Date f_nac, Date f_cont, String estado, String urlImage ){
                 try { 
-                                System.out.print("agregado");
+            System.out.print("agregado");
 
             PreparedStatement pstm = c.prepareStatement("insert into " +
                     "sistemaTusug.trabajador(rfc,nombre,ap_paterno, ap_materno,domicilio,fecha_nac,fecha_contratacion,estado,url_img) " +
@@ -72,7 +74,8 @@ public class Trabajador {
         
     }
     
-    public void listaTrabajador(){try{
+    public ArrayList<String> listaTrabajador(){try{
+         
          String [] registros= new String[5];
         String cons="select rfc from sistemaTusug.trabajador" ;
         
@@ -81,18 +84,51 @@ public class Trabajador {
             while(rs.next()){
                 registros[0]=rs.getString(1);
                 System.out.print(registros[0]);
+                m.add(registros[0]);
                           
             }
             
      }catch(Exception e){
                 System.out.println(e.getMessage());
      }     
+         return m;
     }
+    
+        public void (){try{
+         
+         String [] registros= new String[5];
+        String cons="select rfc from sistemaTusug.trabajador" ;
+        
+            Statement st= c.createStatement();
+            ResultSet rs = st.executeQuery(cons);
+            while(rs.next()){
+                registros[0]=rs.getString(1);
+                System.out.print(registros[0]);
+                m.add(registros[0]);
+                          
+            }
+            
+     }catch(Exception e){
+                System.out.println(e.getMessage());
+     }     
+         return m;
+    }
+    
     public static void main(String [] args){
         Trabajador t = new Trabajador(null);
-        //Date d = new Date(2018, 12, 12);
-        //t.addT(0, "Alejo", "Guti", "REY", "Miacasa", d, d, "activo", "Holi");
         t.listaTrabajador();
         
     }
 }
+
+
+/*
+public void actualizaCombo(){
+combo.removeAllItems();
+for (String s: listaTrabajador()){
+   combo.addItem(s);
+}
+}
+
+
+*/

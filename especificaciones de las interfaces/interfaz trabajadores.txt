@@ -86,7 +86,7 @@
 *Tamaño: 49 x 13 px.
 
 >>Boton regresar
-*Posicion: (626,452).
+*Posicion: (626,463).
 *Tamaño: 32 x 32 px.
 
 >>Image foto_usuario
@@ -129,4 +129,11 @@
 *Posicion: (381,378).
 *Tamaño: 277 x 56 px.
 
+>>JLabel puesto
+*Posicion: (332,431).
+*Tamaño: 39 x 13 px.
+
+>>JComboBox puesto
+*Posicion: (381,425).
+*Tamaño: 127 x 23 px.
 

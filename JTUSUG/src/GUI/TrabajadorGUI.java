@@ -91,11 +91,18 @@ public class TrabajadorGUI {
     ActionListener accion=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            controllers.agregaTrabajador(); 
+            //controllers.agregaTrabajador(tfrfc.getText()); 
         }
     };
     
+    ActionListener accion2=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            controllers.eliminaTrabajador(); 
+        }
+    };
     
+     
     public static void main(String []agrs)
     {
         TrabajadorGUI trabajador = new TrabajadorGUI(null);

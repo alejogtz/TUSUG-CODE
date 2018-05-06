@@ -1,0 +1,23 @@
+>>Tamaño de la ventana: (459,254).
+
+//NOTA: Al crear el JFrame, como titulo se le pondra "Confirmacion" para que aparezca escrito en 
+la parte superior del marco del Frame.
+
+
+>>Icono "advertencia".
+*Posicion: (31,66).
+*Tamaño: 64 x 64 px.
+
+>>JTextArea advertencia
+*Posicion: (129,45).
+*Tamaño: 300 x 118 px.
+--Fuente de letra: Segoe UI
+--Tamaño letra: 13.
+
+>>JButton aceptar
+*Posicion: (134,183).
+*Tamaño: 84 x 25 px.
+
+>>JButton cancelar
+*Posicion: (241,183).
+*Tamaño: 84 x 25 px.

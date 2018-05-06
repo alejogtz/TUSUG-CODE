@@ -1,10 +1,13 @@
 package CONTROLLERS;
+<<<<<<< HEAD
 /*<<<<<<< HEAD
 =======
 //URL de Descargar del Driver
 //https://jdbc.postgresql.org/download.html
 
 >>>>>>> 8840b9aebe1899d36b9e81b4f8ec6aae7bbe557f*/
+=======
+>>>>>>> a1687182100ebde9b658097ae96887147c776014
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -53,6 +56,11 @@ public class Conexion {
     }
 
     public static void setContrasena(String contrasena) {
+        Conexion.contrasena = contrasena;
+    }
+    
+    public static void setConfiguracion(String rol, String contrasena){
+        Conexion.rol = rol;
         Conexion.contrasena = contrasena;
     }
 }

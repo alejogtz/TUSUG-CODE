@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
-
-/**
- *
- * @author Alekhius
- */
-public class AutobusGUI {
-    
+import CONTROLLERS.Autobus;
+import javax.swing.JFrame;
+public class AutobusGUI extends JFrame
+{
+    public static Autobus controlador;
+    public AutobusGUI()
+    {
+        //controlador=new Autobus(this);
+    }
 }

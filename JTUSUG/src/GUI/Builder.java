@@ -24,7 +24,7 @@ public class Builder {
         r.setResizable(false);
         r.setLayout(null);
         r.setLocationRelativeTo(null);
-        r.setBackground(java.awt.Color.GRAY);
+        r.setBackground(java.awt.Color.WHITE);
         r.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         r.setUndecorated(undecorated);
         r.setVisible(true);
@@ -36,14 +36,15 @@ public class Builder {
         r.setResizable(false);
         r.setLayout(null);
         r.setLocationRelativeTo(null);
-        r.setBackground(java.awt.Color.GRAY);
+        r.setBackground(java.awt.Color.WHITE);
         r.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         r.setUndecorated(undecorated);
         r.setVisible(true);
         return r;
     }
 
-    public static JLabel crearLabel(Container ui, String text, Rectangle bounds, Color background, Color foreground) {
+    public static JLabel crearLabel(Container ui, String text, Rectangle bounds,
+            Color background, Color foreground, Object... args) {
         JLabel lb = new JLabel(text);
         ui.add(lb);
         lb.setBounds(bounds);
@@ -54,6 +55,7 @@ public class Builder {
             lb.setForeground(foreground);
         }
         lb.setVisible(true);
+        if (args.length>0)lb.setFont((Font)args[0]);
         return lb;
     }
 

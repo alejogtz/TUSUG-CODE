@@ -30,10 +30,10 @@ public class RootGUI {
     public RootGUI(){
         font = new Font("Segoe UI", Font.PLAIN, 14);
         listen = new CustomActionListener();
-        initComponents();
+        initComponents("secretaria");
     }
     
-    public void initComponents(){
+    public void initComponents(String rol){
         root = Builder.construirFrame("GUI root - Bienvenido -", 
                 new Rectangle(460, 506, 700,600) , false);
         panel = Builder.crearPanel(root, new Rectangle(0,0, 700, 600), 

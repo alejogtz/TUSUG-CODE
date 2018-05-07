@@ -8,6 +8,7 @@ package CONTROLLERS;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -51,5 +52,26 @@ public class SQLAutobus {
                 columnName + " = " + arg;
         Statement st = conn.createStatement();
         st.executeUpdate(sql);
+    }
+    
+    public String[][] obtenerRegistro(String matricula){
+        String[][] registro = new String[1][4];
+        String sql = "select * from sistemaTusug.autobus where matricula = " + matricula;
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            ResultSet res = pst.executeQuery();
+            registro[0][0] = res.getString("matricula");
+            registro[0][1] = res.getString("id");
+            registro[0][2] = res.getString("marca");
+            registro[0][3] = res.getString("numero_economico");
+            registro[0][4] = Integer.toString(res.getInt("kilometraje"));
+            registro[0][5] = Integer.toString(res.getInt("asientos"));
+            
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return registro;
     }
 }

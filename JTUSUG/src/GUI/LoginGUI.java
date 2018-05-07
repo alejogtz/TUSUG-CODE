@@ -28,7 +28,7 @@ import javax.swing.JTextField;
  */
 public class LoginGUI {
 
-    Sesion sesion;
+    static Sesion sesion;
     JFrame frame;
     JPanel loginUI;
     JTextField txt_rfc;
@@ -100,6 +100,8 @@ public class LoginGUI {
                         cargarSesion();
                         if (sesion.getPass().equals(txt_password.getText())){
                             RootGUI main = new RootGUI();
+                            Conexion.setConfiguracion(
+                                    sesion.getRol(), sesion.getPass());
                             main.initComponents(sesion.getRol());
                             frame.dispose();
                         }else {
@@ -107,7 +109,7 @@ public class LoginGUI {
                             // Aviso de contraseña incorrecta
                             javax.swing.JOptionPane.showMessageDialog(null, 
                                     "Usuario o contraseña incorrectos");
-                            txt_rfc.setText("");
+                            //txt_rfc.setText("");
                             txt_password.setText("");
                         }
                         break;

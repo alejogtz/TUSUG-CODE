@@ -25,16 +25,16 @@ public class Trabajador {
      
     
     public void agregaTrabajador(){
-       /* int rfc= Integer.parseInt(interfaz.tfrfc.getText());
+        int rfc= Integer.parseInt(interfaz.tfrfc.getText());
         String nombre= interfaz.tfnom.getText();
         String ap_paterno= interfaz.tfapp.getText();
         String ap_materno= interfaz.tfapm.getText();
         String domicilio= interfaz.tfdir.getText();
-        Date f_nac=interfaz.
-        Date f_cont;//= interfaz.fecha2.getText();
+        Date f_nac=interfaz.fecha;
+        Date f_cont= interfaz.fechaA;
         String estado= (String)interfaz.cb6.getSelectedItem();
         String url="";
-        addT(rfc, nombre, ap_paterno, ap_materno, domicilio, f_nac, f_cont, estado, url);*/
+        addT(rfc, nombre, ap_paterno, ap_materno, domicilio, f_nac, f_cont, estado, url);
         
         
         

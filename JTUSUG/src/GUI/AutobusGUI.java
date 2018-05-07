@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 //import GUI.Builder;
 //import GUI.PanelImagen;
 public class AutobusGUI extends JFrame 
@@ -41,6 +43,7 @@ public class AutobusGUI extends JFrame
         String[] datos={"","Hola","Soy","Un","Pan"};
         list=new JList(datos);
         list.setBounds(14,236,172,198);
+        list.addMouseListener(new CustomMouseListener());
         this.add(list);
         btn_Act_List=new JButton();
         btn_Act_List = Builder.crearButtonIcon(this,"actualizar_lista",ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),null,false,false);
@@ -48,6 +51,7 @@ public class AutobusGUI extends JFrame
         btn_nuevo_autobus=new JButton();
         btn_nuevo_autobus = Builder.crearButtonIcon(this,"agregar",ruta + "anadir.png",new Rectangle(218,136,32,32),null,false,false);
         btn_nuevo_autobus.setBackground(new Color(233,233,233));
+        btn_nuevo_autobus.addActionListener(new CustomActionListener());
         btn_modificar = Builder.crearButtonIcon(this,"modificar",ruta + "lapiz.png",new Rectangle(218,202,32,32),null,false,false);
         btn_modificar.setBackground(new Color(233,233,233));
         btn_eliminar=new JButton();
@@ -168,4 +172,19 @@ public class AutobusGUI extends JFrame
             }
         });
     }
+    
+    class CustomMouseListener extends MouseAdapter{
+        public void mouseClicked(MouseEvent me){
+        String matricula = (String)list.getSelectedValue();
+        String registro[][] = controlador.obtenerAutobus(matricula);
+        txt_matricula.setText(registro[0][0]);
+        txt_id.setText(registro[0][1]);
+        txt_marca.setText(registro[0][2]);
+        txt_No_Eco.setText(registro[0][3]);
+        txt_Km.setText(registro[0][4]);
+        txt_asientos.setText(registro[0][5]);
+        };
+}
+    
+    
 }

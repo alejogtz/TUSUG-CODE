@@ -63,4 +63,9 @@ public class Autobus {
         String f = ui.url_img.getSelectedFile().getAbsolutePath();
         return f;
     }
+    
+    public String[][] obtenerAutobus(String matricula){
+        String registro[][] = bd.obtenerRegistro(matricula);
+        return registro;
+    }
 }

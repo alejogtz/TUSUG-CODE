@@ -1,8 +1,8 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
-import java.awt.Point;
+import java.awt.Font;;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,9 +30,16 @@ public class RootGUI {
     public static JPanel panel;
     public JButton btn_close, btn_secre, btn_almacen, btn_manten, btn_rrhh;
 
-    // Botones para la secretaria
+    //Para reciclar
     private JLabel lb_title, lb_descripcion;
+    // Botones para la secretaria    
     private JButton btn_regresar, btn_listaBus, btn_facturas, btn_reportes;
+    // Botones para almacenista
+    private JButton btn_insumos, btn_lista_invent, btn_gener_inventario;
+    // Botones de Recursos Humanos
+    private JButton btn_trabajadores, btn_expedientes, btn_nuevosempleado, btn_iactivos;
+    // Botones de Mantenimiento
+    private JButton btn_nuevoreporte, btn_reUnidades, btn_historial;
 
     public RootGUI() {
         font = new Font("Segoe UI", Font.PLAIN, 14);
@@ -42,9 +49,11 @@ public class RootGUI {
                 new Rectangle(460, 506, 700, 600), false);
         panel = Builder.crearPanel(root, new Rectangle(0, 0, 700, 600),
                 "src/imagenes/pagina_de_fondo.png", true);
+        lb_title = Builder.crearLabel(panel, "",
+                new Rectangle(317, 202, 200, 40), Color.BLUE, null, font);
     }
 
-    public void initComponents(String rol) {  
+    public void initComponents(String rol) {
         JLabel lb_text = Builder.crearLabel(panel, "Seleccione el icono de la seccion que desea visitar",
                 new Rectangle(193, 172, 300, 60), null, null, font);
         btn_close = Builder.crearButtonIcon(panel, "CerrarSesion", carpeta_img + "cerrar_sesion.png",
@@ -60,12 +69,114 @@ public class RootGUI {
 
     }
 
+    private void cargarBtnSecre() {
+        btn_regresar = Builder.crearButtonIcon(panel, "btn_regresar",
+                carpeta_img + "regresar.png", new Rectangle(335, 523, 32, 32),
+                listen, true, true);
+        btn_listaBus = Builder.crearButtonIcon(panel, "modulo_autobus",
+                carpeta_img + "lista_de_autobuses.png", new Rectangle(85, 256, 256, 63),
+                listen, false, true);
+        btn_facturas = Builder.crearButtonIcon(panel, "facturas",
+                carpeta_img + "facturas.png", new Rectangle(85, 352, 256, 63),
+                listen, false, true);
+        btn_reportes = Builder.crearButtonIcon(panel, "reportes",
+                carpeta_img + "reportes.png", new Rectangle(379, 256, 256, 63),
+                listen, false, true);
+        lb_descripcion = Builder.crearLabel(panel, "descripcion",
+                new Rectangle(114, 445, 100, 40), null, null, font);
+        lb_title.setText("Secretaria");
+        lb_title.setVisible(true);
+        lb_title.setEnabled(true);
+        //lb_title = Builder.crearLabel(panel, "Mantenimiento",
+        //        new Rectangle(317, 202, 100, 40), null, null, font);
+    }
+
+    private void cargarBtnAlmacen() {
+        btn_regresar = Builder.crearButtonIcon(panel, "btn_back_almacen",
+                carpeta_img + "regresar.png", new Rectangle(335, 523, 32, 32),
+                listen, true, false);
+        lb_descripcion = Builder.crearLabel(panel, "descripcion",
+                new Rectangle(114, 445, 100, 40), null, null, font);
+        lb_title.setText("Almacen");
+        lb_title.setVisible(true);
+        lb_title.setEnabled(true);
+        //lb_title = Builder.crearLabel(panel, "Mantenimiento",
+        //        new Rectangle(317, 202, 100, 40), null, null, font);
+
+        btn_insumos = Builder.crearButtonIcon(panel, "insumos",
+                carpeta_img + "Insumos.png", new Rectangle(85, 256, 256, 63),
+                listen, false, true);
+        btn_lista_invent = Builder.crearButtonIcon(panel, "lista_inventario",
+                carpeta_img + "lista_de_inventario.png", new Rectangle(85, 352, 256, 63),
+                listen, false, true);
+        btn_gener_inventario = Builder.crearButtonIcon(panel, "generarInventario",
+                carpeta_img + "Generar_inventario.png", new Rectangle(379, 256, 256, 63),
+                listen, false, true);
+
+    }
+
+    private void cargarBtnRH() {
+        btn_regresar = Builder.crearButtonIcon(panel, "btn_back_RH",
+                carpeta_img + "regresar.png", new Rectangle(335, 523, 32, 32),
+                listen, true, false);
+        lb_descripcion = Builder.crearLabel(panel, "descripcion",
+                new Rectangle(114, 445, 100, 40), null, null, font);
+        lb_title.setText("Recursos Humanos");
+        lb_title.setVisible(true);
+        lb_title.setEnabled(true);
+        //lb_title = Builder.crearLabel(panel, "Mantenimiento",
+        //        new Rectangle(317, 202, 100, 40), null, null, font);
+        btn_trabajadores = Builder.crearButtonIcon(panel, "btntrabajadores",
+                carpeta_img + "trabajadores.png", new Rectangle(85, 256, 256, 63),
+                listen, false, true);
+        btn_expedientes = Builder.crearButtonIcon(panel, "btnexpedientes",
+                carpeta_img + "expedientes.png", new Rectangle(85, 352, 256, 63),
+                listen, false, true);
+        btn_nuevosempleado = Builder.crearButtonIcon(panel, "btnnuevoempleados",
+                carpeta_img + "nuevos_empleados.png", new Rectangle(379, 256, 256, 63),
+                listen, false, true);
+        btn_iactivos = Builder.crearButtonIcon(panel, "btniactivos",
+                carpeta_img + "activos_e_inactivos.png", new Rectangle(379, 352, 256, 63),
+                listen, false, true);
+    }
+
+    private void cargarBtnManten() {
+        btn_regresar = Builder.crearButtonIcon(panel, "btn_back_Mant",
+                carpeta_img + "regresar.png", new Rectangle(335, 523, 32, 32),
+                listen, true, false);
+        lb_descripcion = Builder.crearLabel(panel, "descripcion",
+                new Rectangle(114, 445, 100, 40), null, null, font);
+        lb_title.setText("Mantenimiento");
+        lb_title.setVisible(true);
+        lb_title.setEnabled(true);
+        //lb_title = Builder.crearLabel(panel, "Mantenimiento",
+        //        new Rectangle(317, 202, 100, 40), null, null, font);
+        btn_nuevoreporte = Builder.crearButtonIcon(panel, "MnuevoReporte",
+                carpeta_img + "Generar_nuevo_reporte.png", new Rectangle(85, 256, 256, 63),
+                listen, false, true);
+        btn_reUnidades = Builder.crearButtonIcon(panel, "MreUnidades",
+                carpeta_img + "reincorporar_nuevas_unidades.png", new Rectangle(85, 352, 256, 63),
+                listen, false, true);
+        btn_historial = Builder.crearButtonIcon(panel, "Mhistorial",
+                carpeta_img + "Historial.png", new Rectangle(379, 256, 256, 63),
+                listen, false, true);
+        
+    }
+
+    private static void cambiarEstadoBtns(boolean val, Component... btns) {
+        for (Component b : btns) {
+            b.setVisible(val);
+            b.setEnabled(val);
+        }
+    }
+
     class CustomActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             String op = e.getActionCommand();
             switch (op) {
+                // Btns Principales
                 case "CerrarSesion":
                     LoginGUI l = new LoginGUI();
                     root.dispose();
@@ -75,19 +186,37 @@ public class RootGUI {
                     cargarBtnSecre();
                     break;
                 case "btnAlmacen":
-                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    cambiarEstadoBtns(false, btn_secre, btn_almacen, btn_manten, btn_rrhh);
+                    cargarBtnAlmacen();
                     break;
                 case "btnManten":
-                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    cambiarEstadoBtns(false, btn_secre, btn_almacen, btn_manten, btn_rrhh);
+                    cargarBtnManten();
                     break;
                 case "btnRRHH":
-                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    cambiarEstadoBtns(false, btn_secre, btn_almacen, btn_manten, btn_rrhh);
+                    cargarBtnRH();
+                    break;
+                // Btns de Regresar segun el caso
+                case "btn_regresar": //Secretaria
+                    cambiarEstadoBtns(false, btn_regresar, btn_listaBus, btn_facturas, btn_reportes);
+                    initComponents(LoginGUI.sesion.getRol());
+                    break;
+                case "btn_back_almacen":
+                    cambiarEstadoBtns(false, btn_regresar, btn_insumos, btn_lista_invent, btn_gener_inventario);
+                    initComponents(LoginGUI.sesion.getRol());
+                    break;
+                case "btn_back_RH":
+                    cambiarEstadoBtns(false, btn_regresar, btn_trabajadores, btn_expedientes, btn_nuevosempleado, btn_iactivos);
+                    initComponents(LoginGUI.sesion.getRol());
+                    break;
+                case "btn_back_Mant":
+                    cambiarEstadoBtns(false, btn_regresar, btn_nuevoreporte, btn_reUnidades, btn_historial);
+                    initComponents(LoginGUI.sesion.getRol());
                     break;
                 //  Botones de la Secretaria
                 case "modulo_autobus":
                     AutobusGUI auto = new AutobusGUI();
-                    
-                    //javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
                     break;
                 case "facturas":
                     javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
@@ -95,39 +224,40 @@ public class RootGUI {
                 case "reportes":
                     javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
                     break;
-                case "btn_regresar":
-                    cambiarEstadoBtns(false,btn_regresar, btn_listaBus, btn_facturas, btn_reportes);
-                    initComponents(LoginGUI.sesion.getRol());
-                    //javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                //Botones de almacen
+                case "insumos":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
                     break;
-
+                case "lista_inventario":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                case "generarInventario":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                // Btns de Recursos Humanos RRHH
+                case "btntrabajadores":
+                    TrabajadorGUI employer = new TrabajadorGUI();
+                    break;
+                case "btnexpedientes":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                case "btnnuevoempleados":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                case "btniactivos":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                // Botones de Mantenimiento
+                case "MnuevoReporte":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                case "MreUnidades":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
+                case "Mhistorial":
+                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    break;
             }
-        }
-
-        private void cargarBtnSecre() {
-            btn_regresar = Builder.crearButtonIcon(panel, "btn_regresar", 
-                        carpeta_img + "regresar.png", new Rectangle(335,523, 32,32), 
-                    listen, true, false);
-            btn_listaBus = Builder.crearButtonIcon(panel, "modulo_autobus", 
-                    carpeta_img + "lista_de_autobuses.png", new Rectangle(85,256, 256, 63), 
-                    listen, false, false);
-            btn_facturas = Builder.crearButtonIcon(panel, "facturas", 
-                    carpeta_img + "facturas.png", new Rectangle(85,352, 256, 63), 
-                    listen, false, false);
-            btn_reportes = Builder.crearButtonIcon(panel, "reportes", 
-                    carpeta_img + "Reportes.png", new Rectangle(85,352, 256, 63), 
-                    listen, false, false);
-            lb_title = Builder.crearLabel(panel, "descripcion", 
-                    new Rectangle(new Point(114,445)), null, null,font);
-            lb_descripcion = Builder.crearLabel(panel, "secretaria", 
-                    new Rectangle(new Point(317,202)), null, null,font);
-        }
-    }
-
-    private static void cambiarEstadoBtns(boolean val, Component... btns) {
-        for (Component b : btns) {
-            b.setVisible(val);
-            b.setEnabled(val);
         }
     }
 
@@ -146,48 +276,6 @@ public class RootGUI {
         @Override
         public void keyReleased(KeyEvent e) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-    }
-
-    class CustomFocusListener implements FocusListener {
-
-        @Override
-        public void focusGained(FocusEvent e) {
-
-        }
-
-        @Override
-        public void focusLost(FocusEvent e) {
-
-        }
-    }
-
-    class CustomMouseListener implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
         }
 
     }

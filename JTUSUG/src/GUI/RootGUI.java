@@ -34,6 +34,7 @@ public class RootGUI {
     }
     
     public void initComponents(String rol){
+        
         root = Builder.construirFrame("GUI root - Bienvenido -", 
                 new Rectangle(460, 506, 700,600) , false);
         panel = Builder.crearPanel(root, new Rectangle(0,0, 700, 600), 

@@ -15,6 +15,7 @@ public class AutobusGUI extends JFrame
     ActionListener listener;
     Autobus controlador;
     Validador valida;
+    public JComboBox combo;
     public JTextField txt_buscar,txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_id,txt_asientos;
     public JFileChooser url_img;
     public AutobusGUI()
@@ -27,15 +28,6 @@ public class AutobusGUI extends JFrame
     
     public void inicializarcomp()
     {
-        JLabel l1 = Builder.crearLabel(this, "Codigo Autobus", new Rectangle(55, 112, 213, 41),null,null);
-        l1.setForeground(Color.white);
-        JLabel l2 = Builder.crearLabel(this, "________________", new Rectangle(43, 125, 213, 41),null,null);
-        l2.setForeground(Color.white);
-        JList jl = new JList();
-        jl.setBounds(43,165,113,320);
-        jl.setOpaque(false);
-        this.add(jl);
-        
         txt_buscar=new JTextField(30);
         txt_buscar=Builder.crearTextField(this, new Rectangle(305, 112, 224, 33), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         txt_marca=new JTextField(25);
@@ -46,6 +38,13 @@ public class AutobusGUI extends JFrame
         txt_Km=Builder.crearTextField(this, new Rectangle(374, 284, 161, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         txt_matricula=new JTextField(10);
         txt_matricula=Builder.crearTextField(this, new Rectangle(365, 252, 292, 19), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        txt_id=new JTextField(10);
+        txt_id=Builder.crearTextField(this, new Rectangle(365,359,300,19), "", null, null, new Font("Segoe UI", Font.BOLD, 10), true, true,true);
+        txt_asientos=new JTextField(10);
+        txt_asientos=Builder.crearTextField(this, new Rectangle(365,392,300,19), "", null, null, new Font("Segoe UI", Font.BOLD, 10), true, true,true);
+        combo=new JComboBox();
+        String[] datos={"","Hola","Soy","Un","Pan"};
+        combo=Builder.crearComboBox(this, new Rectangle(265,400,200,20), datos, null, null, null);
         
         txt_marca.addKeyListener(new java.awt.event.KeyAdapter() 
         {
@@ -74,16 +73,25 @@ public class AutobusGUI extends JFrame
             }
         });     
         
-        JLabel l4 = Builder.crearLabel(this, "Marca: ", new Rectangle(254, 198, 55, 17),null,null);
-        JLabel l5 = Builder.crearLabel(this, "Numero Economico:", new Rectangle(254, 220, 351, 17),null,null);
-        JLabel l6 = Builder.crearLabel(this, "Matricula Autobus", new Rectangle(254, 252, 118, 17),null,null);
-        JLabel l8 = Builder.crearLabel(this, "Kilometraje", new Rectangle(254, 321, 201, 17),null,null);
-        JLabel l9 = Builder.crearLabel(this, "ID", new Rectangle(254, 359, 145, 17),null,null);
-        JLabel l10 = Builder.crearLabel(this, "Asientos", new Rectangle(319, 392, 150, 35),null,null);
-        JButton b1 = Builder.crearBoton(this,"Actualizar Lista",new Rectangle(33, 500, 133, 37) , listener,true,true);
+        txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+                validaAlfanumerico(evt,txt_buscar,10);
+            }
+        }); 
         
-        b1.setBackground(new Color (7,162,184));
-        b1.setForeground(Color.white);
+        JLabel lb_Marca = Builder.crearLabel(this, "Marca: ", new Rectangle(254, 200, 55, 17),null,null);
+        JLabel lb_Num_Eco = Builder.crearLabel(this, "Numero Economico:", new Rectangle(254, 222, 351, 17),null,null);
+        JLabel lb_Mat_Auto = Builder.crearLabel(this, "Matricula Autobus", new Rectangle(254, 252, 118, 17),null,null);
+        JLabel lb_Km = Builder.crearLabel(this, "Kilometraje", new Rectangle(254, 284, 201, 17),null,null);
+        JLabel lb_ID = Builder.crearLabel(this, "ID", new Rectangle(254, 359, 145, 17),null,null);
+        JLabel lb_Asien = Builder.crearLabel(this, "Asientos", new Rectangle(319, 392, 150, 35),null,null);
+        JButton btn_Act_List = Builder.crearBoton(this,"Actualizar Lista",new Rectangle(33, 500, 133, 37) , listener,true,true);
+        
+        btn_Act_List.setBackground(new Color (7,162,184));
+        btn_Act_List.setForeground(Color.white);
         JButton b2 = Builder.crearBoton(this, "Buscar", new Rectangle(222, 112, 84, 32), listener,true,false);
         b2.setBackground(new Color (7,162,184));
         b2.setForeground(Color.white);
@@ -93,7 +101,7 @@ public class AutobusGUI extends JFrame
         JButton b4 = Builder.crearBoton(this, "Modificar",new Rectangle(414, 490, 97, 27), listener,true,false);
         b4.setBackground(new Color (102,102,102));
         b4.setForeground(Color.white);
-        JButton b5 = Builder.crearBoton(this, "Eliminar",new Rectangle(550, 490, 80, 27), listener,true,false);
+        JButton b5 = Builder.crearBoton(this, "cargarImagen",new Rectangle(550, 490, 80, 27), listener,true,false);
         b5.setBackground(new Color (152,0,0));
         b5.setForeground(Color.white);
         
@@ -114,6 +122,7 @@ public class AutobusGUI extends JFrame
                 case "Modificar":
                     break;             
                 case "cargarImagen":
+                    controlador.seleccionarImg();
                     break;
                 case "Actualizar Lista":
                     break;

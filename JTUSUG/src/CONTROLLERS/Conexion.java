@@ -1,4 +1,5 @@
 package CONTROLLERS;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class Conexion {
 
     public void realizaConexion() {
         String urlDatabase = "jdbc:postgresql://localhost:5432/Tusug";
-        try {
+        try {            
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
         } catch (SQLException e) {

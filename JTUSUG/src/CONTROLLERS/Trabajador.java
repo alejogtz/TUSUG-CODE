@@ -25,15 +25,16 @@ public class Trabajador {
      
     
     public void agregaTrabajador(){
-        int rfc= Integer.parseInt(interfaz.tfrfc.getText());
+       /* int rfc= Integer.parseInt(interfaz.tfrfc.getText());
         String nombre= interfaz.tfnom.getText();
         String ap_paterno= interfaz.tfapp.getText();
         String ap_materno= interfaz.tfapm.getText();
         String domicilio= interfaz.tfdir.getText();
-        Date f_nac;//=interfaz.fecha1.getText();
+        Date f_nac=interfaz.
         Date f_cont;//= interfaz.fecha2.getText();
         String estado= (String)interfaz.cb6.getSelectedItem();
-        
+        String url="";
+        addT(rfc, nombre, ap_paterno, ap_materno, domicilio, f_nac, f_cont, estado, url);*/
         
         
         
@@ -65,12 +66,48 @@ public class Trabajador {
       }
     }
 
-    public void eliminaTrabajador(){
-        
-        
+    public void eliminaTrabajador(String estado, String rfc){
+          estado="baja";
+        try {            
+            PreparedStatement pstm = c.prepareStatement("UPDATE sistemaTusug.trabajador SET " 
+            +"estado= ? ," + 
+            "WHERE rfc = ? ");            
+            pstm.setString(1, estado);
+            pstm.setString(6, rfc);
+            pstm.execute();
+            pstm.close();            
+         }catch(SQLException e){
+         System.out.println(e);
+      }   
     }
     
-    public void modificaTrabajador(){
+    public void modificaTrabajador(String nombre, String ap_paterno,String ap_materno, String domicilio, String puesto, String rfc){
+        nombre=interfaz.tfnom.getText();
+        ap_paterno= interfaz.tfapp.getText();
+        ap_materno= interfaz.tfapm.getText();
+        domicilio= interfaz.tfdir.getText();
+        //puesto= interfaz.cbPuesto.getSelectedItem();
+        rfc= interfaz.tfrfc.getText();
+        
+          try {            
+            PreparedStatement pstm = c.prepareStatement("UPDATE sistemaTusug.trabajador SET " 
+            +"nombre= ? ," +
+            "ap_paterno= ? ," +  
+            "ap_materno= ? ," +  
+            "domicilio= ? ," +
+            "puesto= ? ," + 
+            "WHERE rfc = ? ");            
+            pstm.setString(1, nombre);
+            pstm.setString(2, ap_paterno);
+            pstm.setString(3, ap_materno);
+            pstm.setString(4, domicilio);
+            pstm.setString(5, puesto);
+            pstm.setString(6, rfc);
+            pstm.execute();
+            pstm.close();            
+         }catch(SQLException e){
+         System.out.println(e);
+      }
         
     }
     
@@ -94,6 +131,7 @@ public class Trabajador {
          return m;
     }
     
+
         public void listaParametro(String rfc){try{
             String [] registros= new String[9];
             PreparedStatement pstm = c.prepareStatement("select * from sistemaTusug.trabajador where rfc=?");
@@ -101,7 +139,7 @@ public class Trabajador {
             ResultSet rs =  pstm.executeQuery();
             while(rs.next()){
                 registros[0]=rs.getString(1);
-                
+                interfaz.tfrfc.setText(registros[0]);
                 registros[1]=rs.getString(2);
                 interfaz.tfnom.setText(registros[1]);
                 registros[2]=rs.getString(3);
@@ -113,7 +151,8 @@ public class Trabajador {
                 registros[5]=rs.getString(6);
                 registros[6]=rs.getString(7);
                 registros[7]=rs.getString(8);
-                registros[8]=rs.getString(19);             
+                registros[8]=rs.getString(19); 
+                
             }
             
         
@@ -124,7 +163,7 @@ public class Trabajador {
      }     
          
     }
-    
+
     public static void main(String [] args){
         Trabajador t = new Trabajador(null);
         t.listaTrabajador();

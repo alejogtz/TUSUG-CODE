@@ -59,12 +59,12 @@ public class AutobusGUI extends JFrame
         btn_regresar=Builder.crearButtonIcon(this,"regresar",ruta + "regresar.png",new Rectangle(626,450,32,32),null,false,false);
         btn_regresar.setBackground(new Color(233,233,233));
         JLabel lb_codigo_auto=Builder.crearLabel(this, "(Matricula)", new Rectangle(423,132, 107 , 13),null,null);
-        JLabel lb_imagen_autobus=Builder.crearLabelImagen(this, ruta + "autobu.png", new Rectangle(354,162,245 , 139));
-        JLabel lb_Marca = Builder.crearLabel(this, "Marca: ", new Rectangle(344,355,35,13),null,null);
-        JLabel lb_Num_Eco = Builder.crearLabel(this, "Numero Economico:", new Rectangle(278,383,101,13),null,null);
-        JLabel lb_Mat_Auto = Builder.crearLabel(this, "Matricula Autobus", new Rectangle(329,416, 50, 13),null,null);
-        JLabel lb_Km = Builder.crearLabel(this, "Kilometraje", new Rectangle(521,350,60,13),null,null);
-        JLabel lb_Asien = Builder.crearLabel(this, "Asientos", new Rectangle(514,383,67,13),null,null);
+        JLabel lb_imagen_autobus=Builder.crearLabelImagen(this, "src/imagenes/autobu.png", new Rectangle(354,162,245 , 139));
+        JLabel lb_Marca = Builder.crearLabel(this, "Marca:", new Rectangle(335,350,101,13),null,null);
+        JLabel lb_Num_Eco = Builder.crearLabel(this, "Numero Economico:", new Rectangle(270,383,120,13),null,null);
+        JLabel lb_Mat_Auto = Builder.crearLabel(this, "Matricula:", new Rectangle(315,416, 101, 13),null,null);
+        JLabel lb_Km = Builder.crearLabel(this, "Kilometraje", new Rectangle(499,350,101,13),null,null);
+        JLabel lb_Asien = Builder.crearLabel(this, "Asientos:", new Rectangle(514,383,101,13),null,null);
 
         txt_marca=new JTextField(25);
         txt_marca=Builder.crearTextField(this, new Rectangle(389,345,108,23), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);

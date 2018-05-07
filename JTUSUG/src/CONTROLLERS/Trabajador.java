@@ -17,47 +17,51 @@ public class Trabajador {
     ArrayList<String> m;
     
     public Trabajador(TrabajadorGUI ui){
+        
         interfaz = ui;
+           Conexion.setConfiguracion("postgres","Kurama14");
         c = Conexion.getConexion();
-        Conexion.setConfiguracion("postgres","Kurama14");
+     
      
     }
      
     
     public void agregaTrabajador(){
-        int rfc= Integer.parseInt(interfaz.tfrfc.getText());
+        String rfc= interfaz.tfrfc.getText();
         String nombre= interfaz.tfnom.getText();
         String ap_paterno= interfaz.tfapp.getText();
         String ap_materno= interfaz.tfapm.getText();
-        String domicilio= interfaz.tfdir.getText();
+        String domicilio= interfaz.area1.getText();
+        String puesto= (String) interfaz.cbPuesto.getSelectedItem();
         Date f_nac=interfaz.fecha;
         Date f_cont= interfaz.fechaA;
         String estado= (String)interfaz.cb6.getSelectedItem();
         String url="";
-        addT(rfc, nombre, ap_paterno, ap_materno, domicilio, f_nac, f_cont, estado, url);
+        addT(rfc, nombre, ap_paterno, ap_materno, domicilio,puesto, f_nac, f_cont, estado, url);
         
         
         
     }
     
-    public void addT(int rfc,  String nombre, String ap_paterno,String ap_materno, String domicilio, Date f_nac, Date f_cont, String estado, String urlImage ){
+    public void addT(String rfc,  String nombre, String ap_paterno,String ap_materno, String domicilio, String puesto,Date f_nac, Date f_cont, String estado, String urlImage ){
                 try { 
             System.out.print("agregado");
 
             PreparedStatement pstm = c.prepareStatement("insert into " +
-                    "sistemaTusug.trabajador(rfc,nombre,ap_paterno, ap_materno,domicilio,fecha_nac,fecha_contratacion,estado,url_img) " +
-                    " values(?,?,?,?,?,?,?,?,?)");
+                    "sistemaTusug.trabajador(rfc,nombre,ap_paterno, ap_materno,domicilio,puesto,fecha_nac,fecha_contratacion,estado,url_img) " +
+                    " values(?,?,?,?,?,?,?,?,?,?)");
                         System.out.print("agregado");
 
-            pstm.setInt(1, rfc);
+            pstm.setString(1, rfc);
             pstm.setString(2, nombre);
             pstm.setString(3, ap_paterno);
             pstm.setString(4, ap_materno);
             pstm.setString(5, domicilio);
-            pstm.setDate(6, f_nac);
-            pstm.setDate(7, f_cont);
-            pstm.setString(8, estado);
-            pstm.setString(9, urlImage);
+            pstm.setString(6, puesto);
+            pstm.setDate(7, f_nac);
+            pstm.setDate(8, f_cont);
+            pstm.setString(9, estado);
+            pstm.setString(10, urlImage);
             pstm.execute();
            // pstm.close(); 
             System.out.print("agregado");
@@ -165,7 +169,8 @@ public class Trabajador {
     }
 
     public static void main(String [] args){
-        Trabajador t = new Trabajador(null);
+        TrabajadorGUI s = new TrabajadorGUI();
+        Trabajador t = new Trabajador(s);
         t.listaTrabajador();
         
     }

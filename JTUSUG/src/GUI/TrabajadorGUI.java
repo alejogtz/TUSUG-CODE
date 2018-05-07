@@ -28,7 +28,7 @@ public class TrabajadorGUI {
                    "1997", "1998", "1999", "2000"};
     String Cargo[]={"secretaria", "chofer", "mantenimiento", "recursos humanos"};
     String Categoria[]= {"1","2","3","4","5"};
-    String st[]={"Activo", "Inactivo"};
+    String st[]={"activo", "pasivo", "baja"};
     private JComboBox<String> cb4;
     JFrame x;
     JPanel p;
@@ -39,6 +39,7 @@ public class TrabajadorGUI {
     public JComboBox cb1, cb2, cb3, cb5,cb6, cb7,cbPuesto;
 
     Trabajador interfaz;
+
     public LocalDate fecha1,fecha2;
     public int dia1,mes1,anio1;
     public JList lista;
@@ -46,9 +47,9 @@ public class TrabajadorGUI {
                    agregar,baja,btlista,btactinac, Cfoto;
     public JScrollBar scroll;
     public Date fecha,fechaA;
-    public TrabajadorGUI(Trabajador i){
+    public TrabajadorGUI(){
 
-        interfaz=i;
+        interfaz= new Trabajador(this);
         JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
         JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", false);
         
@@ -96,14 +97,17 @@ public class TrabajadorGUI {
          cb6= Builder.crearComboBox(p, new Rectangle(351,290,52,17), st, null, null, null);
          cbPuesto= Builder.crearComboBox(p, new Rectangle(380,438,111,17),Cargo , null, null,null);
           //area de texto
-         JTextArea area1 = new JTextArea();
+         area1 = new JTextArea();
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
          p.add(area1);
          
          //lista
+         lista= new JList();
          DefaultListModel modeloLista = new DefaultListModel();
-         lista= new JList(interfaz.listaTrabajador().toArray());
+         interfaz.listaTrabajador().forEach((d) -> {
+             modeloLista.addElement(d);
+        });
          lista.setModel(modeloLista);
          lista.setBounds(new Rectangle(14,236,176,198));
          lista.add(scroll);
@@ -123,7 +127,7 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.agregaTrabajador(); 
-            actualizarLista(lista);
+           // actualizarLista(lista);
         }
     };
     
@@ -138,7 +142,7 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             //interfaz.eliminaTrabajador(); 
-            actualizarLista(lista);
+           // actualizarLista(lista);
         }
     };
     
@@ -149,7 +153,7 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.agregaTrabajador(); 
-            actualizarLista(lista);
+            //actualizarLista(lista);
         }
     };
     
@@ -163,9 +167,6 @@ public class TrabajadorGUI {
     }
     
      
-    public static void main(String []agrs)
-    {
-        TrabajadorGUI trabajador = new TrabajadorGUI(null);
-        
-    }
+
+    
 }

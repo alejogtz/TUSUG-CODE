@@ -40,7 +40,7 @@ public class AutobusGUI extends JFrame
         buscar.setForeground(Color.white);
         txt_buscar=new JTextField(30);
         txt_buscar=Builder.crearTextField(this, new Rectangle(68, 189, 106, 25), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        String[] datos={"","Hola","Soy","Un","Pan"};
+        String[] datos={"","hola","Soy","Un","Pan"};
         list=new JList(datos);
         list.setBounds(14,236,172,198);
         list.addMouseListener(new CustomMouseListener());
@@ -183,6 +183,7 @@ public class AutobusGUI extends JFrame
         txt_No_Eco.setText(registro[0][3]);
         txt_Km.setText(registro[0][4]);
         txt_asientos.setText(registro[0][5]);
+        
         };
 }
     

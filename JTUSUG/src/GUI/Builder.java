@@ -25,7 +25,7 @@ public class Builder {
         r.setLayout(null);
         r.setLocationRelativeTo(null);
         r.setBackground(java.awt.Color.WHITE);
-        r.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        r.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         r.setUndecorated(undecorated);
         r.setVisible(true);
     }
@@ -37,7 +37,7 @@ public class Builder {
         r.setLayout(null);
         r.setLocationRelativeTo(null);
         r.setBackground(java.awt.Color.WHITE);
-        r.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        r.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         r.setUndecorated(undecorated);
         r.setVisible(true);
         return r;

@@ -34,9 +34,9 @@ public class AutobusGUI extends JFrame
     
     public void inicializarcomp()
     {
-        JButton inicio=Builder.crearButtonIcon(this,"",ruta + "boton_inicio.png",new Rectangle(14,63,101,43),listener,false,false);
-        JButton sesion=Builder.crearButtonIcon(this,"",ruta + "boton_cerrar_sesion.png",new Rectangle(539,65,142,43),listener,false,false);
-        JButton buscar = Builder.crearButtonIcon(this,"",ruta + "buscar.png",new Rectangle(26,185,32,32),listener,false,false);
+        JButton inicio=Builder.crearButtonIcon(this,"inicio",ruta + "boton_inicio.png",new Rectangle(14,63,101,43),listener,false,false);
+        JButton sesion=Builder.crearButtonIcon(this,"sesion",ruta + "boton_cerrar_sesion.png",new Rectangle(539,65,142,43),listener,false,false);
+        JButton buscar = Builder.crearButtonIcon(this,"buscar",ruta + "buscar.png",new Rectangle(26,185,32,32),listener,false,false);
         buscar.setBackground(new Color (233,233,233));
         buscar.setForeground(Color.white);
         txt_buscar=new JTextField(30);
@@ -100,17 +100,20 @@ public class AutobusGUI extends JFrame
                 case "agregar":
                     controlador.ingresarAutobus();
                     break;
-                case "Modificar":
+                case "modificar":
                     break;             
                 case "cargarImagen":
                     controlador.seleccionarImg();
                     break;
-                case "Actualizar Lista":
+                case "actualizar_lista":
                     cargarLista(list);
                     break;
                 case "Buscar":
                     break;
-                case "Eliminar":
+                case "eliminar":
+                    break;
+                case "inicio":
+                    
                     break;
             }
         }
@@ -147,7 +150,7 @@ public class AutobusGUI extends JFrame
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) 
             {
-                validaNombre(evt,txt_No_Eco,20);
+                validaAlfanumerico(evt,txt_No_Eco,20);
             }
         });
         

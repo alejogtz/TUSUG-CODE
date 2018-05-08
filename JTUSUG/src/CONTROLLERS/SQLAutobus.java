@@ -21,6 +21,7 @@ public class SQLAutobus {
     Connection conn;
     
     public SQLAutobus(){
+        Conexion.setConfiguracion("postgres", "Gallardo.1997");
         conn = Conexion.getConexion();
     }    
     public void ingresarAutobus(String matr, String id, String marca, 

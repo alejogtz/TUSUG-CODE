@@ -28,8 +28,8 @@ public class AutobusGUI extends JFrame
     {
         listener = new CustomActionListener();
         Builder.buildFrame(this,"Autobus", new Rectangle(200,50,700,600),false);
-        inicializarcomp();
         controlador = new Autobus(this);
+        inicializarcomp();
     }
     
     public void inicializarcomp()
@@ -41,14 +41,15 @@ public class AutobusGUI extends JFrame
         buscar.setForeground(Color.white);
         txt_buscar=new JTextField(30);
         txt_buscar=Builder.crearTextField(this, new Rectangle(68, 189, 106, 25), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        String[] datos={"","hola","Soy","Un","Pan"};
-        list=new JList(datos);
+        list=new JList();
+        cargarLista(list);
         list.setBounds(14,236,172,198);
         list.addMouseListener(new CustomMouseListener());
         this.add(list);
         btn_Act_List=new JButton();
-        btn_Act_List = Builder.crearButtonIcon(this,"actualizar_lista",ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),null,false,false);
+        btn_Act_List = Builder.crearButtonIcon(this,"actualizar_lista",ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),null,true,true);
         btn_Act_List.setBackground(new Color(233,233,233));
+        btn_Act_List.addActionListener(new CustomActionListener());
         btn_nuevo_autobus=new JButton();
         btn_nuevo_autobus = Builder.crearButtonIcon(this,"agregar",ruta + "anadir.png",new Rectangle(218,136,32,32),null,false,false);
         btn_nuevo_autobus.setBackground(new Color(233,233,233));
@@ -105,6 +106,7 @@ public class AutobusGUI extends JFrame
                     controlador.seleccionarImg();
                     break;
                 case "Actualizar Lista":
+                    cargarLista(list);
                     break;
                 case "Buscar":
                     break;
@@ -119,6 +121,16 @@ public class AutobusGUI extends JFrame
         Conexion.setConfiguracion("postgres", "root");
         AutobusGUI a= new AutobusGUI();
     }
+    
+    public void cargarLista(JList l){
+        DefaultListModel modelo = new DefaultListModel();
+                    String lista[] = controlador.obtenerlista();
+                    for(int i = 0;i<lista.length;i++){
+                        modelo.addElement(lista[i]);
+                    }
+                    l.setModel(modelo);
+    }
+    
     public void valida()
     {
         txt_marca.addKeyListener(new java.awt.event.KeyAdapter() 

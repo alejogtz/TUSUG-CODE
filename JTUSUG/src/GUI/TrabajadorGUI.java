@@ -1,10 +1,13 @@
 package GUI;
+import CONTROLLERS.SQLAutobus;
 import CONTROLLERS.Trabajador;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -101,17 +104,12 @@ public class TrabajadorGUI {
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
          p.add(area1);
-         
+         String[] c={"hola","abraham","puto","xd"};
          //lista
-         lista= new JList();
-         DefaultListModel modeloLista = new DefaultListModel();
-         interfaz.listaTrabajador().forEach((d) -> {
-             modeloLista.addElement(d);
-        });
-         lista.setModel(modeloLista);
+         lista= new JList(c);
          lista.setBounds(new Rectangle(14,236,176,198));
-         lista.add(scroll);
          lista.setVisible(true);
+         lista.addMouseListener(new TrabajadorGUI.CustomMouseListener());
          p.add(lista);
          
          fecha = new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
@@ -156,7 +154,11 @@ public class TrabajadorGUI {
             //actualizarLista(lista);
         }
     };
-    
+        class CustomMouseListener extends MouseAdapter{
+        public void mouseClicked(MouseEvent me){
+        String matricula = (String)lista.getSelectedValue();
+        interfaz.listaParametro(matricula);
+        };
     
     public void actualizarLista(JList lista){
         lista.removeAll();
@@ -169,4 +171,4 @@ public class TrabajadorGUI {
      
 
     
-}
+}}

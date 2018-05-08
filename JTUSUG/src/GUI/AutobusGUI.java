@@ -47,22 +47,22 @@ public class AutobusGUI extends JFrame
         list.addMouseListener(new CustomMouseListener());
         this.add(list);
         btn_Act_List=new JButton();
-        btn_Act_List = Builder.crearButtonIcon(this,"actualizar_lista",ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),null,true,true);
+        btn_Act_List = Builder.crearButtonIcon(this,"actualizar_lista",ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),listener,true,true);
         btn_Act_List.setBackground(new Color(233,233,233));
         btn_Act_List.addActionListener(new CustomActionListener());
         btn_nuevo_autobus=new JButton();
-        btn_nuevo_autobus = Builder.crearButtonIcon(this,"agregar",ruta + "anadir.png",new Rectangle(218,136,32,32),null,false,false);
+        btn_nuevo_autobus = Builder.crearButtonIcon(this,"agregar",ruta + "anadir.png",new Rectangle(218,136,32,32),listener,false,false);
         btn_nuevo_autobus.setBackground(new Color(233,233,233));
         btn_nuevo_autobus.addActionListener(new CustomActionListener());
-        btn_modificar = Builder.crearButtonIcon(this,"modificar",ruta + "lapiz.png",new Rectangle(218,202,32,32),null,false,false);
+        btn_modificar = Builder.crearButtonIcon(this,"modificar",ruta + "lapiz.png",new Rectangle(218,202,32,32),listener,false,false);
         btn_modificar.setBackground(new Color(233,233,233));
         btn_eliminar=new JButton();
-        btn_eliminar=Builder.crearButtonIcon(this,"eliminar",ruta + "boton-x.png",new Rectangle(218,255,32,32),null,false,false);
+        btn_eliminar=Builder.crearButtonIcon(this,"eliminar",ruta + "boton-x.png",new Rectangle(218,255,32,32),listener,false,false);
         btn_eliminar.setBackground(new Color(233,233,233));
         btn_agregar_img=new JButton();
-        btn_agregar_img=Builder.crearButtonIcon(this,"cargarImagen",ruta + "foto.png",new Rectangle(626,215,32,32),null,false,false);
+        btn_agregar_img=Builder.crearButtonIcon(this,"cargarImagen",ruta + "foto.png",new Rectangle(626,215,32,32),listener,false,false);
         btn_regresar=new JButton();
-        btn_regresar=Builder.crearButtonIcon(this,"regresar",ruta + "regresar.png",new Rectangle(626,450,32,32),null,false,false);
+        btn_regresar=Builder.crearButtonIcon(this,"regresar",ruta + "regresar.png",new Rectangle(626,450,32,32),listener,false,false);
         btn_regresar.setBackground(new Color(233,233,233));
         JLabel lb_codigo_auto=Builder.crearLabel(this, "(Matricula)", new Rectangle(423,132, 107 , 13),null,null);
         JLabel lb_imagen_autobus=Builder.crearLabelImagen(this, "src/imagenes/autobu.png", new Rectangle(354,162,245 , 139));
@@ -97,7 +97,7 @@ public class AutobusGUI extends JFrame
             String op = e.getActionCommand();
             switch(op)
             {
-                case "Nuevo autobus":
+                case "agregar":
                     controlador.ingresarAutobus();
                     break;
                 case "Modificar":

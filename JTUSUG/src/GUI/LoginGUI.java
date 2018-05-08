@@ -10,6 +10,9 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,15 +50,17 @@ public class LoginGUI {
                 "src/Imagenes/login.png", true);
         txt_rfc = Builder.crearTextField(loginUI, new Rectangle(205, 233, 293, 38),
                 "", null, null, null, true, true, true);
+        txt_rfc.addKeyListener(new CustomKeyListener());
         txt_rfc.setFont(font);
 
         txt_password = Builder.crearPasswordField(loginUI, new Rectangle(205, 298, 293, 38),
                 "", null, null, null, true, true);
         txt_password.setFont(font);
-
+        txt_password.addKeyListener(new CustomKeyListener());
         b = Builder.crearBoton(loginUI, "Ingresar", new Rectangle(257, 383, 185, 39),
                 escucha, false, false);
 
+        b.addKeyListener(new CustomKeyListener());
     }
 
     public static void main(String[] args) {
@@ -98,16 +103,16 @@ public class LoginGUI {
                 switch (comando) {
                     case "Ingresar":
                         cargarSesion();
-                        if (sesion.getPass().equals(txt_password.getText())){
+                        if (sesion.getPass().equals(txt_password.getText())) {
                             RootGUI main = new RootGUI();
                             Conexion.setConfiguracion(
                                     sesion.getRol(), sesion.getPass());
                             main.initComponents(sesion.getRol());
                             frame.dispose();
-                        }else {
+                        } else {
                             // Code here:
                             // Aviso de contraseña incorrecta
-                            javax.swing.JOptionPane.showMessageDialog(null, 
+                            javax.swing.JOptionPane.showMessageDialog(null,
                                     "Usuario o contraseña incorrectos");
                             //txt_rfc.setText("");
                             txt_password.setText("");
@@ -115,7 +120,7 @@ public class LoginGUI {
                         break;
                 }
             } catch (Exception ex) {
-                
+
             }
         }
 
@@ -141,5 +146,31 @@ public class LoginGUI {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         return sesion;
+    }
+
+    class CustomKeyListener extends KeyAdapter {
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            //if(e.getComponent())
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                cargarSesion();
+                if (sesion.getPass().equals(txt_password.getText())) {
+                    RootGUI main = new RootGUI();
+                    Conexion.setConfiguracion(
+                            sesion.getRol(), sesion.getPass());
+                    main.initComponents(sesion.getRol());
+                    frame.dispose();
+                } else {
+                    // Code here:
+                    // Aviso de contraseña incorrecta
+                    javax.swing.JOptionPane.showMessageDialog(null,
+                            "Usuario o contraseña incorrectos");
+                    //txt_rfc.setText("");
+                    txt_password.setText("");
+                }
+            }
+        }
+
     }
 }

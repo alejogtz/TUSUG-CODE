@@ -74,11 +74,13 @@ public class TrabajadorGUI {
         btInicio = Builder.crearButtonIcon(p, "Inicio","src/imagenes/boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, false);
         btBuscar = Builder.crearButtonIcon(p, "Buscar","src/imagenes/buscar.png",new Rectangle(20, 215, 33, 32) , null,true,false);
         btActualizar = Builder.crearButtonIcon(p,"Buscar","src/imagenes/boton_actualizar_lista.png", new Rectangle(26, 446, 145, 36), null, true, false);
+        btActualizar.addActionListener(accion4);
         sesion = Builder.crearButtonIcon(p,"Cerrar sesion","src/imagenes/boton_cerrar_sesion.png", new Rectangle(539, 65, 130, 27), null, true, false);
         back = Builder.crearButtonIcon(p,"Regresar","src/imagenes/regresar.png", new Rectangle(626, 452, 32, 32), null, true, false);
         nuevo= Builder.crearButtonIcon(p,"Nuevo Empleado","src/imagenes/agregar-usuario.png", new Rectangle(218, 140, 32, 32), null, true, false);
         nuevo.addActionListener(accion);
         agregar= Builder.crearButtonIcon(p,"Modificar Empleado","src/imagenes/anadir-punto-de-anclaje.png", new Rectangle(218, 202, 32, 32), null, true, false); 
+        agregar.addActionListener(accion3);
         baja= Builder.crearButtonIcon(p,"Eliminar Empleado","src/imagenes/usuario.png", new Rectangle(218, 268, 32, 32), null, true, false); 
         btlista= Builder.crearButtonIcon(p,"Lista Trabajadores","src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null, true, false); 
         btactinac= Builder.crearButtonIcon(p,"Activos e Inactivos","src/imagenes/boton_activos_inactivos.png", new Rectangle(342, 67, 130, 27), null, true, false); 
@@ -121,25 +123,40 @@ public class TrabajadorGUI {
  
     }
     
+         public void cargarLista(JList l){
+        DefaultListModel modelo = new DefaultListModel();
+                    String list[] = interfaz.listatrabajador();
+                    for(int i = 0;i<list.length;i++){
+                        modelo.addElement(list[i]);
+                    }
+                    l.setModel(modelo);
+    }
+
+    
     ActionListener accion=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
             interfaz.agregaTrabajador(); 
            // actualizarLista(lista);
+           
+           tfrfc.setText(null);
+           tfapp.setText(null);
+           tfapm.setText(null);
+           tfnom.setText(null);
         }
     };
     
     ActionListener accion2=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-           // interfaz.modificaTrabajador();
+           interfaz.eliminaTrabajador(((String)cb6.getSelectedItem()), tfrfc.getText());
         }
     };
     
     ActionListener accion3=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            //interfaz.eliminaTrabajador(); 
+            interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), tfdir.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
            // actualizarLista(lista);
         }
     };
@@ -148,10 +165,11 @@ public class TrabajadorGUI {
     
     
     ActionListener accion4=new ActionListener() {
-        public void actionPerformed(ActionEvent ae)
+        public void actionPerformed(ActionEvent ag)
         {
-            interfaz.agregaTrabajador(); 
+            //interfaz.agregaTrabajador(); 
             //actualizarLista(lista);
+            cargarLista(lista);
         }
     };
         class CustomMouseListener extends MouseAdapter{
@@ -159,6 +177,8 @@ public class TrabajadorGUI {
         String matricula = (String)lista.getSelectedValue();
         interfaz.listaParametro(matricula);
         };
+        
+   
     
     public void actualizarLista(JList lista){
         lista.removeAll();

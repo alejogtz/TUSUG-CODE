@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Trabajador {
     TrabajadorGUI interfaz;
@@ -84,7 +86,42 @@ public class Trabajador {
          System.out.println(e);
       }   
     }
-    
+    public String [] listatrabajador(){
+          
+            String sql = "select count(rfc) as total from sistemaTusug.trabajador ";
+            PreparedStatement pst;
+            ResultSet res;
+            int n = 0;
+        try {
+            pst = c.prepareStatement(sql);
+        
+            res = pst.executeQuery();
+            res.next();
+            n = res.getInt("total");
+            res.close();
+            } catch (SQLException ex) {
+            Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String lista[] = new String[n];
+        
+        try{
+            sql = "select rfc from sistemaTusug.trabajador ORDER BY rfc";
+            pst = c.prepareStatement(sql);
+            res = pst.executeQuery();
+            int index = 0;
+            while(res.next()){
+                String dato = res.getString("rfc");
+                lista[index] = dato;
+                index++;
+            }
+            res.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+       
+    }
     public void modificaTrabajador(String nombre, String ap_paterno,String ap_materno, String domicilio, String puesto, String rfc){
         nombre=interfaz.tfnom.getText();
         ap_paterno= interfaz.tfapp.getText();
@@ -115,10 +152,11 @@ public class Trabajador {
         
     }
     
-    public ArrayList<String> listaTrabajador(){try{
+    public ArrayList<String> listaTrabajador(){
+        try{
          
-         String [] registros= new String[5];
-        String cons="select rfc from sistemaTusug.trabajador" ;
+         String [] registros= new String[1];
+         String cons="select rfc from sistemaTusug.trabajador" ;
         
             Statement st= c.createStatement();
             ResultSet rs = st.executeQuery(cons);
@@ -136,8 +174,10 @@ public class Trabajador {
     }
     
 
-        public void listaParametro(String rfc){try{
+        public String [] listaParametro(String rfc){
             String [] registros= new String[9];
+            try{
+            
             PreparedStatement pstm = c.prepareStatement("select * from sistemaTusug.trabajador where rfc=?");
             pstm.setString(1, rfc);
             ResultSet rs =  pstm.executeQuery();
@@ -157,6 +197,7 @@ public class Trabajador {
                 registros[7]=rs.getString(8);
                 registros[8]=rs.getString(19); 
                 
+                
             }
             
         
@@ -165,7 +206,8 @@ public class Trabajador {
      }catch(Exception e){
                 System.out.println(e.getMessage());
      }     
-         
+                         return registros;
+
     }
 
     public static void main(String [] args){

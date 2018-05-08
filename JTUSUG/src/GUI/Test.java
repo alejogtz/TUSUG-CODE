@@ -5,13 +5,18 @@
  */
 package GUI;
 
+import CONTROLLERS.Conexion;
+
 /**
  *
  * @author Alekhius
  */
 public class Test {
     public static void main(String [] args){
-        RootGUI r = new RootGUI();
-        r.initComponents("secre");
+        Conexion.setRol("root");
+        //RootGUI r = new RootGUI("secretaria", "Alejo Gutierrez");
+        //RootGUI s = new RootGUI("almacen", "Alejo Gutierrez");
+        RootGUI t = new RootGUI("mantenimiento", "GURA96");
+        //RootGUI u = new RootGUI("recursos humanos", "Alejo Gutierrez");
     }
 }

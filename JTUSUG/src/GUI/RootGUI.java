@@ -47,12 +47,14 @@ public class RootGUI {
     public RootGUI(String rol, String name){
         font = new Font("Segoe UI", Font.PLAIN, 14);
         listen = new CustomActionListener();
-        root = Builder.construirFrame("GUI root - Bienvenido -",
+        root = Builder.construirFrame(name + " - Bienvenido -",
                 new Rectangle(460, 506, 700, 600), false);
         panel = Builder.crearPanel(root, new Rectangle(0, 0, 700, 600),
                 "src/imagenes/pagina_de_fondo.png", true);
         lb_title = Builder.crearLabel(panel, "",
                 new Rectangle(317, 202, 200, 40), Color.BLUE, null, font);        
+        btn_close = Builder.crearButtonIcon(panel, "CerrarSesion", carpeta_img + "cerrar_sesion.png",
+                new Rectangle(460, 506, 201, 63), listen, true, true);
         this.rol_activo = rol;
         //System.err.println(rol + " -v-v-v-");
         switch(rol){            
@@ -83,9 +85,7 @@ public class RootGUI {
 
     public void initComponents() {
         JLabel lb_text = Builder.crearLabel(panel, "Seleccione el icono de la seccion que desea visitar",
-                new Rectangle(193, 172, 300, 60), null, null, font);
-        btn_close = Builder.crearButtonIcon(panel, "CerrarSesion", carpeta_img + "cerrar_sesion.png",
-                new Rectangle(460, 506, 201, 63), listen, true, true);
+                new Rectangle(193, 172, 300, 60), null, null, font);        
         btn_secre = Builder.crearButtonIcon(panel, "btnSecretaria", carpeta_img + "secretaria.png",
                 new Rectangle(85, 256, 256, 63), listen, true, true);
         btn_almacen = Builder.crearButtonIcon(panel, "btnAlmacen", carpeta_img + "almacen.png",

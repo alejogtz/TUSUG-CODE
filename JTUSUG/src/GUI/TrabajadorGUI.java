@@ -156,7 +156,7 @@ public class TrabajadorGUI {
     ActionListener accion3=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), tfdir.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
+            interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
            // actualizarLista(lista);
         }
     };

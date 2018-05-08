@@ -47,7 +47,7 @@ public class Autobus {
         km = Integer.valueOf(ui.txt_Km.getText().toLowerCase());
         asientos = Integer.valueOf(ui.txt_asientos.getText().toLowerCase());        
         //Logger.getLogger("Hi").log(Level.SEVERE, " - Linea 55 - ");
-        url_img = seleccionarImg();
+        url_img = "scr/imagenes/autobu.png";//seleccionarImg();
     }
 
     public String seleccionarImg() {

@@ -150,7 +150,7 @@ public class AutobusGUI extends JFrame
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) 
             {
-                validaNombre(evt,txt_No_Eco,20);
+                validaAlfanumerico(evt,txt_No_Eco,20);
             }
         });
         

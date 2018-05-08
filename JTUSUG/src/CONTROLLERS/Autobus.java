@@ -62,4 +62,11 @@ public class Autobus {
         String registro[] = bd.obtenerRegistro(m);
         return registro;
     }
+    
+    public String[] obtenerlista(){
+
+        String[] lista = bd.listaAutobuses();
+       
+        return lista;
+    }
 }

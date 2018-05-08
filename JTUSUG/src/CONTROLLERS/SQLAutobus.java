@@ -59,18 +59,53 @@ public class SQLAutobus {
             pst = conn.prepareStatement(sql);
             ResultSet res = pst.executeQuery();
             res.next();
-            System.out.println(registro.length);
             registro[0] = res.getString("matricula");
             registro[1] = res.getString("id");
             registro[2] = res.getString("marca");
             registro[3] = res.getString("numero_economico");
             registro[4] = Integer.toString(res.getInt("kilometraje"));
             registro[5] = Integer.toString(res.getInt("asientos"));
-            
+            res.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
         }
         return registro;
+    }
+    
+    public String[] listaAutobuses(){
+        
+            String sql = "select count(matricula) as total from sistemaTusug.autobus ";
+            PreparedStatement pst;
+            ResultSet res;
+            int n = 0;
+        try {
+            pst = conn.prepareStatement(sql);
+        
+            res = pst.executeQuery();
+            res.next();
+            n = res.getInt("total");
+            res.close();
+            } catch (SQLException ex) {
+            Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String lista[] = new String[n];
+        
+        try{
+            sql = "select matricula from sistemaTusug.autobus ORDER BY matricula";
+            pst = conn.prepareStatement(sql);
+            res = pst.executeQuery();
+            int index = 0;
+            while(res.next()){
+                String dato = res.getString("matricula");
+                lista[index] = dato;
+                index++;
+            }
+            res.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
     }
 }

@@ -19,7 +19,7 @@ public class Conexion {
     public void realizaConexion() {
 
         String urlDatabase = "jdbc:postgresql://localhost:5432/Tusug";
-        try {            
+        try {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
         } catch (SQLException e) {
@@ -45,14 +45,26 @@ public class Conexion {
     }
 
     public static void setRol(String rol) {
-        Conexion.rol = rol;
+        //Roles y usuario y contraseña confifuracion
+        if (rol.equals("root")) {
+            Conexion.rol = "postgres";
+            Conexion.contrasena = "root";
+        } else if (rol.equals("secretaria")) {
+            //Modificar
+            Conexion.rol = "postgres";
+            Conexion.contrasena = "root";
+        }else {
+            Conexion.rol = "postgres";
+            Conexion.contrasena = "root";
+        }
+
     }
 
     public static void setContrasena(String contrasena) {
         Conexion.contrasena = contrasena;
     }
-    
-    public static void setConfiguracion(String rol, String contrasena){
+
+    public static void setConfiguracion(String rol, String contrasena) {
         Conexion.rol = rol;
         Conexion.contrasena = contrasena;
     }

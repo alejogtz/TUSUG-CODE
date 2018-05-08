@@ -22,7 +22,10 @@ import javax.swing.JPanel;
  * @author Alekhius
  */
 public class RootGUI {
-
+    //Datos de la sesion
+    String rol_activo;
+    String nombre_usuario;
+    
     CustomActionListener listen;
     String carpeta_img = "src/imagenes/";
     Font font;
@@ -41,19 +44,44 @@ public class RootGUI {
     // Botones de Mantenimiento
     private JButton btn_nuevoreporte, btn_reUnidades, btn_historial;
 
-    public RootGUI() {
+    public RootGUI(String rol, String name){
         font = new Font("Segoe UI", Font.PLAIN, 14);
         listen = new CustomActionListener();
-        //initComponents("secretaria");
         root = Builder.construirFrame("GUI root - Bienvenido -",
                 new Rectangle(460, 506, 700, 600), false);
         panel = Builder.crearPanel(root, new Rectangle(0, 0, 700, 600),
                 "src/imagenes/pagina_de_fondo.png", true);
         lb_title = Builder.crearLabel(panel, "",
-                new Rectangle(317, 202, 200, 40), Color.BLUE, null, font);
+                new Rectangle(317, 202, 200, 40), Color.BLUE, null, font);        
+        this.rol_activo = rol;
+        //System.err.println(rol + " -v-v-v-");
+        switch(rol){            
+            case "root":
+                initComponents();
+                break;
+            case "secretaria":
+                cargarBtnSecre();                
+                break;
+            case "mantenimiento":
+                cargarBtnManten();
+                break;
+            case "almacen":
+                cargarBtnAlmacen();
+                break;
+            case "recursos humanos":
+                cargarBtnRH();
+                break;
+            default:
+                // Code Here:
+                // Accion para caso no previsto
+        }
+        if (!rol_activo.equals("root"))btn_regresar.setVisible(false);
+    }
+    public RootGUI() {
+        this("", "");
     }
 
-    public void initComponents(String rol) {
+    public void initComponents() {
         JLabel lb_text = Builder.crearLabel(panel, "Seleccione el icono de la seccion que desea visitar",
                 new Rectangle(193, 172, 300, 60), null, null, font);
         btn_close = Builder.crearButtonIcon(panel, "CerrarSesion", carpeta_img + "cerrar_sesion.png",
@@ -200,19 +228,19 @@ public class RootGUI {
                 // Btns de Regresar segun el caso
                 case "btn_regresar": //Secretaria
                     cambiarEstadoBtns(false, btn_regresar, btn_listaBus, btn_facturas, btn_reportes);
-                    initComponents(LoginGUI.sesion.getRol());
+                    initComponents();
                     break;
                 case "btn_back_almacen":
                     cambiarEstadoBtns(false, btn_regresar, btn_insumos, btn_lista_invent, btn_gener_inventario);
-                    initComponents(LoginGUI.sesion.getRol());
+                    initComponents();
                     break;
                 case "btn_back_RH":
                     cambiarEstadoBtns(false, btn_regresar, btn_trabajadores, btn_expedientes, btn_nuevosempleado, btn_iactivos);
-                    initComponents(LoginGUI.sesion.getRol());
+                    initComponents();
                     break;
                 case "btn_back_Mant":
                     cambiarEstadoBtns(false, btn_regresar, btn_nuevoreporte, btn_reUnidades, btn_historial);
-                    initComponents(LoginGUI.sesion.getRol());
+                    initComponents();
                     break;
                 //  Botones de la Secretaria
                 case "modulo_autobus":

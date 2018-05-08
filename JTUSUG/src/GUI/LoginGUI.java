@@ -12,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +29,11 @@ import javax.swing.JTextField;
  */
 public class LoginGUI {
 
-    static Sesion sesion;
+    private String rol;
+    private String nombre_usuario;
+    private String rfc;
+    private String contrasenia;
+
     JFrame frame;
     JPanel loginUI;
     JTextField txt_rfc;
@@ -44,7 +46,7 @@ public class LoginGUI {
         Conexion.setConfiguracion("postgres", "root");
         conn = Conexion.getConexion();
         CustomActionListener escucha = new CustomActionListener();
-        frame = Builder.construirFrame("Sistema Integral Tusug -\n Login",
+        frame = Builder.construirFrame("Sistema Integral Tusug Login",
                 new Rectangle(0, 0, 700, 600), false);
         loginUI = Builder.crearPanel(frame, new Rectangle(0, 0, 700, 600),
                 "src/Imagenes/login.png", true);
@@ -67,67 +69,7 @@ public class LoginGUI {
         LoginGUI login = new LoginGUI();
     }
 
-    //Logica del Login
-    public boolean validarUsuario(String rfc, String pass) {
-        boolean valid = false;
-
-        return valid;
-    }
-
-    public static String md5(String clear) throws Exception {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] b = md.digest(clear.getBytes());
-
-        int size = b.length;
-        StringBuffer h = new StringBuffer(size);
-        for (int i = 0; i < size; i++) {
-            int u = b[i] & 255;
-            if (u < 16) {
-                h.append("0" + Integer.toHexString(u));
-            } else {
-                h.append(Integer.toHexString(u));
-            }
-        }
-        //System.out.println(h.toString());
-        return h.toString();
-    }
-
-    class CustomActionListener implements ActionListener {
-
-        String comando = "";
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                comando = e.getActionCommand();
-                switch (comando) {
-                    case "Ingresar":
-                        cargarSesion();
-                        if (sesion.getPass().equals(txt_password.getText())) {
-                            RootGUI main = new RootGUI();
-                            Conexion.setConfiguracion(
-                                    sesion.getRol(), sesion.getPass());
-                            main.initComponents(sesion.getRol());
-                            frame.dispose();
-                        } else {
-                            // Code here:
-                            // Aviso de contraseña incorrecta
-                            javax.swing.JOptionPane.showMessageDialog(null,
-                                    "Usuario o contraseña incorrectos");
-                            //txt_rfc.setText("");
-                            txt_password.setText("");
-                        }
-                        break;
-                }
-            } catch (Exception ex) {
-
-            }
-        }
-
-    }
-
-    public Sesion cargarSesion() {
-        sesion = new Sesion();
+    public void cargarSesion() {
         try {
             String rfc = txt_rfc.getText();
             String query = "SELECT rfc, descripcion, contrasenia  FROM sistemaTusug.usuario as a INNER JOIN "
@@ -136,41 +78,67 @@ public class LoginGUI {
             PreparedStatement s = conn.prepareStatement(query);
             ResultSet rs = s.executeQuery();
             if (rs.next()) {
-                sesion.setUsuario(rs.getString("rfc"));
-                sesion.setRol(rs.getString("descripcion"));
-                sesion.setPass(rs.getString("contrasenia"));
+                nombre_usuario = rs.getString("rfc");;
+                rol = rs.getString("descripcion");
+                contrasenia = rs.getString("contrasenia");
+            } else {
+                nombre_usuario = "";
+                rol = "";
+                contrasenia = "";
             }
             rs.close();
             s.close();
         } catch (SQLException ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sesion;
     }
 
-    class CustomKeyListener extends KeyAdapter {
+    public void iniciarSesion() throws Exception {
+        cargarSesion();
+        if (contrasenia.equals(
+                Encriptar.md5(txt_password.getText()))) {
+            RootGUI main = new RootGUI(rol, nombre_usuario);
+            Conexion.setRol(rol);
+            frame.dispose();
+        } else {
+            // Code here:
+            // Aviso de contraseña incorrecta
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Usuario o contraseña incorrectos");
+            //txt_rfc.setText("");
+            txt_password.setText("");
+        }
+        
+    }
+    class CustomActionListener implements ActionListener {
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-            //if(e.getComponent())
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                cargarSesion();
-                if (sesion.getPass().equals(txt_password.getText())) {
-                    RootGUI main = new RootGUI();
-                    Conexion.setConfiguracion(
-                            sesion.getRol(), sesion.getPass());
-                    main.initComponents(sesion.getRol());
-                    frame.dispose();
-                } else {
-                    // Code here:
-                    // Aviso de contraseña incorrecta
-                    javax.swing.JOptionPane.showMessageDialog(null,
-                            "Usuario o contraseña incorrectos");
-                    //txt_rfc.setText("");
-                    txt_password.setText("");
+            String comando = "";
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    comando = e.getActionCommand();
+                    switch (comando) {
+                        case "Ingresar":
+                            iniciarSesion();
+                            break;
+                    }
+                } catch (Exception ex) {
+
                 }
             }
         }
 
-    }
+        class CustomKeyListener extends KeyAdapter {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode()==10){
+                    try {
+                        iniciarSesion();
+                    } catch (Exception ex) {}
+                }
+            }
+
+        }
 }

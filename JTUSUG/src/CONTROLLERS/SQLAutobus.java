@@ -23,7 +23,6 @@ public class SQLAutobus {
     public SQLAutobus(){
         conn = Conexion.getConexion();
     }    
-    
     public void ingresarAutobus(String matr, String id, String marca, 
             String num_eco, int km, int asientos, 
             String url_img) throws SQLException{
@@ -44,29 +43,29 @@ public class SQLAutobus {
                 n);
     }
     // caso "matricula"
-    public void borrarAutobusBy(String columnName, String arg) 
+    public void borrarAutobusBy( String arg) 
             throws SQLException{
-        
-        if (columnName==null)columnName = "matricula";// By default
-        String sql = "delete * from sistemaTusug.autobus where " + 
-                columnName + " = " + arg;
+        String sql = "delete * from sistemaTusug.autobus where matricula = '" + arg + "'"
+    ;
         Statement st = conn.createStatement();
         st.executeUpdate(sql);
     }
     
-    public String[][] obtenerRegistro(String matricula){
-        String[][] registro = new String[1][4];
-        String sql = "select * from sistemaTusug.autobus where matricula = " + matricula;
+    public String[] obtenerRegistro(String matricula){
+        String[] registro = new String[6];
+        String sql = "select * from sistemaTusug.autobus where matricula = '" + matricula + "'";
         PreparedStatement pst = null;
         try {
             pst = conn.prepareStatement(sql);
             ResultSet res = pst.executeQuery();
-            registro[0][0] = res.getString("matricula");
-            registro[0][1] = res.getString("id");
-            registro[0][2] = res.getString("marca");
-            registro[0][3] = res.getString("numero_economico");
-            registro[0][4] = Integer.toString(res.getInt("kilometraje"));
-            registro[0][5] = Integer.toString(res.getInt("asientos"));
+            res.next();
+            System.out.println(registro.length);
+            registro[0] = res.getString("matricula");
+            registro[1] = res.getString("id");
+            registro[2] = res.getString("marca");
+            registro[3] = res.getString("numero_economico");
+            registro[4] = Integer.toString(res.getInt("kilometraje"));
+            registro[5] = Integer.toString(res.getInt("asientos"));
             
 
         } catch (SQLException ex) {

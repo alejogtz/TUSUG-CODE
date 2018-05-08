@@ -37,13 +37,7 @@ public class Autobus {
         }
     }
 
-    public void borrarAutobus() {
-        cargarvariables();
-        try {
-            bd.borrarAutobusBy(null, matricula);
-        } catch (SQLException e) {
-        }
-    }
+   
 
     public void cargarvariables() {
         matricula = ui.txt_matricula.getText().toLowerCase();
@@ -64,8 +58,8 @@ public class Autobus {
         return f;
     }
     
-    public String[][] obtenerAutobus(String matricula){
-        String registro[][] = bd.obtenerRegistro(matricula);
+    public String[] obtenerAutobus(String m){
+        String registro[] = bd.obtenerRegistro(m);
         return registro;
     }
 }

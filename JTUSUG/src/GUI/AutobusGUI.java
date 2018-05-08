@@ -1,6 +1,7 @@
 package GUI;
 import CONTROLLERS.Autobus;
 import CONTROLLERS.Conexion;
+import CONTROLLERS.SQLAutobus;
 import Validacion.Validador;
 import static Validacion.Validador.*;
 import javax.swing.JFrame;
@@ -176,13 +177,13 @@ public class AutobusGUI extends JFrame
     class CustomMouseListener extends MouseAdapter{
         public void mouseClicked(MouseEvent me){
         String matricula = (String)list.getSelectedValue();
-        String registro[][] = controlador.obtenerAutobus(matricula);
-        txt_matricula.setText(registro[0][0]);
-        txt_id.setText(registro[0][1]);
-        txt_marca.setText(registro[0][2]);
-        txt_No_Eco.setText(registro[0][3]);
-        txt_Km.setText(registro[0][4]);
-        txt_asientos.setText(registro[0][5]);
+            SQLAutobus s = new SQLAutobus();
+        String registro[] = s.obtenerRegistro(matricula);
+        txt_matricula.setText(registro[0]);
+        txt_marca.setText(registro[2]);
+        txt_No_Eco.setText(registro[3]);
+        txt_Km.setText(registro[4]);
+        txt_asientos.setText(registro[5]);
         
         };
 }

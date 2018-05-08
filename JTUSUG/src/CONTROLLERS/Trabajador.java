@@ -126,8 +126,8 @@ public class Trabajador {
         nombre=interfaz.tfnom.getText();
         ap_paterno= interfaz.tfapp.getText();
         ap_materno= interfaz.tfapm.getText();
-        domicilio= interfaz.tfdir.getText();
-        //puesto= interfaz.cbPuesto.getSelectedItem();
+        domicilio= interfaz.area1.getText();
+        puesto= ((String)interfaz.cbPuesto.getSelectedItem());
         rfc= interfaz.tfrfc.getText();
         
           try {            
@@ -136,7 +136,7 @@ public class Trabajador {
             "ap_paterno= ? ," +  
             "ap_materno= ? ," +  
             "domicilio= ? ," +
-            "puesto= ? ," + 
+            "puesto= ? " + 
             "WHERE rfc = ? ");            
             pstm.setString(1, nombre);
             pstm.setString(2, ap_paterno);

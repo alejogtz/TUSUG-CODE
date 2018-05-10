@@ -29,7 +29,7 @@ public class Autobus {
     public void ingresarAutobus() {
         cargarvariables();
         try {
-            bd.ingresarAutobus(marca, id, marca, num_eco, km, asientos, url_img);
+            bd.ingresarAutobus(matricula, id, marca, num_eco, km, asientos, url_img);
         } catch (SQLException ex) {
             System.err.println(
                     ex.getErrorCode());
@@ -40,14 +40,14 @@ public class Autobus {
    
 
     public void cargarvariables() {
-        matricula = ui.txt_matricula.getText().toLowerCase();
-        id = ui.txt_id.getText().toLowerCase();
-        marca = ui.txt_marca.getText().toLowerCase();
-        num_eco = ui.txt_No_Eco.getText().toLowerCase();
-        km = Integer.valueOf(ui.txt_Km.getText().toLowerCase());
-        asientos = Integer.valueOf(ui.txt_asientos.getText().toLowerCase());        
+        matricula = ui.txt_matricula.getText();//.toLowerCase();
+        id = "";//ui.txt_id.getText().toLowerCase();
+        marca = ui.txt_marca.getText();//.toLowerCase();
+        num_eco = ui.txt_No_Eco.getText();//.toLowerCase();
+        km = Integer.valueOf(ui.txt_Km.getText());
+        asientos = Integer.valueOf(ui.txt_asientos.getText());        
         //Logger.getLogger("Hi").log(Level.SEVERE, " - Linea 55 - ");
-        url_img = "scr/imagenes/autobu.png";//seleccionarImg();
+        url_img = "Not found";//seleccionarImg();
     }
 
     public String seleccionarImg() 

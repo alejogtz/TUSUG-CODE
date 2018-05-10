@@ -50,7 +50,8 @@ public class Autobus {
         url_img = "scr/imagenes/autobu.png";//seleccionarImg();
     }
 
-    public String seleccionarImg() {
+    public String seleccionarImg() 
+    {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
         ui.url_img.setFileFilter(filter);
         ui.url_img.showOpenDialog(ui);

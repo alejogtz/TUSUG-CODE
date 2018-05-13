@@ -53,8 +53,8 @@ public class TrabajadorGUI {
     public TrabajadorGUI(){
 
         interfaz= new Trabajador(this);
-        JFrame x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
-        JPanel p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", false);
+        x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
+        p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", false);
         
 
         //etiquetas
@@ -77,6 +77,7 @@ public class TrabajadorGUI {
         btActualizar.addActionListener(accion4);
         sesion = Builder.crearButtonIcon(p,"Cerrar sesion","src/imagenes/boton_cerrar_sesion.png", new Rectangle(539, 65, 130, 27), null, true, false);
         back = Builder.crearButtonIcon(p,"Regresar","src/imagenes/regresar.png", new Rectangle(626, 452, 32, 32), null, true, false);
+        back.addActionListener(accion6);
         nuevo= Builder.crearButtonIcon(p,"Nuevo Empleado","src/imagenes/agregar-usuario.png", new Rectangle(218, 140, 32, 32), null, true, false);
         nuevo.addActionListener(accion);
         agregar= Builder.crearButtonIcon(p,"Modificar Empleado","src/imagenes/anadir-punto-de-anclaje.png", new Rectangle(218, 202, 32, 32), null, true, false); 
@@ -106,7 +107,7 @@ public class TrabajadorGUI {
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
          p.add(area1);
-         String[] c={"hola","abraham","puto","xd"};
+         String[] c={"hola","abraham","xd"};
          //lista
          lista= new JList(c);
          lista.setBounds(new Rectangle(14,236,176,198));
@@ -158,6 +159,14 @@ public class TrabajadorGUI {
         {
             interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
            // actualizarLista(lista);
+        }
+    };
+     ActionListener accion6=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            x.dispose();
+         
+           
         }
     };
     

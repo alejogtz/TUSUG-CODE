@@ -30,6 +30,7 @@ public class AutobusGUI extends JFrame
     JFrame a;
     public AutobusGUI()
     {
+        a = this;
         listener = new CustomActionListener();
         a=Builder.construirFrame("Autobus", new Rectangle(200,50,700,600),false);
         controlador = new Autobus(this);
@@ -137,6 +138,9 @@ public class AutobusGUI extends JFrame
                     
                     break;
                 case "inicio":
+                     break;
+                case "regresar":
+                   a.dispose();
                     break;
                 case "sesion":
                     LoginGUI l = new LoginGUI();

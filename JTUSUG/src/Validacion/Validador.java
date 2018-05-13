@@ -17,7 +17,7 @@ public class Validador extends JFrame
            evt.consume();
         if(text.getText().length()>=x)
             evt.consume();  
-        jTextField1KeyReleased(evt,text);
+        txtNumeroControlKeyTyped(evt);
     }
     public static void validaAlfanumerico(java.awt.event.KeyEvent evt,JTextField text,int x)
     {
@@ -26,7 +26,7 @@ public class Validador extends JFrame
            evt.consume();
         if(text.getText().length()>=x)
             evt.consume();  
-        jTextField1KeyReleased(evt,text);
+        txtNumeroControlKeyTyped(evt);
     }
     public static void validaNum(java.awt.event.KeyEvent evt,JTextField text,int x)//Valida sólo numeros
     {                                                                               //x es la longitud
@@ -40,6 +40,13 @@ public class Validador extends JFrame
     {                                        
         text.setText(text.getText().toUpperCase());
     }
+    private static void txtNumeroControlKeyTyped(java.awt.event.KeyEvent evt) 
+    {
+        char c = evt.getKeyChar();
+        String cad = ("" + c).toUpperCase();
+        c = cad.charAt(0);
+        evt.setKeyChar(c);
+    } 
     public static void main(String[]args)
     {
         Validador v = new Validador();

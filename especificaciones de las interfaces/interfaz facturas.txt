@@ -1,0 +1,22 @@
+JLabel etiqueta "facturas"
+*Posicion: (317,101)
+*Tamaño: 61 x 18 px.
+*Fuente de letra: Arial
+*Tamaño letra: 14 (NEGRITA).
+
+JButton boton "regresar"
+*Posicion: (326,518).
+*Tamaño: 32 x 32 px.
+*Nombre icono: "regresar.png"
+
+JButton boton "cerrar sesion"
+*Posicion: (460,506).
+*Tamaño: 201 x 63 px.
+
+JButton boton "generar factura"
+*Posicion: (104,140).
+*Tamaño: 207 x 333 px.
+
+JButton boton "visualizar factura"
+*Posicion: (380,140).
+*Tamaño: 207 x 333 px.

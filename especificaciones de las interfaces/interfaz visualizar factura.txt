@@ -1,0 +1,88 @@
+JButton boton "regresar"
+*Posicion: (326,518).
+*Tamaño: 32 x 32 px.
+*Nombre icono: "regresar.png"
+
+JButton boton "cerrar sesion"
+*Posicion: (460,506).
+*Tamaño: 201 x 63 px.
+
+JButton boton "1"
+*Posicion: (77,106).
+*Tamaño: 36 x 36 px.
+
+JButton boton "2"
+*Posicion: (156,106).
+*Tamaño: 36 x 36 px.
+
+Image "visualizar factura"
+*Posicion: (35,168).
+*Tamaño: 206 x 303 px.
+
+Image icono "pestaña 1 y 2"
+*Posicion: (586,122).
+*tamaño: 60 x 30 px.
+
+JButton buscar
+*Posicion: (291,106).
+*Tamaño: 74 x 21 px.
+
+JLabel "numero de factura"
+*Posicion: (393,93).
+*Tamaño: 103 x 16 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JTextField numero de factura
+*Posicion: (506,90).
+*Tamaño: 131 x 22 px.
+
+JLabel "codigo de proveedor"
+*Posicion: (378,119).
+*Tamaño: 118 x 16 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JTextField codigo de proveedor
+*Posicion: (506,118).
+*Tamaño: 131 x 22 px.
+
+JTable tabla
+*Posicion: (318,150).
+*Tamaño: 302 x 272 px.
+
+JLabel "ordenar por"
+*Posicion: (304,441).
+*Tamaño: 68 x 16 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JCheckBox fecha de emision
+*Posicion: (382,441).
+*Tamaño: 130 x 16 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JCheckBox numero de factura
+*Posicion: (382,467).
+*Tamaño: 130 x 16 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JCheckBox codigo de proveedor
+*Posicion: (511,441).
+*Tamaño: 130 x 16 xp.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JButton Abrir
+*Posicion: (643,213).
+*Tamaño: 24 x 24 px.
+
+JButton imprimir
+*Posicion: (643,274).
+*Tamaño: 24 x 24 px.
+
+JButton guardar
+*Posicion: (643,332).
+*Tamaño: 24 x 24 px.

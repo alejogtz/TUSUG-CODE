@@ -1,0 +1,102 @@
+JButton boton "regresar"
+*Posicion: (326,518).
+*Tamaño: 32 x 32 px.
+*Nombre icono: "regresar.png"
+
+JButton boton "cerrar sesion"
+*Posicion: (460,506).
+*Tamaño: 201 x 63 px.
+
+JButton boton "1"
+*Posicion: (77,106).
+*Tamaño: 36 x 36 px.
+
+JButton boton "2"
+*Posicion: (156,106).
+*Tamaño: 36 x 36 px.
+
+Image "Generar factura"
+*Posicion: (35,168).
+*Tamaño: 206 x 303 px.
+
+Image icono "pestaña 1 y 2"
+*Posicion: (586,122).
+*tamaño: 60 x 30 px.
+
+JLabel "fecha de emision" + fecha
+*Posicion: (446,89).
+*Tamaño: 200 x 15 px.
+*Fuente de letra: Segoe UI.
+*Tamaño fuente: 11.
+
+JLabel "confirmar costos"
+*Posicion: (417,122).
+*Tamaño: 110 x 20 px.
+*Fuente de letra: Segoe UI
+*Tamaño fuente: 14.
+
+JButton agregar
+*Posicion: (292,148).
+*Tamaño: 24 x 24 px.
+*Nombre icono: "bag.png"
+
+
+JButton eliminar
+*Posicion: (341,148).
+*Tamaño: 24 x 24 px.
+*Nombre icono: "shopping-cart.png"
+
+JTable tabla
+*posicion: (281,176).
+*Tamaño: 392 x 179 px.
+
+JLabel "subtotal factura"
+*Posicion: (292,367).
+*Tamaño: 81 x 15 px.
+*Fuente de letra: Segoe UI 
+*Tamaño fuente: 11.
+
+JTextField subtotal factura
+*Posicion: (383,365).
+*Tamaño: 82 x 20 px.
+
+JLabel "total a pagar"
+*Posicion: (483,368).
+*Tamaño: 67 x 15 px.
+*Fuente de letra: Segoe UI 
+*Tamaño fuente: 11.
+
+JTextField total a pagar
+*Posicion: (560,365).
+*Tamaño: 86 x 20 px.
+
+JLabel IVA
+*Posicion: (353,395).
+*Tamaño: 20 x 15 px.
+*Fuente de letra: Segoe UI 
+*Tamaño fuente: 11.
+
+JTextField IVA
+*Posicion: (383,392).
+*Tamaño: 82 x 20 px.
+
+JLabel descuento
+*Posicion: (318,425).
+*Tamaño: 55 x 15 px.
+*Fuente de letra: Segoe UI 
+*Tamaño fuente: 11.
+
+JTextField descuento
+*Posicion: (383,422).
+*Tamaño: 82 x 20 px.
+
+JButton confirmar
+*Posicion: (532,411).
+*Tamaño: 114 x 43 px.
+
+JButton anterior
+*Posicion: (320,460).
+*Tamaño: 87 x 43 px.
+
+
+

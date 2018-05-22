@@ -44,12 +44,18 @@ public class SQLAutobus {
                 n);
     }
     // caso "matricula"
-    public void borrarAutobusBy( String arg) 
-            throws SQLException{
-        String sql = "delete * from sistemaTusug.autobus where matricula = '" + arg + "'"
-    ;
-        Statement st = conn.createStatement();
-        st.executeUpdate(sql);
+    public void borrarAutobusBy( String arg) throws SQLException{
+        PreparedStatement stmt = null;
+        //int tuplas = 0;
+        try {
+            stmt = conn.prepareStatement("delete from sistematusug.autobus where matricula = ?");
+            stmt.setString(1, arg);
+            int tuplas = stmt.executeUpdate();
+            //rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
     }
     
     public String[] obtenerRegistro(String matricula){
@@ -108,5 +114,29 @@ public class SQLAutobus {
             Logger.getLogger(SQLAutobus.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
+    }
+    public boolean update(String mat,String marca,String no,int km,int asiento) 
+    {
+    	String sqlinsertarAutor = "UPDATE sistemaTusug.autobus set marca = ?, set numero_economico = ?, set kilometraje= ?, set asientos= ? where matricula = ?";
+        PreparedStatement stmt = null;
+        int tuplas = 0;
+        try {
+
+            stmt = conn.prepareStatement(sqlinsertarAutor);
+            //stmt.setString(1,mat);
+            stmt.setString(1,marca);
+            stmt.setString(2,no);
+            stmt.setInt(3,km);
+            stmt.setInt(4,asiento);
+            stmt.setString(5,mat);
+            tuplas = stmt.executeUpdate();
+
+            //rs.close();
+            stmt.close();
+
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
+        return true;
     }
 }

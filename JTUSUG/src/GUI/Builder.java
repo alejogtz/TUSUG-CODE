@@ -54,8 +54,9 @@ public class Builder {
         if (foreground != null) {
             lb.setForeground(foreground);
         }
-        lb.setVisible(true);
         if (args.length>0)lb.setFont((Font)args[0]);
+        if (args.length>1)lb.setVisible((Boolean)args[1]);
+        else lb.setVisible(true);
         return lb;
     }
 
@@ -81,7 +82,7 @@ public class Builder {
     }
 
     public static JButton crearButtonIcon(Container ui, String accessName, String urlimg, Rectangle bounds,
-            ActionListener listener, boolean enabled, boolean border) {
+            ActionListener listener, boolean enabled, boolean border, Object...args) {
         Icon icono = new ImageIcon(urlimg);
         JButton btn = new JButton(icono);
         btn.setActionCommand(accessName);
@@ -91,6 +92,8 @@ public class Builder {
         if (!border) {
             btn.setBorder(null);
         }
+        if (args.length>0)btn.setVisible((Boolean)args[0]);
+        else btn.setVisible(true);
         return btn;
 
     }

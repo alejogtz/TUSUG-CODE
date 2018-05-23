@@ -12,6 +12,8 @@ import java.sql.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import Validacion.Validador;
+import static Validacion.Validador.*;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -23,6 +25,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 
 public class TrabajadorGUI {
+    Validador valida;
     String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
                   "15","16","17","18","19","20","21","22","23","24","25","26",
                   "27","28","29","30","31"};
@@ -123,6 +126,45 @@ public class TrabajadorGUI {
          System.out.println(fechaA);      
  
     }
+    public void valida()
+    {
+        tfrfc.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+                validaAlfanumerico(evt,tfrfc,20);
+            }
+        });
+        
+        tfnom.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+                validaNombre(evt,tfnom,20);
+            }
+        });
+        
+        tfapp.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+                validaNombre(evt,tfapp,10);
+            }
+        });     
+        
+        tfapm.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+                validaNombre(evt,tfapm,10);
+            }
+        });
+    }
+    
     
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();
@@ -195,9 +237,5 @@ public class TrabajadorGUI {
         for(String s: interfaz.listaTrabajador()){
             lista.add(s,null);
         }
-    }
-    
-     
-
-    
+    }    
 }}

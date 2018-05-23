@@ -111,6 +111,7 @@ public class AutobusGUI extends JFrame
                     txt_asientos.setText(null);
                     break;
                 case "modificar":
+                    controlador.modificarAutobus();
                     break;             
                 case "cargarImagen":
                     //controlador.seleccionarImg();
@@ -127,15 +128,11 @@ public class AutobusGUI extends JFrame
                     break;
                 case "eliminar":
                     SQLAutobus sql=new SQLAutobus();
-                    try 
-                    {
+                    try {
                         sql.borrarAutobusBy(txt_matricula.getText());
-                    } 
-                    catch (SQLException ex) 
-                    {
+                    } catch (SQLException ex) {
                         Logger.getLogger(AutobusGUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
                     break;
                 case "inicio":
                      break;

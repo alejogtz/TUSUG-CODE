@@ -2,6 +2,7 @@ package CONTROLLERS;
 
 import GUI.AutobusGUI;
 import java.io.File;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,11 @@ public class Autobus {
         }
     }
 
-   
+    public void modificarAutobus()
+    {
+        cargarvariables();
+        bd.update(matricula, marca, num_eco, km, asientos);
+    }
 
     public void cargarvariables() {
         matricula = ui.txt_matricula.getText();//.toLowerCase();

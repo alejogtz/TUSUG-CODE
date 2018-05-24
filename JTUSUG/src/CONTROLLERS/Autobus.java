@@ -41,7 +41,13 @@ public class Autobus {
     public void modificarAutobus()
     {
         cargarvariables();
-        bd.update(matricula, marca, num_eco, km, asientos);
+        try {
+            bd.update(matricula,marca, num_eco, km, asientos);
+        } catch (SQLException ex) {
+            System.err.println(
+                    ex.getErrorCode());
+            Logger.getLogger(Autobus.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void cargarvariables() {

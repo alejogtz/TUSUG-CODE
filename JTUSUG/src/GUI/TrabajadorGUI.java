@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 
@@ -179,13 +180,17 @@ public class TrabajadorGUI {
     ActionListener accion=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            interfaz.agregaTrabajador(); 
-           // actualizarLista(lista);
+            if(validaIngreso(tfrfc,tfapp,tfapm,tfnom)){
+                interfaz.agregaTrabajador(); 
+                // actualizarLista(lista);
            
-           tfrfc.setText(null);
-           tfapp.setText(null);
-           tfapm.setText(null);
-           tfnom.setText(null);
+                tfrfc.setText(null);
+                tfapp.setText(null);
+                tfapm.setText(null);
+                tfnom.setText(null);
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     };
     
@@ -199,8 +204,11 @@ public class TrabajadorGUI {
     ActionListener accion3=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
+            if(validaIngreso(tfrfc,tfapp,tfapm,tfnom))
+                interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
            // actualizarLista(lista);
+            else
+                JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     };
      ActionListener accion6=new ActionListener() {

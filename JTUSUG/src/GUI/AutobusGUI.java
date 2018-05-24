@@ -103,15 +103,22 @@ public class AutobusGUI extends JFrame
             switch(op)
             {
                 case "agregar":
-                    controlador.ingresarAutobus();
-                    txt_marca.setText(null);
-                    txt_No_Eco.setText(null);
-                    txt_Km.setText(null);
-                    txt_matricula.setText(null);
-                    txt_asientos.setText(null);
+                    if(validaIngreso(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos)){
+                        controlador.ingresarAutobus();
+                        txt_marca.setText(null);
+                        txt_No_Eco.setText(null);
+                        txt_Km.setText(null);
+                        txt_matricula.setText(null);
+                        txt_asientos.setText(null);
+                    }
+                    else
+                        System.err.println("Error: Debe llenar todos los campos");
                     break;
                 case "modificar":
-                    controlador.modificarAutobus();
+                    if(validaIngreso(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos))
+                        controlador.modificarAutobus();
+                    else
+                        System.err.println("Error: Debe llenar todos los campos");
                     break;             
                 case "cargarImagen":
                     //controlador.seleccionarImg();

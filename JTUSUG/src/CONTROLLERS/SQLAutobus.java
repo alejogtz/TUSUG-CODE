@@ -115,28 +115,24 @@ public class SQLAutobus {
         }
         return lista;
     }
-    public boolean update(String mat,String marca,String no,int km,int asiento) 
-    {
-    	String sqlinsertarAutor = "UPDATE sistemaTusug.autobus set marca = ?, set numero_economico = ?, set kilometraje= ?, set asientos= ? where matricula = ?";
-        PreparedStatement stmt = null;
-        int tuplas = 0;
-        try {
-
-            stmt = conn.prepareStatement(sqlinsertarAutor);
-            //stmt.setString(1,mat);
-            stmt.setString(1,marca);
-            stmt.setString(2,no);
-            stmt.setInt(3,km);
-            stmt.setInt(4,asiento);
-            stmt.setString(5,mat);
-            tuplas = stmt.executeUpdate();
-
-            //rs.close();
-            stmt.close();
-
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+    public void update(String matricula, String marca, String num_eco, int km, int asientos)throws SQLException{
+        try{
+            PreparedStatement pstm = conn.prepareStatement("UPDATE sistemaTusug.autobus SET " +
+              //+"matricula= ? ," +
+              "marca= ? ," +  
+              "numero_economico= ? ," +  
+              "kilometraje= ? ," +
+              "asientos= ? " + 
+              "WHERE matricula = ? ");            
+            pstm.setString(1, marca);
+            pstm.setString(2, num_eco);
+            pstm.setInt(3, km);
+            pstm.setInt(4, asientos);
+            pstm.setString(5, matricula);
+            pstm.execute();
+            pstm.close();            
+        }catch(SQLException e){
+            System.out.println(e);
         }
-        return true;
     }
 }

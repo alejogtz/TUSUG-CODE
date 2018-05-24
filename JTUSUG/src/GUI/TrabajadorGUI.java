@@ -124,9 +124,10 @@ public class TrabajadorGUI {
          
          System.out.println(fecha);
          System.out.println(fechaA);      
- 
+         valida();
     }
-    public void valida()
+    
+    public final void valida()
     {
         tfrfc.addKeyListener(new java.awt.event.KeyAdapter() 
         {
@@ -164,7 +165,6 @@ public class TrabajadorGUI {
             }
         });
     }
-    
     
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();

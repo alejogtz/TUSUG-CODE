@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -94,6 +95,8 @@ public class Builder {
         }
         if (args.length>0)btn.setVisible((Boolean)args[0]);
         else btn.setVisible(true);
+        if (args.length>1)btn.setBackground((Color)args[1]);
+        if (args.length>2)btn.setBackground((Color)args[2]);
         return btn;
 
     }
@@ -121,7 +124,7 @@ public class Builder {
     }
 
     public static JTextField crearTextField(Container ui, Rectangle bounds, String text, Color cfondo, Color ctexto,
-            Font f, boolean editable, boolean enabled, boolean visible) {
+            Font f, boolean editable, boolean enabled, boolean visible, Object...args) {
         JTextField txtField = new JTextField(text == null ? "" : text);
         ui.add(txtField);
         txtField.setBounds(bounds);
@@ -137,6 +140,7 @@ public class Builder {
         txtField.setEnabled(enabled);
         txtField.setEditable(editable);
         txtField.setVisible(visible);
+        if (args.length>0)txtField.addKeyListener((KeyListener)args[0]);
         return txtField;
     }
 

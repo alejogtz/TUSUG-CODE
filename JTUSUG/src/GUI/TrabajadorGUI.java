@@ -14,16 +14,19 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import Validacion.Validador;
 import static Validacion.Validador.*;
+import java.awt.event.KeyAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
+import javax.swing.text.JTextComponent;
 
 public class TrabajadorGUI {
     Validador valida;
@@ -62,50 +65,50 @@ public class TrabajadorGUI {
         
 
         //etiquetas
-        trabajadores = Builder.crearLabel(p, "Trabajadores", new Rectangle(65, 160, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
-        JLabel imagen=Builder.crearLabelImagen(p,"src/imagenes/icono usuario.jpg",new Rectangle(539, 130, 128, 128));
-        JLabel jlrfc= Builder.crearLabel(p, "RFC: ", new Rectangle(351,143,28, 13),null,null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jlapp= Builder.crearLabel(p, "Apellido Paterno: ", new Rectangle(285,216,95, 13),null, null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jlapm= Builder.crearLabel(p, "Apellido Materno: ", new Rectangle(282,245,100, 13),null, null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jlnom= Builder.crearLabel(p, "Nombre(s): ", new Rectangle(319,179,60, 13),null, null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jlfna= Builder.crearLabel(p, "Fecha nac. :", new Rectangle(270, 311,70, 26), null,null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jlsts= Builder.crearLabel(p, "Status :", new Rectangle(270, 290,131, 17), null,null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel jldir= Builder.crearLabel(p, "Domicilio :", new Rectangle(322, 378,54, 13),null,null,new Font("Segoe UI",Font.PLAIN,11));
-        JLabel puesto= Builder.crearLabel(p, "Puesto :", new Rectangle(322, 440,50, 13),null,null,new Font("Segoe UI",Font.PLAIN,11));
+        JLabel imagen=  Builder.crearLabelImagen( p,"src/imagenes/icono usuario.jpg",new Rectangle(539, 130, 128, 128));
+        trabajadores =  Builder.crearLabel( p, "Trabajadores",          new Rectangle(65, 160, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlrfc=   Builder.crearLabel( p, "RFC: ",                 new Rectangle(351,143,28, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlapp=   Builder.crearLabel( p, "Apellido Paterno: ",    new Rectangle(285,216,95, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlapm=   Builder.crearLabel( p, "Apellido Materno: ",    new Rectangle(282,245,100, 13), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlnom=   Builder.crearLabel( p, "Nombre(s): ",           new Rectangle(319,179,60, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlfna=   Builder.crearLabel( p, "Fecha nac. :",          new Rectangle(270, 311,70, 26), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jlsts=   Builder.crearLabel( p, "Status :",              new Rectangle(270, 290,131, 17),null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel jldir=   Builder.crearLabel( p, "Domicilio :",           new Rectangle(322, 378,54, 13), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        JLabel puesto=  Builder.crearLabel( p, "Puesto :",              new Rectangle(322, 440,50, 13), null, null, new Font("Segoe UI",Font.PLAIN,11));
         
         
         //botones
-        btInicio = Builder.crearButtonIcon(p, "Inicio","src/imagenes/boton_inicio.png",new Rectangle(14, 63, 88, 43), null, true, false);
-        btBuscar = Builder.crearButtonIcon(p, "Buscar","src/imagenes/buscar.png",new Rectangle(20, 215, 33, 32) , null,true,false);
-        btActualizar = Builder.crearButtonIcon(p,"Buscar","src/imagenes/boton_actualizar_lista.png", new Rectangle(26, 446, 145, 36), null, true, false);
+        btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null, true, false);
+        btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(20, 215, 33, 32) , null, true, false);
+        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), null, true, false);
         btActualizar.addActionListener(accion4);
-        sesion = Builder.crearButtonIcon(p,"Cerrar sesion","src/imagenes/boton_cerrar_sesion.png", new Rectangle(539, 65, 130, 27), null, true, false);
-        back = Builder.crearButtonIcon(p,"Regresar","src/imagenes/regresar.png", new Rectangle(626, 452, 32, 32), null, true, false);
+        sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null, true, false);
+        back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), null, true, false);
         back.addActionListener(accion6);
-        nuevo= Builder.crearButtonIcon(p,"Nuevo Empleado","src/imagenes/agregar-usuario.png", new Rectangle(218, 140, 32, 32), null, true, false);
+        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), null, true, false);
         nuevo.addActionListener(accion);
-        agregar= Builder.crearButtonIcon(p,"Modificar Empleado","src/imagenes/anadir-punto-de-anclaje.png", new Rectangle(218, 202, 32, 32), null, true, false); 
+        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), null, true, false); 
         agregar.addActionListener(accion3);
-        baja= Builder.crearButtonIcon(p,"Eliminar Empleado","src/imagenes/usuario.png", new Rectangle(218, 268, 32, 32), null, true, false); 
-        btlista= Builder.crearButtonIcon(p,"Lista Trabajadores","src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null, true, false); 
-        btactinac= Builder.crearButtonIcon(p,"Activos e Inactivos","src/imagenes/boton_activos_inactivos.png", new Rectangle(342, 67, 130, 27), null, true, false); 
-        Cfoto= Builder.crearBoton(p, "Cambiar Foto", new Rectangle(547, 273, 109, 20),null, true, true);
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), null, true, false); 
+        btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null, true, false); 
+        btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null, true, false); 
+        Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
         Cfoto.setBackground(Color.white);
         
         
         //Jtext
-         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25), null,null, null,null ,true, true, true);
-         tfrfc= Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null,null, null, true, true, true);
-         tfapp= Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null,null,null, null, true, true, true);
-         tfapm= Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null,null, null, true, true, true);
-         tfnom= Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null,null, null, true, true, true);
+         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25),  null, null, null, null, true, true, true);
+         tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20));
+         tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20) );
+         tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
+         tfnom=     Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
        
          //comboBox
-         cb1= Builder.crearComboBox(p, new Rectangle(351,316,52,17),dia , null, null,null);  
-         cb2= Builder.crearComboBox(p, new Rectangle(420,316,56,17),mes , null, null,null);
-         cb3= Builder.crearComboBox(p, new Rectangle(488,316,72,17),anio , null, null,null);
-         cb6= Builder.crearComboBox(p, new Rectangle(351,290,52,17), st, null, null, null);
-         cbPuesto= Builder.crearComboBox(p, new Rectangle(380,438,111,17),Cargo , null, null,null);
+         cb1=       Builder.crearComboBox(p, new Rectangle(351,316,52,17),  dia,  null, null, null);  
+         cb2=       Builder.crearComboBox(p, new Rectangle(420,316,56,17),  mes,  null, null, null);
+         cb3=       Builder.crearComboBox(p, new Rectangle(488,316,72,17),  anio, null, null, null);
+         cb6=       Builder.crearComboBox(p, new Rectangle(351,290,80,17),  st,   null, null, null);
+         cbPuesto=  Builder.crearComboBox(p, new Rectangle(380,438,111,17), Cargo,null, null, null);
           //area de texto
          area1 = new JTextArea();
          area1.setBounds(381, 378, 277, 56);
@@ -125,48 +128,8 @@ public class TrabajadorGUI {
          
          System.out.println(fecha);
          System.out.println(fechaA);      
-         valida();
+         //valida();
     }
-    
-    public final void valida()
-    {
-        tfrfc.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaAlfanumerico(evt,tfrfc,20);
-            }
-        });
-        
-        tfnom.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfnom,20);
-            }
-        });
-        
-        tfapp.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfapp,10);
-            }
-        });     
-        
-        tfapm.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfapm,10);
-            }
-        });
-    }
-    
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();
                     String list[] = interfaz.listatrabajador();
@@ -215,14 +178,8 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             x.dispose();
-         
-           
         }
     };
-    
-    
-    
-    
     ActionListener accion4=new ActionListener() {
         public void actionPerformed(ActionEvent ag)
         {
@@ -246,4 +203,19 @@ public class TrabajadorGUI {
             lista.add(s,null);
         }
     }    
-}}
+}
+    class KeyListenerValidation extends KeyAdapter{
+        int numLetrasValidas;
+        public KeyListenerValidation(int length){
+            super();
+            numLetrasValidas = length;
+        }
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt){            
+            Matcher m = Pattern.compile("[a-zA-ZáéíóúÁÉÍÓÚ1234567890-]+").matcher(Character.toString(evt.getKeyChar()));
+            if(!m.find()||((JTextComponent)evt.getComponent()).getText().length()>=numLetrasValidas)
+                evt.consume();
+            else evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+        }
+    }        
+}

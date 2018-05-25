@@ -21,6 +21,9 @@ public final class Confirmacion extends JFrame{
     {
         f = Builder.construirFrame("Confirmacion", new Rectangle(200, 50, 459, 254), false);
         inicializarcomp();
+        f.setVisible(true);
+        panel.setVisible(true);
+        
     }
     
     public void inicializarcomp(){
@@ -30,11 +33,13 @@ public final class Confirmacion extends JFrame{
         aceptar = Builder.crearBoton(panel, "Cancelar",new Rectangle(241, 160, 84, 25), null, true, false);
         advertenciaIcon = Builder.crearLabelImagen(panel, ruta+ "advertencia.png", new Rectangle(31, 66, 64, 64));
         advertencia = new JTextArea();
-        advertencia.append("¡ATENCION! Usted esta apunto de eliminar un\nregistro de un trabajador.Hacer esto implica borrar\ntodo registro relacionado al trabajador dentro de la\nbase de datos. Esta accion no se podra revertir.\n\n¿Esta usted seguro de ello?");
+        
         advertencia.setBounds(new Rectangle(129, 45, 300, 118));
+        panel.add(advertencia);
         advertencia.setEditable(false);
         advertencia.setOpaque(true);
-        panel.add(advertencia);
+        advertencia.append("¡ATENCION! Usted esta apunto de eliminar un\nregistro de un trabajador.Hacer esto implica borrar\ntodo registro relacionado al trabajador dentro de la\nbase de datos. Esta accion no se podra revertir.\n\n¿Esta usted seguro de ello?");
+        
     }   
     public static void main (String []args)
     {

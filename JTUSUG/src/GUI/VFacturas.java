@@ -1,13 +1,10 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -16,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,9 +45,11 @@ public class VFacturas extends JFrame {
         //listener = new GFacturas.CustomActionListener();
         f = Builder.construirFrame("Facturas", new Rectangle(0,0, 700, 600), false); 
         p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"img_fondo_ventana_facturas.png", false);
+        javax.swing.border.Border border = LineBorder.createGrayLineBorder();
         
         //etiquetas
         vFacturas = Builder.crearLabelImagen(p, ruta+"img_visualizar_factura.png",  new Rectangle(35,168, 198,326));
+        vFacturas.setBorder(border);
         nFacturas = Builder.crearLabel(p,"Numero de factura: ",new Rectangle(393,93,103,16), null, null, new Font("Segoe UI", Font.PLAIN, 11));
         cProveedor = Builder.crearLabel(p,"Codigo de Proveedor:",new Rectangle(380,119,118,16), null, null, new Font("Segoe UI", Font.PLAIN, 11));
         ordenar = Builder.crearLabel(p,"Ordenar por:",new Rectangle(304,441,68,16), null, null, new Font("Segoe UI", Font.PLAIN, 11));

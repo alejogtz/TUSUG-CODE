@@ -18,15 +18,15 @@ import java.util.logging.Logger;
 //import GUI.PanelImagen;
 public class AutobusGUI extends JFrame 
 { 
-    String ruta = "src/imagenes/";
-    ActionListener listener;
-    Autobus controlador;
-    Validador valida;
-    public JList list;
-    public JTextField txt_buscar,txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_id,txt_asientos;
+    String              ruta = "src/imagenes/";
+    ActionListener      listener;
+    Autobus             controlador;
+    Validador           valida;
+    public JList        list;
+    public JTextField   txt_buscar,txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_id,txt_asientos;
     public JFileChooser url_img;
-    public JButton btn_Act_List,btn_nuevo_autobus,btn_modificar,btn_eliminar,btn_agregar_img,btn_regresar;
-    public JLabel lb_codigo_auto,lb_imagen_autobus;
+    public JButton      btn_Act_List,btn_nuevo_autobus,btn_modificar,btn_eliminar,btn_agregar_img,btn_regresar;
+    public JLabel       lb_codigo_auto,lb_imagen_autobus;
     JFrame a;
     public AutobusGUI()
     {
@@ -209,10 +209,10 @@ public class AutobusGUI extends JFrame
         SQLAutobus s = new SQLAutobus();
         String registro[] = s.obtenerRegistro(matricula);
         txt_matricula.setText(registro[0].toUpperCase());
-        txt_marca.setText(registro[2].toUpperCase());
-        txt_No_Eco.setText(registro[3].toUpperCase());
-        txt_Km.setText(registro[4].toUpperCase());
-        txt_asientos.setText(registro[5].toUpperCase());
+        txt_marca.    setText(registro[2].toUpperCase());
+        txt_No_Eco.   setText(registro[3].toUpperCase());
+        txt_Km.       setText(registro[4].toUpperCase());
+        txt_asientos. setText(registro[5].toUpperCase());
         
         };
 }

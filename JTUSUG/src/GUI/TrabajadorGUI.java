@@ -14,16 +14,19 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import Validacion.Validador;
 import static Validacion.Validador.*;
+import java.awt.event.KeyAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
+import javax.swing.text.JTextComponent;
 
 public class TrabajadorGUI {
     Validador valida;
@@ -94,18 +97,18 @@ public class TrabajadorGUI {
         
         
         //Jtext
-         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25), null,null, null,null ,true, true, true);
-         tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null,null, null, true, true, true);
-         tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null,null,null, null, true, true, true);
-         tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null,null, null, true, true, true);
-         tfnom=     Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null,null, null, true, true, true);
+         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25),  null, null, null, null, true, true, true);
+         tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20));
+         tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20) );
+         tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
+         tfnom=     Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
        
          //comboBox
-         cb1=       Builder.crearComboBox(p, new Rectangle(351,316,52,17),dia , null, null,null);  
-         cb2=       Builder.crearComboBox(p, new Rectangle(420,316,56,17),mes , null, null,null);
-         cb3=       Builder.crearComboBox(p, new Rectangle(488,316,72,17),anio , null, null,null);
-         cb6=       Builder.crearComboBox(p, new Rectangle(351,290,52,17), st, null, null, null);
-         cbPuesto=  Builder.crearComboBox(p, new Rectangle(380,438,111,17),Cargo , null, null,null);
+         cb1=       Builder.crearComboBox(p, new Rectangle(351,316,52,17),  dia,  null, null, null);  
+         cb2=       Builder.crearComboBox(p, new Rectangle(420,316,56,17),  mes,  null, null, null);
+         cb3=       Builder.crearComboBox(p, new Rectangle(488,316,72,17),  anio, null, null, null);
+         cb6=       Builder.crearComboBox(p, new Rectangle(351,290,80,17),  st,   null, null, null);
+         cbPuesto=  Builder.crearComboBox(p, new Rectangle(380,438,111,17), Cargo,null, null, null);
           //area de texto
          area1 = new JTextArea();
          area1.setBounds(381, 378, 277, 56);
@@ -125,48 +128,8 @@ public class TrabajadorGUI {
          
          System.out.println(fecha);
          System.out.println(fechaA);      
-         valida();
+         //valida();
     }
-    
-    public final void valida()
-    {
-        tfrfc.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaAlfanumerico(evt,tfrfc,20);
-            }
-        });
-        
-        tfnom.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfnom,20);
-            }
-        });
-        
-        tfapp.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfapp,10);
-            }
-        });     
-        
-        tfapm.addKeyListener(new java.awt.event.KeyAdapter() 
-        {
-            @Override
-            public void keyTyped(java.awt.event.KeyEvent evt) 
-            {
-                validaNombre(evt,tfapm,10);
-            }
-        });
-    }
-    
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();
                     String list[] = interfaz.listatrabajador();
@@ -215,14 +178,8 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
             x.dispose();
-         
-           
         }
     };
-    
-    
-    
-    
     ActionListener accion4=new ActionListener() {
         public void actionPerformed(ActionEvent ag)
         {
@@ -246,4 +203,19 @@ public class TrabajadorGUI {
             lista.add(s,null);
         }
     }    
-}}
+}
+    class KeyListenerValidation extends KeyAdapter{
+        int numLetrasValidas;
+        public KeyListenerValidation(int length){
+            super();
+            numLetrasValidas = length;
+        }
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent evt){            
+            Matcher m = Pattern.compile("[a-zA-ZáéíóúÁÉÍÓÚ1234567890-]+").matcher(Character.toString(evt.getKeyChar()));
+            if(!m.find()||((JTextComponent)evt.getComponent()).getText().length()>=numLetrasValidas)
+                evt.consume();
+            else evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+        }
+    }        
+}

@@ -31,12 +31,12 @@ public class Reportes {
         Color c= new Color(79, 79 ,79, 79);
         
         //jbutton      
-        buscar=         Builder.crearButtonIcon(p, "buscar",       "src/imagenes/btn_buscar",   new Rectangle(54,84,74,21),    null, true, false);
-        abrir=          Builder.crearButtonIcon(p, "abrir",        "src/imagenes/folder",       new Rectangle(663,182,24,24),  null, true, false);
-        imprimir=       Builder.crearButtonIcon(p, "imprimir",     "src/imagenes/print",        new Rectangle(663,243,24,24),  null, true, false);
-        guardar=        Builder.crearButtonIcon(p, "guardar",      "src/imagenes/save",         new Rectangle(663,301, 24, 24),null, true, false);
-        regresar=       Builder.crearButtonIcon(p, "regresar",     "src/imagenes/regresar",     new Rectangle(362, 518,32, 32), null, true, false);
-        cerrar_sesion=  Builder.crearButtonIcon(p, "cerrar_sesion","src/imagenes/cerrar_sesion",new Rectangle(460, 506, 201, 63) , null, true, false);
+        buscar=         Builder.crearButtonIcon(p, "buscar",       "src/imagenes/btn_buscar.png",   new Rectangle(54,84,74,21),    null, true, false);
+        abrir=          Builder.crearButtonIcon(p, "abrir",        "src/imagenes/folder.png",       new Rectangle(663,182,24,24),  null, true, false);
+        imprimir=       Builder.crearButtonIcon(p, "imprimir",     "src/imagenes/print.png",        new Rectangle(663,243,24,24),  null, true, false);
+        guardar=        Builder.crearButtonIcon(p, "guardar",      "src/imagenes/save.png",         new Rectangle(663,301, 24, 24),null, true, false);
+        regresar=       Builder.crearButtonIcon(p, "regresar",     "src/imagenes/regresar.png",     new Rectangle(362, 518,32, 32), null, true, false);
+        cerrar_sesion=  Builder.crearButtonIcon(p, "cerrar_sesion","src/imagenes/cerrar_sesion.png",new Rectangle(460, 506, 201, 63) , null, true, false);
         
         //JLabel
         

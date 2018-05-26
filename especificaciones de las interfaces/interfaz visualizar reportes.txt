@@ -1,0 +1,57 @@
+JButton buscar
+*Posicion: (54,89).
+*Tamaño: 74 x 21 px.
+
+
+JLabel "Numero de reporte"
+*Posicion: (158,90).
+*Tamaño: 125x 18 px.
+*Fuente: Segoe UI
+*Tamaño fuente: 14
+*Color fuente: 797979 (hexadecimal)
+
+JTextField numero_reporte
+*Posicion: (293,88).
+*Tamaño: 131 x 22 px.
+ 
+JLabel "nombre"
+*Posicion: (451,90).
+*Tamaño: 55 x 18 px.
+*Fuente: Segoe UI
+*Tamaño fuente: 14
+*Color fuente: 797979 (hexadecimal)
+
+JTextField nombre
+*Posicion: (516,88).
+*Tamaño: 131 x 22 px.
+
+JLabel "reporte"
+*Posicion: (298,160).
+*Tamaño: 59 x 18 px.
+*Fuente: Segoe UI
+*Tamaño fuente: 14
+*Color fuente: 797979 (hexadecimal)
+
+JTable lista_reportes
+*Posicion: 75 x 196.
+*Tamaño: 504 x 278 px.
+
+JButton abrir
+*Posicion: (663,182).
+*Tamaño: 24 x 24 px
+
+JButton imprimir
+*Posicion: (663,243).
+*Tamaño: 24 x 24 px
+
+JButton guardar
+*Posicion: (663,301).
+*Tamaño: 24 x 24 px
+
+JButton regresar
+*Posicion: (326,518).
+*Tamaño: 32 x 32 px
+
+JButton cerrar sesion
+*Posicion: (460,506).
+*Tamaño: 201 x 63 px

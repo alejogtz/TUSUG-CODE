@@ -1,0 +1,208 @@
+JLabel fecha
+*Posicion: (517,57).
+*Tamaño: 144 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JLabel "datos generales"
+*Posicion: (83,90).
+*Tamaño: 110 x 20 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 14
+*Color de fuente: 333333 (hexadecimal)
+
+JLabel "responsable de trabajo"
+*Posicion: (44,162).
+*Tamaño: 119 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField responsable_trabajo
+*Posicion: (44,177).
+*Tamaño: 186 x 20 px.
+
+JLabel "solicitante"
+*Posicion: (44,120).
+*Tamaño: 53 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField solicitante
+*Posicion: (44,135).
+*Tamaño: 186 x 20 px.
+
+JLabel "solicitud"
+*Posicion: (44,207).
+*Tamaño: 44 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField solicitud
+*Posicion: (44,222).
+*Tamaño: 219 x 66 px.
+
+JLabel "area de trabajo"
+*Posicion: (44,298).
+*Tamaño: 75 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField area_trabajo
+*Posicion: (44,313).
+*Tamaño: 110 x 20 px.
+
+JLabel "prioridad"
+*Posicion: (171,298).
+*Tamaño: 47 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField prioridad
+*Posicion: (171,310).
+*Tamaño: 92 x 20 px.
+
+JLabel "tipo de mantenimiento"
+*Posicion: (44,343).
+*Tamaño: 117 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField prioridad
+*Posicion: (44,358).
+*Tamaño: 135 x 20 px.
+
+JLabel "direccion"
+*Posicion: (44,388).
+*Tamaño: 48 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField prioridad
+*Posicion: (44,402).
+*Tamaño: 186 x 20 px.
+
+JLabel "telefono"
+*Posicion: (44,432).
+*Tamaño: 44 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField prioridad
+*Posicion: (44,447).
+*Tamaño: 135 x 20 px.
+
+JLabel "e_mail"
+*Posicion: (44,432).
+*Tamaño: 44 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField e_mail
+*Posicion: (44,492).
+*Tamaño: 162 x 20 px.
+
+JLabel "descripcion_generica"
+*Posicion: (431,90).
+*Tamaño: 143 x 20 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 14
+*Color de fuente: 333333 (hexadecimal)
+
+JLabel "codigo de autobus"
+*Posicion: (355,137).
+*Tamaño: 97 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JListBox codigo_autobus
+*Posicion: (462,135).
+*Tamaño: 139 x 22 px.
+
+JLabel "marca"
+*Posicion: (355,162).
+*Tamaño: 34 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField marca
+*Posicion: (355,177).
+*Tamaño: 127 x 20 px.
+
+JLabel "matricula"
+*Posicion: (504,162).
+*Tamaño: 49 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField matricula
+*Posicion: (504,177).
+*Tamaño: 127 x 20 px.
+
+JLabel "condiciones tecnicas"
+*Posicion: (355,207).
+*Tamaño: 104 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextField condiciones_tecnicas
+*Posicion: (355,222).
+*Tamaño: 165 x 20 px.
+
+JLabel "descripcion de equipo observaciones"
+*Posicion: (355,251).
+*Tamaño: 183 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JTextArea descripcion_observaciones
+*Posicion: (355,266).
+*Tamaño: 276 x 53 px.
+
+JLabel "plazo de entrega (fecha y hora)"
+*Posicion: (355,329).
+*Tamaño: 155 x 15 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 11
+*Color de fuente: 333333 (hexadecimal)
+
+JCalendar plazo_entrega
+*Posicion: (355,344).
+*Tamaño: 155 x 20 px.
+
+JLabel "NOTA"
+*Posicion: (345,374).
+*Tamaño: 295 x 53 px.
+*Fuente: Segoe UI.
+*Tamaño fuente: 14
+*Color de fuente: 333333 (hexadecimal)
+
+JButton generar_reporte
+*Posicion: (440,447).
+*Tamaño: 105 x 27 px.
+
+JButton cerrar sesion
+*Posicion: (460,506).
+*Tamaño: 201 x 63 px.
+
+JButton regresar
+*Posicion: (326,518).
+*Tamaño: 32 x 32 px.
+
+
+
+

@@ -96,7 +96,7 @@ public class Builder {
         if (args.length>0)btn.setVisible((Boolean)args[0]);
         else btn.setVisible(true);
         if (args.length>1)btn.setBackground((Color)args[1]);
-        if (args.length>2)btn.setBackground((Color)args[2]);
+        if (args.length>2)btn.setForeground((Color)args[2]);
         return btn;
 
     }

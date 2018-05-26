@@ -42,7 +42,7 @@ public class AutobusGUI extends JFrame
         Color color = new Color(233,233,233);
         JButton inicio=     Builder.crearButtonIcon(a,"inicio",ruta + "boton_inicio.png",       new Rectangle(14,63,101,43), listener,false,false);
         JButton sesion=     Builder.crearButtonIcon(a,"sesion",ruta + "boton_cerrar_sesion.png",new Rectangle(539,65,142,43),listener,false,false);
-        JButton buscar =    Builder.crearButtonIcon(a,"buscar",ruta + "buscar.png",             new Rectangle(26,185,32,32) ,listener,false,false, color, Color.WHITE);
+        JButton buscar =    Builder.crearButtonIcon(a,"buscar",ruta + "buscar.png",             new Rectangle(26,185,32,32) ,listener,false,false);
         txt_buscar=         Builder.crearTextField(a, new Rectangle(68, 189, 106, 25), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         list=new JList();
         cargarLista(list);
@@ -51,11 +51,11 @@ public class AutobusGUI extends JFrame
         a.add(list);
         
         btn_Act_List =      Builder.crearButtonIcon(a,"actualizar_lista",   ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),listener,true,false);
-        btn_nuevo_autobus = Builder.crearButtonIcon(a,"agregar",            ruta + "anadir.png",    new Rectangle(218,136,32,32),listener,true,false, color);
-        btn_modificar =     Builder.crearButtonIcon(a,"modificar",          ruta + "lapiz.png",     new Rectangle(218,202,32,32),listener,true,false, color);
-        btn_eliminar=       Builder.crearButtonIcon(a,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,true,false, color);
-        btn_agregar_img=    Builder.crearButtonIcon(a,"cargarImagen",       ruta + "foto.png",      new Rectangle(626,215,32,32),listener,true,false, color);
-        btn_regresar=       Builder.crearButtonIcon(a,"regresar",           ruta + "regresar.png",  new Rectangle(626,450,32,32),listener,true,false, color);
+        btn_nuevo_autobus = Builder.crearButtonIcon(a,"agregar",            ruta + "anadir.png",    new Rectangle(218,136,32,32),listener,true,false, true, color);
+        btn_modificar =     Builder.crearButtonIcon(a,"modificar",          ruta + "lapiz.png",     new Rectangle(218,202,32,32),listener,true,false, true, color);
+        btn_eliminar=       Builder.crearButtonIcon(a,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,true,false, true, color);
+        btn_agregar_img=    Builder.crearButtonIcon(a,"cargarImagen",       ruta + "foto.png",      new Rectangle(626,215,32,32),listener,true,false, true, color);
+        btn_regresar=       Builder.crearButtonIcon(a,"regresar",           ruta + "regresar.png",  new Rectangle(626,450,32,32),listener,true,false, true, color);
         JLabel lb_imagen_autobus=   Builder.crearLabelImagen(a,"src/imagenes/autobu.png",  new Rectangle(354,162,245 , 139));
         JLabel lb_codigo_auto=      Builder.crearLabel(a, "(Matricula)",               new Rectangle(423,132, 107 , 13),   null,null);
         JLabel lb_Marca =           Builder.crearLabel(a, "Marca:",                    new Rectangle(335,350,101,13),      null,null);

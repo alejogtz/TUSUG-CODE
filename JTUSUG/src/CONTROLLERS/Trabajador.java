@@ -32,15 +32,15 @@ public class Trabajador {
      
     
     public void agregaTrabajador(){
-        String rfc= interfaz.tfrfc.getText();
-        String nombre= interfaz.tfnom.getText();
-        String ap_paterno= interfaz.tfapp.getText();
-        String ap_materno= interfaz.tfapm.getText();
-        String domicilio= interfaz.area1.getText();
-        String puesto= (String) interfaz.cbPuesto.getSelectedItem();
-        Date f_nac=interfaz.fecha;
-        Date f_cont= interfaz.fechaA;
-        String estado= (String)interfaz.cb6.getSelectedItem();
+        String rfc=         interfaz.tfrfc.getText().toLowerCase();
+        String nombre=      interfaz.tfnom.getText().toLowerCase();
+        String ap_paterno=  interfaz.tfapp.getText().toLowerCase();
+        String ap_materno=  interfaz.tfapm.getText().toLowerCase();
+        String domicilio=   interfaz.area1.getText().toLowerCase();
+        String puesto=      (String) interfaz.cbPuesto.getSelectedItem().toString().toLowerCase();
+        Date f_nac=         interfaz.fecha;
+        Date f_cont=        interfaz.fechaA;
+        String estado=      (String)interfaz.cb6.getSelectedItem().toString().toLowerCase();
         String url="";
         addT(rfc, nombre, ap_paterno, ap_materno, domicilio,puesto, f_nac, f_cont, estado, url);
         
@@ -56,7 +56,6 @@ public class Trabajador {
                     "sistemaTusug.trabajador(rfc,nombre,ap_paterno, ap_materno,domicilio,puesto,fecha_nac,fecha_contratacion,estado,url_img) " +
                     " values(?,?,?,?,?,?,?,?,?,?)");
                         System.out.print("agregado");
-
             pstm.setString(1, rfc);
             pstm.setString(2, nombre);
             pstm.setString(3, ap_paterno);
@@ -68,8 +67,6 @@ public class Trabajador {
             pstm.setString(9, estado);
             pstm.setString(10, urlImage);
             pstm.execute();
-           // pstm.close(); 
-            System.out.print("agregado");
         } catch(SQLException e){
          System.out.println(e);
       }
@@ -90,11 +87,10 @@ public class Trabajador {
       }   
     }
     public String [] listatrabajador(){
-          
-            String sql = "select count(rfc) as total from sistemaTusug.trabajador ";
-            PreparedStatement pst;
-            ResultSet res;
-            int n = 0;
+        String sql = "select count(rfc) as total from sistemaTusug.trabajador ";
+        PreparedStatement pst;
+        ResultSet res;
+        int n = 0;
         try {
             pst = c.prepareStatement(sql);
         
@@ -186,49 +182,24 @@ public class Trabajador {
             ResultSet rs =  pstm.executeQuery();
             while(rs.next()){
                 registros[0]=rs.getString(1);
-                interfaz.tfrfc.setText(registros[0]);
+                interfaz.tfrfc.setText(registros[0].toUpperCase());
                 registros[1]=rs.getString(2);
-                interfaz.tfnom.setText(registros[1]);
+                interfaz.tfnom.setText(registros[1].toUpperCase());
                 registros[2]=rs.getString(3);
-                interfaz.tfapp.setText(registros[2]);
+                interfaz.tfapp.setText(registros[2].toUpperCase());
                 registros[3]=rs.getString(4);
-                interfaz.tfapm.setText(registros[3]);
+                interfaz.tfapm.setText(registros[3].toUpperCase());
                 registros[4]=rs.getString(5);
-                interfaz.tfdir.setText(registros[4]);
+                interfaz.tfdir.setText(registros[4].toUpperCase());
                 registros[5]=rs.getString(6);
                 registros[6]=rs.getString(7);
                 registros[7]=rs.getString(8);
                 registros[8]=rs.getString(19); 
-                
-                
-            }
-            
-        
-          
-            
+            }            
      }catch(Exception e){
-                System.out.println(e.getMessage());
+        System.out.println(e.getMessage());
      }     
-                         return registros;
+        return registros;
 
     }
-
-    public static void main(String [] args){
-        TrabajadorGUI s = new TrabajadorGUI();
-        Trabajador t = new Trabajador(s);
-        t.listaTrabajador();
-        
-    }
 }
-
-
-/*
-public void actualizaCombo(){
-combo.removeAllItems();
-for (String s: listaTrabajador()){
-   combo.addItem(s);
-}
-}
-
-
-*/

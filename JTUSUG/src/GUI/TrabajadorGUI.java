@@ -114,30 +114,16 @@ public class TrabajadorGUI {
          p.add(area1);
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
-<<<<<<< HEAD
-         p.add(area1);
-         String[] c={" "};
-=======
-         
->>>>>>> d1dad59865328db84531cdb5212707a1c5e7ccf0
          //lista
          lista= new JList();
          p.add(lista);
          lista.setBounds(new Rectangle(14,236,176,198));
          lista.setVisible(true);
          lista.addMouseListener(new TrabajadorGUI.CustomMouseListener());
-         
-         
-<<<<<<< HEAD
-         System.out.println(fecha);
-         System.out.println(fechaA);      
-        
-         //valida();
-=======
+     
          fecha =    new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 =   LocalDate.now();
          fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
->>>>>>> d1dad59865328db84531cdb5212707a1c5e7ccf0
     }
     public void disable(){
         this.Cfoto.setEnabled(false);

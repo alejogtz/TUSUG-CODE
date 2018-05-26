@@ -30,35 +30,39 @@ import javax.swing.text.JTextComponent;
 
 public class TrabajadorGUI {
     Validador valida;
-    String dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
-                  "15","16","17","18","19","20","21","22","23","24","25","26",
-                  "27","28","29","30","31"};
-    String mes[]={"1","2","3","4","5","6","7", "8","9", "10", "11", "12"};
-    String anio[]={"1990", "1991", "1992", "1993", "1994", "1995", "1996", 
-                   "1997", "1998", "1999", "2000"};
-    String Cargo[]={"secretaria", "chofer", "mantenimiento", "recursos humanos"};
-    String Categoria[]= {"1","2","3","4","5"};
-    String st[]={"activo", "pasivo", "baja"};
+    String              dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
+                            "15","16","17","18","19","20","21","22","23","24","25","26",
+                            "27","28","29","30","31"};
+    String              mes[]={"1","2","3","4","5","6","7", "8","9", "10", "11", "12"};
+    String              anio[]={"1990", "1991", "1992", "1993", "1994", "1995", "1996", 
+                            "1997", "1998", "1999", "2000"};
+    String              Cargo[]={"secretaria", "chofer", "mantenimiento", "recursos humanos"};
+    String              Categoria[]= {"1","2","3","4","5"};
+    String              st[]={"activo", "pasivo", "baja"};
     private JComboBox<String> cb4;
     JFrame x;
     JPanel p;
-    public JLabel trabajadores;
-    public JTextField tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, 
-                      tfdir, tffin, tftce, tfema,tftca,buscador;
-    public JTextArea area1;
-    public JComboBox cb1, cb2, cb3, cb5,cb6, cb7,cbPuesto;
+    public JLabel       trabajadores;
+    public JTextField   tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, 
+                        tfdir, tffin, tftce, tfema,tftca,buscador;
+    public JTextArea    area1;
+    public JComboBox    cb1, cb2, cb3, cb5,cb6, cb7,cbPuesto;
 
-    Trabajador interfaz;
+    Trabajador          interfaz;
 
-    public LocalDate fecha1,fecha2;
-    public int dia1,mes1,anio1;
-    public JList lista;
-    public JButton btInicio,btLT,btBuscar,btActualizar,sesion,back,nuevo,
-                   agregar,baja,btlista,btactinac, Cfoto;
-    public JScrollBar scroll;
-    public Date fecha,fechaA;
+    public LocalDate    fecha1,fecha2;
+    public int          dia1,mes1,anio1;
+    public JList        lista;
+    public JButton      btInicio,btLT,btBuscar,btActualizar,sesion,back,nuevo,
+                        agregar,baja,btlista,btactinac, Cfoto;
+    public JScrollBar   scroll;
+    public Date         fecha,fechaA;
     public TrabajadorGUI(){
-
+        initComponents();
+        cargarLista(lista);
+    }
+    
+    private void initComponents(){
         interfaz= new Trabajador(this);
         x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
         p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", false);
@@ -78,20 +82,16 @@ public class TrabajadorGUI {
         
         
         //botones
-        btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null, true, false);
-        btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(20, 215, 33, 32) , null, true, false);
-        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), null, true, false);
-        btActualizar.addActionListener(accion4);
-        sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null, true, false);
-        back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), null, true, false);
-        back.addActionListener(accion6);
-        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), null, true, false);
-        nuevo.addActionListener(accion);
-        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), null, true, false); 
-        agregar.addActionListener(accion3);
-        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), null, true, false); 
-        btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null, true, false); 
-        btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null, true, false); 
+        btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null,   true, false);
+        btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(20, 215, 33, 32) , null,   true, false);
+        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), accion4,true, false);
+        sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null,   true, false);
+        back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), accion6,true, false);
+        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), accion, true, false);
+        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), accion3,true, false);
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), null,   true, false); 
+        btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null,   true, false); 
+        btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null,   true, false); 
         Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
         Cfoto.setBackground(Color.white);
         
@@ -111,24 +111,57 @@ public class TrabajadorGUI {
          cbPuesto=  Builder.crearComboBox(p, new Rectangle(380,438,111,17), Cargo,null, null, null);
           //area de texto
          area1 = new JTextArea();
+         p.add(area1);
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
-         p.add(area1);
-         String[] c={"hola","abraham","xd"};
          //lista
-         lista= new JList(c);
+         lista= new JList();
+         p.add(lista);
          lista.setBounds(new Rectangle(14,236,176,198));
          lista.setVisible(true);
          lista.addMouseListener(new TrabajadorGUI.CustomMouseListener());
-         p.add(lista);
-         
-         fecha = new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
-         fecha2 = LocalDate.now();
-         fechaA = new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
-         
-         System.out.println(fecha);
-         System.out.println(fechaA);      
-         //valida();
+     
+         fecha =    new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
+         fecha2 =   LocalDate.now();
+         fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
+    }
+    public void disable(){
+        this.Cfoto.setEnabled(false);
+        this.agregar.setEnabled(false);
+        this.area1.setEnabled(false);
+        this.back.setEnabled(false);
+        this.baja.setEnabled(false);
+        this.btActualizar.setEnabled(false);
+        this.btBuscar.setEnabled(false);
+        this.btInicio.setEnabled(false);
+        this.btLT.setEnabled(false);
+        this.btactinac.setEnabled(false);
+        this.btlista.setEnabled(false);
+        this.buscador.setEnabled(false);
+        this.cb1.setEnabled(false);
+        this.cb2.setEnabled(false);
+        this.cb3.setEnabled(false);
+        this.cb4.setEnabled(false);
+        this.cb5.setEnabled(false);
+        this.cb6.setEnabled(false);
+        this.cb7.setEnabled(false);
+        this.cbPuesto.setEnabled(false);
+        this.lista.setEnabled(false);
+        this.nuevo.setEnabled(false);
+        this.sesion.setEnabled(false);
+        this.tfapm.setEnabled(false);
+        this.tfapp.setEnabled(false);
+        this.tfdir.setEnabled(false);
+        this.tfeda.setEnabled(false);
+        this.tfema.setEnabled(false);
+        this.tffin.setEnabled(false);
+        this.tffna.setEnabled(false);
+        this.tfgen.setEnabled(false);
+        this.tfnom.setEnabled(false);
+        this.tfrfc.setEnabled(false);
+        this.tfsa.setEnabled(false);
+        this.tftca.setEnabled(false);
+        this.tftce.setEnabled(false);
     }
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();
@@ -174,12 +207,13 @@ public class TrabajadorGUI {
                 JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     };
-     ActionListener accion6=new ActionListener() {
+    ActionListener accion6=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
             x.dispose();
         }
     };
+    
     ActionListener accion4=new ActionListener() {
         public void actionPerformed(ActionEvent ag)
         {
@@ -190,8 +224,8 @@ public class TrabajadorGUI {
     };
         class CustomMouseListener extends MouseAdapter{
         public void mouseClicked(MouseEvent me){
-        String matricula = (String)lista.getSelectedValue();
-        interfaz.listaParametro(matricula);
+            String matricula = (String)lista.getSelectedValue();
+            interfaz.listaParametro(matricula);
         };
         
    

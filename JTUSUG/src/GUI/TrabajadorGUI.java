@@ -242,6 +242,8 @@ public class TrabajadorGUI {
         int numLetrasValidas;
         public KeyListenerValidation(int length){
             super();
+            
+            
             numLetrasValidas = length;
         }
         @Override

@@ -114,7 +114,7 @@ public class TrabajadorGUI {
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
          p.add(area1);
-         String[] c={"hola","abraham","xd"};
+         String[] c={" "};
          //lista
          lista= new JList(c);
          lista.setBounds(new Rectangle(14,236,176,198));
@@ -128,7 +128,46 @@ public class TrabajadorGUI {
          
          System.out.println(fecha);
          System.out.println(fechaA);      
+        
          //valida();
+    }
+    public void disable(){
+        this.Cfoto.setEnabled(false);
+        this.agregar.setEnabled(false);
+        this.area1.setEnabled(false);
+        this.back.setEnabled(false);
+        this.baja.setEnabled(false);
+        this.btActualizar.setEnabled(false);
+        this.btBuscar.setEnabled(false);
+        this.btInicio.setEnabled(false);
+        this.btLT.setEnabled(false);
+        this.btactinac.setEnabled(false);
+        this.btlista.setEnabled(false);
+        this.buscador.setEnabled(false);
+        this.cb1.setEnabled(false);
+        this.cb2.setEnabled(false);
+        this.cb3.setEnabled(false);
+        this.cb4.setEnabled(false);
+        this.cb5.setEnabled(false);
+        this.cb6.setEnabled(false);
+        this.cb7.setEnabled(false);
+        this.cbPuesto.setEnabled(false);
+        this.lista.setEnabled(false);
+        this.nuevo.setEnabled(false);
+        this.sesion.setEnabled(false);
+        this.tfapm.setEnabled(false);
+        this.tfapp.setEnabled(false);
+        this.tfdir.setEnabled(false);
+        this.tfeda.setEnabled(false);
+        this.tfema.setEnabled(false);
+        this.tffin.setEnabled(false);
+        this.tffna.setEnabled(false);
+        this.tfgen.setEnabled(false);
+        this.tfnom.setEnabled(false);
+        this.tfrfc.setEnabled(false);
+        this.tfsa.setEnabled(false);
+        this.tftca.setEnabled(false);
+        this.tftce.setEnabled(false);
     }
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();

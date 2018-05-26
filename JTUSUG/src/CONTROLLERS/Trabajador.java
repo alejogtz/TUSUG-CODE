@@ -21,8 +21,11 @@ public class Trabajador {
     public Trabajador(TrabajadorGUI ui){
         
         interfaz = ui;
-           //Conexion.setConfiguracion("postgres","Kurama14");
+           Conexion.setConfiguracion("postgres","root");
             c = Conexion.getConexion();
+            if(c==null){
+                interfaz.disable();
+            }
      
      
     }

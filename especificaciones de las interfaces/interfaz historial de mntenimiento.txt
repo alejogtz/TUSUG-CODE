@@ -1,0 +1,25 @@
+JButton buscar
+*Posicion: (54,89).
+*Tamaño: 74 x 21 px.
+
+JLabel "No. mantenimiento"
+*Posicion: (158,90).
+*Tamaño: 125 x 18 px.
+*Fuente: Segoe UI
+*Tamaño fuente: 14
+*Color fuente: 797979 (hexadecimal)
+
+JTextField numero_manten
+*Posicion: (293,88).
+*Tamaño: 131 x 22 px.
+
+JLabel "fecha"
+*Posicion: (461,90).
+*Tamaño: 45 x 18 px.
+*Fuente: Segoe UI
+*Tamaño fuente: 14
+*Color fuente: 797979 (hexadecimal)
+
+JCalendar fecha
+*Posicion: (516,88).
+*Tamaño: 131 x 22 px.

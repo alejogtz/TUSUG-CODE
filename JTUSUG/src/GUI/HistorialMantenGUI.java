@@ -6,29 +6,35 @@ import Validacion.Validador;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
-public class HistorialMantenGUI {
+public class HistorialMantenGUI extends JFrame {
     String              ruta = "src/imagenes/";
     ActionListener      listener;
     Autobus             controlador;
     Validador           valida;
-    public JList        list;
+    public JTable        tabla;
     public JTextField   txt_no_manten,txt_fecha;
     public JFileChooser url_img;
     public JButton      btn_buscar,btn_abrir,btn_imprimir,btn_guardar,btn_regresar,btn_cerrarSesion;
     public JLabel       lb_no_manten,lb_fecha,lb_historial_manten;
     JFrame a;
     
+    Object[][] dtPer;
     public HistorialMantenGUI()
     {
-        
+        a = this;
+        a=Builder.construirFrame("Historial de Mantenimiento", new Rectangle(200,50,700,600),false);
+        inicializarComp();
     }
     
     public void inicializarComp()
@@ -42,7 +48,7 @@ public class HistorialMantenGUI {
         
         
         lb_no_manten =           Builder.crearLabel(a, "No. Mantenimiento:",                new Rectangle(158,90,125,28) ,null,null);
-        lb_fecha        =        Builder.crearLabel(a, "Fecha:",                            new Rectangle(461,90,45,18)  ,null,null);
+        lb_fecha           =     Builder.crearLabel(a, "Fecha:",                            new Rectangle(461,90,45,18)  ,null,null);
         lb_historial_manten  =   Builder.crearLabel(a, "Historial de mantenimiento",        new Rectangle(260,170,170,18),null,null);
         
         
@@ -50,5 +56,22 @@ public class HistorialMantenGUI {
 
         
         
+    }
+    
+    
+    public void cargarLista(JTable l){
+                    String lista[] = {"num. de manten","Responsable","Fecha de emision"};
+                    DefaultTableModel modelo = new DefaultTableModel();
+                    l.setModel(modelo);
+    }
+    
+    
+    private void updateTabla(){             
+        String[] columNames = {"CLAVE","ENTIDAD","ABREVIATURA","CAPITAL"};  
+        // se utiliza la funcion
+        //dtPer = p.getDatos();
+        // se colocan los datos en la tabla
+        DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
+        tabla.setModel(datos); 
     }
 }

@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class Builder {
 
@@ -178,6 +179,14 @@ public class Builder {
         panel.setBounds(bounds);
         //panel.setOpaque(opaque);        
         return panel;
+    }
+    
+    public static JTextArea crearTextArea(Container ui, Rectangle bounds, Color fondo){
+        JTextArea area = new JTextArea();
+        ui.add(area);
+        area.setBounds(bounds);
+        area.setForeground(fondo);
+        return area;
     }
     
     public static void main(String[] args) {

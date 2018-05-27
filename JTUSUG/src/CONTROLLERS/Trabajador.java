@@ -72,14 +72,15 @@ public class Trabajador {
       }
     }
 
-    public void eliminaTrabajador(String estado, String rfc){
-          estado="baja";
+    public void eliminaTrabajador( String rfc){
+         String estado="BAJA";
+         rfc.toLowerCase();
         try {            
             PreparedStatement pstm = c.prepareStatement("UPDATE sistemaTusug.trabajador SET " 
-            +"estado= ? ," + 
+            +"estado= ? " + 
             "WHERE rfc = ? ");            
             pstm.setString(1, estado);
-            pstm.setString(6, rfc);
+            pstm.setString(2, rfc);
             pstm.execute();
             pstm.close();            
          }catch(SQLException e){
@@ -127,7 +128,7 @@ public class Trabajador {
         ap_materno= interfaz.tfapm.getText();
         domicilio= interfaz.area1.getText();
         puesto= ((String)interfaz.cbPuesto.getSelectedItem());
-        rfc= interfaz.tfrfc.getText();
+        rfc= interfaz.tfrfc.getText().toLowerCase();
         
           try {            
             PreparedStatement pstm = c.prepareStatement("UPDATE sistemaTusug.trabajador SET " 
@@ -136,7 +137,7 @@ public class Trabajador {
             "ap_materno= ? ," +  
             "domicilio= ? ," +
             "puesto= ? " + 
-            "WHERE rfc = ? ");            
+            "WHERE rfc =? ");            
             pstm.setString(1, nombre);
             pstm.setString(2, ap_paterno);
             pstm.setString(3, ap_materno);

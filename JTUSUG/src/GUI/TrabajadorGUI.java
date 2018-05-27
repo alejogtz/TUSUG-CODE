@@ -193,7 +193,7 @@ public class TrabajadorGUI {
     ActionListener accion2=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-           interfaz.eliminaTrabajador(((String)cb6.getSelectedItem()), tfrfc.getText());
+           interfaz.eliminaTrabajador( tfrfc.getText().toLowerCase());
         }
     };
     

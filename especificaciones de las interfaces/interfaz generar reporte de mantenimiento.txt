@@ -74,7 +74,7 @@ JLabel "tipo de mantenimiento"
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
-JTextField prioridad
+JTextField tipomantenimiento
 *Posicion: (44,358).
 *Tamaño: 135 x 20 px.
 
@@ -85,7 +85,7 @@ JLabel "direccion"
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
-JTextField prioridad
+JTextField direccion
 *Posicion: (44,402).
 *Tamaño: 186 x 20 px.
 
@@ -96,12 +96,12 @@ JLabel "telefono"
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
-JTextField prioridad
+JTextField telfono
 *Posicion: (44,447).
 *Tamaño: 135 x 20 px.
 
 JLabel "e_mail"
-*Posicion: (44,432).
+*Posicion: (44,477).
 *Tamaño: 44 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11

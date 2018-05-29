@@ -20,7 +20,6 @@ public class GFacturas1 extends JFrame{
     public JLabel factura,fEmision,fechaE,gF,dEmisor,pestaña,nFactura,cProveedor,tPersona,rSocial,direccion,poblacion,provincia,postal,contacto,email,phone;
     public JTextField nF,cP,rS,Direc,pob,prov,cp,pContacto,mail,telefono;
     public JButton regresar, cSesion, b1,b2,vaciar,siguiente;
-    public JTable tabla;
     public JCheckBox nFact,cProv;
     public LocalDate fecha;
     public JRadioButton fisica,juridica;

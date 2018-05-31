@@ -2,6 +2,7 @@
 package GUI;
 
 import CONTROLLERS.Autobus;
+import CONTROLLERS.Conexion;
 import Validacion.Validador;
 import java.awt.Font;
 import java.awt.Rectangle;
@@ -53,6 +54,12 @@ public class HistorialMantenGUI extends JFrame {
         
         
         txt_no_manten =    Builder.crearTextField(a, new Rectangle(293, 88, 131, 22), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
+        
+        tabla = new JTable();
+        updateTabla();
+        tabla.setBounds(14,236,172,198);
+        
+        JLabel fondo    =   Builder.crearLabelImagen(a, ruta + "fondo_vta_visualizar_factura.png", new Rectangle(0,0,700,600));
 
         
         
@@ -71,7 +78,13 @@ public class HistorialMantenGUI extends JFrame {
         // se utiliza la funcion
         //dtPer = p.getDatos();
         // se colocan los datos en la tabla
-        DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
+        DefaultTableModel datos = new DefaultTableModel(null,columNames);                        
         tabla.setModel(datos); 
+    }
+    
+    public static void main(String []args)
+    {
+        //Conexion.setConfiguracion("postgres", "root");
+        HistorialMantenGUI a= new HistorialMantenGUI();
     }
 }

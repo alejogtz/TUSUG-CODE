@@ -5,14 +5,12 @@ import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import javafx.scene.layout.Border;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 public class GFacturas1 extends JFrame{
@@ -32,14 +30,12 @@ public class GFacturas1 extends JFrame{
         p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"img_fondo_ventana_facturas.png", false);
         fecha = LocalDate.now();
         String fechaN = fecha.format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
-        javax.swing.border.Border border = LineBorder.createGrayLineBorder();
         
         
         //etiquetas
         fEmision = Builder.crearLabel(p,"Fecha de Emisión: ",new Rectangle(446,89,200,15), null, null, new Font("Segoe UI", Font.PLAIN, 11));
         fechaE   = Builder.crearLabel(p,fechaN,new Rectangle(545,89,200,15), null, Color.blue, new Font("Segoe UI", Font.PLAIN, 11));
         gF = Builder.crearLabelImagen(p, ruta+"img_generar_factura.png", new Rectangle(35,168,200,330));
-        gF.setBorder(border);
         dEmisor = Builder.crearLabel(p,"Datos de emisor", new Rectangle(417,122,109,20),null, null,new Font("Segoe UI", Font.PLAIN, 11));
         pestaña = Builder.crearLabelImagen(p, ruta+"img_indicador_1_y_2__1_.png", new Rectangle(586,122,60,30));
         nFactura = Builder.crearLabel(p,"Numero de Factura:", new Rectangle(333,152,102,15),null, null,new Font("Segoe UI", Font.PLAIN, 11));

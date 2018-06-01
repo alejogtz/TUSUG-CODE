@@ -1,0 +1,48 @@
+Ventana principal
+*Tamaño: 511 x 260 px.
+
+Fuente letra: Arial.
+Color ventana: E4E4E4 (hexadecimal).
+
+JLabel "agregar nuevo insumo"
+*Posicion: (154,7).
+*Tamaño: 204 x 22 px.
+Tamaño fuente: 18.
+
+JLabel "codigo del producto"
+*Posicion: (66,48).
+*Tamaño: 137 x 18 px.
+*Tamaño fuente: 14.
+
+JTextField codigo_producto
+*Posicion: (203,45).
+*Tamaño: 219 x 25 px.
+
+
+JLabel "descripcion"
+*Posicion: (118,85).
+*Tamaño: 85 x 18 px.
+*Tamaño fuente: 14.
+
+JTextField descripcion
+*Posicion: (203,85).
+*Tamaño: 219 x 68 px.
+
+JLabel cantidad
+*Posicion: (136,168).
+*Tamaño: 67 x 18 px.
+
+JTextField "cantidad"
+*Posicion: (203,163).
+*Tamaño: 219 x 27 px
+*Tamaño fuente: 14.
+
+JButton aceptar
+*Posicion: (173,211).
+*Tamaño: 69 x 25 px.
+*Tamaño fuente: 13.
+
+JButton cancelar
+*Posicion: (270 x 211).
+*Tamaño: 69 x 25 px.
+*Tamaño fuente: 13.

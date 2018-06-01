@@ -3,10 +3,6 @@ JButton boton "regresar"
 *Tamaño: 32 x 32 px.
 *Nombre icono: "regresar.png"
 
-JButton boton "cerrar sesion"
-*Posicion: (460,506).
-*Tamaño: 201 x 63 px.
-
 JButton boton "1"
 *Posicion: (77,106).
 *Tamaño: 36 x 36 px.
@@ -20,82 +16,82 @@ Image "Generar factura"
 *Tamaño: 206 x 303 px.
 
 Image icono "pestaña 1 y 2"
-*Posicion: (586,122).
+*Posicion: (586,146).
 *tamaño: 60 x 30 px.
 
 JLabel "fecha de emision" + fecha
-*Posicion: (446,89).
+*Posicion: (446,121).
 *Tamaño: 200 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JLabel "confirmar costos"
-*Posicion: (417,122).
+*Posicion: (417,161).
 *Tamaño: 110 x 20 px.
 *Fuente de letra: Segoe UI
 *Tamaño fuente: 14.
 
 JButton agregar
-*Posicion: (292,148).
+*Posicion: (292,165).
 *Tamaño: 24 x 24 px.
 *Nombre icono: "bag.png"
 
 
 JButton eliminar
-*Posicion: (341,148).
+*Posicion: (341,165).
 *Tamaño: 24 x 24 px.
 *Nombre icono: "shopping-cart.png"
 
 JTable tabla
-*posicion: (281,176).
+*posicion: (281,193).
 *Tamaño: 392 x 179 px.
 
 JLabel "subtotal factura"
-*Posicion: (292,367).
+*Posicion: (292,384).
 *Tamaño: 81 x 15 px.
 *Fuente de letra: Segoe UI 
 *Tamaño fuente: 11.
 
 JTextField subtotal factura
-*Posicion: (383,365).
+*Posicion: (383,382).
 *Tamaño: 82 x 20 px.
 
 JLabel "total a pagar"
-*Posicion: (483,368).
+*Posicion: (483,385).
 *Tamaño: 67 x 15 px.
 *Fuente de letra: Segoe UI 
 *Tamaño fuente: 11.
 
 JTextField total a pagar
-*Posicion: (560,365).
+*Posicion: (560,382).
 *Tamaño: 86 x 20 px.
 
 JLabel IVA
-*Posicion: (353,395).
+*Posicion: (353,412).
 *Tamaño: 20 x 15 px.
 *Fuente de letra: Segoe UI 
 *Tamaño fuente: 11.
 
 JTextField IVA
-*Posicion: (383,392).
+*Posicion: (383,409).
 *Tamaño: 82 x 20 px.
 
 JLabel descuento
-*Posicion: (318,425).
+*Posicion: (318,442).
 *Tamaño: 55 x 15 px.
 *Fuente de letra: Segoe UI 
 *Tamaño fuente: 11.
 
 JTextField descuento
-*Posicion: (383,422).
+*Posicion: (383,439).
 *Tamaño: 82 x 20 px.
 
 JButton confirmar
-*Posicion: (532,411).
+*Posicion: (532,428).
 *Tamaño: 114 x 43 px.
 
 JButton anterior
-*Posicion: (320,460).
+*Posicion: (320,477).
 *Tamaño: 87 x 43 px.
 
 

@@ -58,7 +58,7 @@ public class AutobusGUI extends JFrame
         btn_Act_List =      Builder.crearButtonIcon(p,"actualizar_lista",   ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),listener,true,false);
         btn_nuevo_autobus = Builder.crearButtonIcon(p,"agregar",            ruta + "anadir.png",    new Rectangle(218,136,32,32),listener,true,false, true, color);
         btn_modificar =     Builder.crearButtonIcon(p,"modificar",          ruta + "lapiz.png",     new Rectangle(218,202,32,32),listener,true,false, true, color);
-        btn_eliminar=       Builder.crearButtonIcon(p,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,false,false, true, color);
+        btn_eliminar=       Builder.crearButtonIcon(p,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,268,32,32),listener,false,false, true, color);
         btn_cancelar=       Builder.crearButtonIcon(p,"cancelar",           ruta + "btn_cancelar.png",   new Rectangle(300,444,97,38),listener,true,false, true, color);
         btn_agregar_img=    Builder.crearButtonIcon(p,"cargarImagen",       ruta + "foto.png",      new Rectangle(626,215,32,32),listener,true,false, true, color);
         btn_regresar=       Builder.crearButtonIcon(p,"regresar",           ruta + "regresar.png",  new Rectangle(626,450,32,32),listener,true,false, true, color);
@@ -73,6 +73,7 @@ public class AutobusGUI extends JFrame
         JLabel lb_Num_Eco =         Builder.crearLabel(p, "Numero Economico:",         new Rectangle(270,383,120,13),      null,null);
         JLabel lb_Mat_Auto =        Builder.crearLabel(p, "Matricula:",                new Rectangle(315,416, 101, 13),    null,null);
         JLabel lb_Km =              Builder.crearLabel(p, "Kilometraje",               new Rectangle(499,350,101,13),      null,null);
+        JLabel autobuses =          Builder.crearLabel( p, "Autobuses",                new Rectangle(65, 130, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel lb_Asien =           Builder.crearLabel(p, "Asientos:",                 new Rectangle(514,383,101,13),      null,null);
 
         txt_marca       =   Builder.crearTextField(p, new Rectangle(389,345,108,23), "", null, null,null,true,false,true);

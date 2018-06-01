@@ -1,0 +1,97 @@
+Tamaño ventana: 700 x 600 px
+*Fuente letra: Segoe UI.
+*Color fuente: 666666 (hexadecimal)
+
+JLabel "lista trabajadores"
+*Posicion: (87,122).
+*Tamaño: 136 x 20 px.
+
+JList lista_trabajadores
+*Posicion: (65,150).
+*Tamaño: 193 x 280 px.
+
+JButton actualizar lista
+*Posicion: (89,444).
+*Tamaño: 145 x 36 px.
+
+JLabel "descripcion general"
+*Posicion: (387,112).
+*Tamaño: 121 x 20 px.
+
+JLabel "nombre"
+*Posicion: (336,150).
+*Tamaño: 55 x 20 px.
+
+JTextField nombre
+*Posicion: (401,146).
+*Tamaño: 129 x 25 px.
+
+JLabel ap_paterno
+*Posicion: (312,183).
+*Tamaño: 76 x 20 px.
+
+JTextField ap_paterno
+*Posicion: (401,181).
+*Tamaño: 129 x 25 px.
+
+JLabel ap_materno
+*Posicion: (309,223).
+*Tamaño: 80 x 20 px.
+
+JTextField ap_materno
+*Posicion: (401,216).
+*Tamaño: 129 x 25 px.
+
+JLabel "estado"
+*Posicion: (341,258).
+*Tamaño: 45 x 20 px.
+
+JTextField estado
+*Posicion: (401,251).
+*Tamaño: 129 x 25 px.
+
+JLabel "codigo_autobus"
+*Posicion: (285,318).
+*Tamaño: 102 x 20 px
+
+JComboBox codigo_autobus
+*Posicion: (401,314).
+*Tamaño: 129 x 22 px.
+
+JLabel "matricula"
+*Posicion: (328,349)
+*Tamaño: 62 x 20 px.
+
+JTextField matricula
+*Posicion: (401,346).
+*Tamaño: 129 x 25 px.
+
+JLabel marca
+*Posicion: (346 x 381).
+*Tamaño: 43 x 20 px.
+
+JTextField marca
+*Posicion: (401,381).
+*Tamaño: 129 x 25 px.
+
+JLabel "kilometraje"
+*Posicion: (315,416).
+*Tamaño: 73 x 20 px.
+
+JTextField kilometraje
+*Posicion: (401,416).
+*Tamaño: 129 x 25 px.
+
+Jbutton confirmar
+*Posicion: (409,451).
+*Tamaño: 114 x 43 px.
+
+JButton regresar
+*Posicion: (326,518).
+*Tamaño: 39 x 39 px.
+
+Menu desplegable usuario
+*Posicion: (478,518).
+*Tamaño: 142 x 43 px.
+
+

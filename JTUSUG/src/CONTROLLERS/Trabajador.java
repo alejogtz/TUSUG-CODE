@@ -72,12 +72,12 @@ public class Trabajador {
       }
     }
 
-    public void eliminaTrabajador( String rfc){
-         String estado="BAJA";
-         rfc.toLowerCase();
+    public void eliminaTrabajador(String rfc){
+         String estado="baja";
+    
         try {            
             PreparedStatement pstm = c.prepareStatement("UPDATE sistemaTusug.trabajador SET " 
-            +"estado= ? " + 
+            +" estado= ? " + 
             "WHERE rfc = ? ");            
             pstm.setString(1, estado);
             pstm.setString(2, rfc);
@@ -164,7 +164,8 @@ public class Trabajador {
                 registros[0]=rs.getString(1);
                 System.out.print(registros[0]);
                 m.add(registros[0]);
-                          
+                st.close();
+                      
             }
             
      }catch(Exception e){
@@ -196,7 +197,8 @@ public class Trabajador {
                 registros[6]=rs.getString(7);
                 registros[7]=rs.getString(8);
                 registros[8]=rs.getString(19); 
-            }            
+            }        
+            pstm.close();
      }catch(Exception e){
         System.out.println(e.getMessage());
      }     

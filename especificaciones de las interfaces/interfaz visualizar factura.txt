@@ -3,9 +3,9 @@ JButton boton "regresar"
 *Tamaño: 32 x 32 px.
 *Nombre icono: "regresar.png"
 
-JButton boton "cerrar sesion"
-*Posicion: (460,506).
-*Tamaño: 201 x 63 px.
+JButton boton "usuario"
+*Posicion: (513,68).
+*Tamaño: 142 x 43 px.
 
 JButton boton "1"
 *Posicion: (77,106).

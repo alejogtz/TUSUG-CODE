@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,7 +36,7 @@ public class GFacturas2 extends JFrame {
     public GFacturas2() 
     {
         f = Builder.construirFrame("Facturas", new Rectangle(0,0, 700, 600), false); 
-        p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"img_fondo_ventana_facturas.png", false);
+        p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"fondo_vta_generar_factura_p_2.png", false);
         javax.swing.border.Border border = LineBorder.createGrayLineBorder();
         fecha = LocalDate.now();
         String fechaN = fecha.format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));

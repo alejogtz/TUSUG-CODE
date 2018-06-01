@@ -64,9 +64,9 @@ public class VFacturas extends JFrame {
         buscar = Builder.crearBoton(p, "Buscar",new Rectangle(291,106,74,21) , listener, true, false);
         buscar.setBackground(Color.white);
         buscar.setForeground(Color.black);
-        abrir = Builder.crearButtonIcon(p,"abrir", ruta,new Rectangle(643,213,24,24), listener, true,false);
-        imprimir = Builder.crearButtonIcon(p,"imprimir", ruta,new Rectangle(643,274,24,24), listener, true,false);
-        guardar = Builder.crearButtonIcon(p,"guardar", ruta,new Rectangle(643,332,24,24), listener, true,false);
+        abrir = Builder.crearButtonIcon(p,"abrir", ruta+"folder.png",new Rectangle(643,213,24,24), listener, true,false);
+        imprimir = Builder.crearButtonIcon(p,"imprimir", ruta+"print.png",new Rectangle(643,274,26,24), listener, true,false);
+        guardar = Builder.crearButtonIcon(p,"guardar", ruta+"save.png",new Rectangle(643,332,28,28), listener, true,false);
         
         
         //cuadros de texto

@@ -3,10 +3,6 @@ JButton boton "regresar"
 *Tamaño: 32 x 32 px.
 *Nombre icono: "regresar.png"
 
-JButton boton "cerrar sesion"
-*Posicion: (460,506).
-*Tamaño: 201 x 63 px.
-
 JButton boton "1"
 *Posicion: (77,106).
 *Tamaño: 36 x 36 px.
@@ -20,145 +16,149 @@ Image "Generar factura"
 *Tamaño: 206 x 303 px.
 
 Image icono "pestaña 1 y 2"
-*Posicion: (586,122).
+*Posicion: (586,146).
 *tamaño: 60 x 30 px.
 
 JLabel "fecha de emision" + fecha
-*Posicion: (446,89).
+*Posicion: (446,121).
 *Tamaño: 200 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JLabel "datos del emisor"
-*Posicion: (417,122).
+*Posicion: (417,146).
 *Tamaño: 109 x 20 px.
 *Fuente de letra: Segoe UI
 *Tamaño fuente: 14.
 
 JLabel "numero de factura"
-*Posicion: (333,152).
+*Posicion: (333,176).
 *Tamaño: 95 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField numero de factura
-*Posicion: (444,152).
+*Posicion: (444,176).
 *Tamaño: 82 x 20 px.
 
 JLabel "codigo de proveedor"
-*Posicion: (321,186).
+*Posicion: (321,210).
 *Tamaño: 107 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField codigo de proveedor
-*Posicion: (444,184).
+*Posicion: (444,210).
 *Tamaño: 82 x 20 px.
 
 JLabel "tipo de persona"
-*Posicion: (246,212):
+*Posicion: (246,236):
 *Tamaño: 82 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JRadioButton fisica
-*Posicion:(444,211).
+*Posicion:(444,235).
 *Tamaño: 55 x 16 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JRadioButton juridica
-*Posicion: (509,211).
+*Posicion: (509,235).
 *Tamaño: 62 x 16 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JLabel "razon social"
-*Posicion: (365,237).
+*Posicion: (365,261).
 *Tamaño: 63 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField razon social
-*Posicion: (444,237).
+*Posicion: (444,261).
 *Tamaño: 82 x 20 px.
 
 JLabel direccion
-*Posicion: (380,262).
+*Posicion: (380,286).
 *Tamaño: 48 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField direccion
-*Posicion: (444,262).
+*Posicion: (444,286).
 *Tamaño: 165 x 20 px.
 
 JLabel "poblacion"
-*Posicion: (378,287).
+*Posicion: (378,311).
 *Tamaño: 50 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField poblacion
-*Posicion: (444,287).
+*Posicion: (444,311).
 *Tamaño: 127 x 20 px.
 
 JLabel "provincia"
-*Posicion: (380,312).
+*Posicion: (380,336).
 *Tamaño: 47 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField provincia
-*Posicion: (444,312).
+*Posicion: (444,336).
 *Tamaño: 127 x 20 px.
 
 JLabel "C.P."
-*Posicion: (408,337).
+*Posicion: (408,361).
 *Tamaño: 19 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField C.P.
-*Posicion: (444,337).
+*Posicion: (444,361).
 *Tamaño: 82 x 20 px.
 
 JLabel "persona en contacto"
-*Posicion: (324,372).
+*Posicion: (324,396).
 *Tamaño: 103 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField persona en contacto
-*Posicion: (444,372).
+*Posicion: (444,396).
 *Tamaño: 127 x 20 px.
 
 JLabel "email"
-*Posicion: (393,397).
+*Posicion: (393,421).
 *Tamaño: 34 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField email
-*Posicion: (444,397).
+*Posicion: (444,421).
 *Tamaño: 165 x 20 px.
 
 JLabel "telefono"
-*Posicion: (383,422).
+*Posicion: (383,446).
 *tamaño: 44 x 15 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JTextField telefono
-*Posicion: (444,422).
+*Posicion: (444,446).
 *Tamaño: 127 x 20 px.
 
 JButton vaciar
-*Posicion: (446,471).
+*Posicion: (446,495).
 *Tamaño: 62 x 21 px.
 *Fuente de letra: Segoe UI.
 *Tamaño fuente: 11.
 
 JButton siguiente
-*Posicion: (552,460).
+*Posicion: (552,486).
 *Tamaño: 87 x 43 px.
+
+Menu desplegable "(usuario)"
+*Posicion:(513,68).
+*Tamaño: 142 x 43 px.

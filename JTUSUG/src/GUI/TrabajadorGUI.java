@@ -55,7 +55,7 @@ public class TrabajadorGUI {
     public int          dia1,mes1,anio1;
     public JList        lista;
     public JButton      btInicio,btLT,btBuscar,btActualizar,sesion,back,nuevo,
-                        agregar,baja,btlista,btactinac, Cfoto;
+                        agregar,baja,btlista,btactinac, Cfoto,btn_guardar,btn_cancelar,btn_guardar_mod;
     public JScrollBar   scroll;
     public Date         fecha,fechaA;
     public TrabajadorGUI(){
@@ -85,12 +85,18 @@ public class TrabajadorGUI {
         //botones
         btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null,   true, false);
         btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(26,185,32,32) , null,   true, false);
-        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), accion4,true, false);
+        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), actualizarT,true, false);
         sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null,   true, false);
-        back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), accion6,true, false);
-        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), accion, true, false,true,color);
-        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), accion3,true, false,true,color);
-        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), accion2,   true, false,true,color); 
+        back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), regresarV,true, false);
+        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), nuevoT, true, false,true,color);
+        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), modificarT,true, false,true,color);
+        btn_cancelar=   Builder.crearButtonIcon( p, "cancelar",             "src/imagenes/btn_cancelar.png",                        new Rectangle(300,464,97,38),    cancel,true,false, true, color);
+        btn_guardar=    Builder.crearButtonIcon( p, "guardar",              "src/imagenes/btn_guardar.png",  new Rectangle(413,464,106,38),guardarN,true,false, true, color);
+        btn_guardar_mod=Builder.crearButtonIcon( p, "guardar_modificacion", "src/imagenes/btn_guardar.png",  new Rectangle(413,464,106,38),guardarMod,true,false, true, color);
+        btn_guardar.    setVisible(false);
+        btn_cancelar.   setVisible(false);
+        btn_guardar_mod.setVisible(false);
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), bajaT,   true, false,true,color); 
         btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null,   true, false); 
         btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null,   true, false); 
         Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
@@ -99,10 +105,10 @@ public class TrabajadorGUI {
         
         //Jtext
          buscador = Builder.crearTextField(p, new Rectangle(68, 189, 106, 25),  null, null, null, null, true, true, true);
-         tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20));
-         tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20) );
-         tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
-         tfnom=     Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
+         tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null, null, null, true, false, true, new KeyListenerValidation(20));
+         tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null, null, null, null, true, false, true, new KeyListenerValidation(20) );
+         tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null, null, null, true, false, true, new KeyListenerValidation(10) );
+         tfnom=     Builder.crearTextField(p, new Rectangle(381, 174, 127, 23), null, null, null, null, true, false, true, new KeyListenerValidation(10) );
        
          //comboBox
          cb1=       Builder.crearComboBox(p, new Rectangle(351,316,52,17),  dia,  null, null, null);  
@@ -115,6 +121,7 @@ public class TrabajadorGUI {
          p.add(area1);
          area1.setBounds(381, 378, 277, 56);
          area1.setVisible(true);
+         area1.setEnabled(false);
          //lista
          lista= new JList();
          p.add(lista);
@@ -151,55 +158,117 @@ public class TrabajadorGUI {
         }
     }
     
-    ActionListener accion=new ActionListener() {
+    ActionListener nuevoT=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            if(validaIngreso(tfrfc,tfapp,tfapm,tfnom)){
-                interfaz.agregaTrabajador(); 
-                // actualizarLista(lista);
+                textField(tfrfc,tfapp,tfapm,tfnom);
+                btn_guardar.setVisible(true);
+                lista.setEnabled(false);
+                nuevo.setEnabled(false);
+                agregar.setEnabled(false);
+                baja.setEnabled(false);
+                btn_cancelar.setVisible(true);
+        }
+    };
+    
+    ActionListener bajaT=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
            
-                tfrfc.setText(null);
-                tfapp.setText(null);
-                tfapm.setText(null);
-                tfnom.setText(null);
-            }
-            else
-                JOptionPane.showMessageDialog(null,"Campos vacios");
+           if(lista.getSelectedValue()==null){}
+                        baja.setEnabled(false);
+                    else{
+                        baja.setEnabled(true);
+                        interfaz.eliminaTrabajador(tfrfc.getText());
+                        cargarLista(lista);
+                    }
         }
     };
     
-    ActionListener accion2=new ActionListener() {
+    ActionListener modificarT=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-           interfaz.eliminaTrabajador( tfrfc.getText().toLowerCase());
+            if("".equals(tfrfc.getText())){}
+                    else{
+                        tfrfc.setEnabled(true);
+                        tfapp.setEnabled(true);
+                        tfapm.setEnabled(true);
+                        tfnom.setEnabled(true);
+                        lista.setEnabled(false);
+                        nuevo.setEnabled(false);
+                        baja.setEnabled(false);
+                        btn_guardar_mod.setVisible(true);
+                        agregar.setEnabled(false);
+                        btn_guardar_mod.setVisible(true);
+                        
+                    }
         }
     };
-    
-    ActionListener accion3=new ActionListener() {
+    ActionListener actualizarT=new ActionListener() {
+        public void actionPerformed(ActionEvent ag)
+        {
+            //interfaz.agregaTrabajador(); 
+            //actualizarLista(lista);
+            textField2(tfrfc,tfapp,tfapm,tfnom);
+            cargarLista(lista);
+            baja.setEnabled(false);
+            
+        }
+    };
+    ActionListener cancel=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-            if(validaIngreso(tfrfc,tfapp,tfapm,tfnom))
-                interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
-           // actualizarLista(lista);
-            else
-                JOptionPane.showMessageDialog(null,"Campos vacios");
+           lista.setEnabled(true);
+           textField2(tfrfc,tfapp,tfapm,tfnom);
+            nuevo.setEnabled(true);
+            btn_guardar.setVisible(false);
+            agregar.setEnabled(true);
+            baja.setEnabled(true);
+            btn_cancelar.setVisible(false);
+            
         }
     };
-    ActionListener accion6=new ActionListener() {
+    ActionListener regresarV=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
             x.dispose();
         }
     };
-    
-    ActionListener accion4=new ActionListener() {
-        public void actionPerformed(ActionEvent ag)
+    ActionListener guardarN=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
         {
-            //interfaz.agregaTrabajador(); 
-            //actualizarLista(lista);
-            cargarLista(lista);
+           if(validaIngreso(tfrfc,tfapp,tfapm,tfnom)){
+                interfaz.agregaTrabajador(); 
+                cargarLista(lista);
+                textField2(tfrfc,tfapp,tfapm,tfnom);
+                btn_guardar.setVisible(false);
+                lista.setEnabled(true);
+                nuevo.setEnabled(true);
+                agregar.setEnabled(true);
+                baja.setEnabled(true);
+                btn_cancelar.setVisible(false);
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     };
+    ActionListener guardarMod=new ActionListener() {
+        public void actionPerformed(ActionEvent ae)
+        {
+            if(validaIngreso(tfrfc,tfapp,tfapm,tfnom)){
+                interfaz.modificaTrabajador(tfnom.getText(), tfapp.getText(), tfapm.getText(), area1.getText(),( (String)cbPuesto.getSelectedItem()), tfrfc.getText());
+                cargarLista(lista);
+                btn_guardar_mod.setVisible(false);
+                lista.setEnabled(true);
+                nuevo.setEnabled(true);
+                baja.setEnabled(true);
+                textField2(tfrfc,tfapp,tfapm,tfnom);
+                agregar.setEnabled(true);
+            }else
+                JOptionPane.showMessageDialog(null,"Campos vacios");
+        }
+    };
+    
         class CustomMouseListener extends MouseAdapter{
         public void mouseClicked(MouseEvent me){
             String matricula = (String)lista.getSelectedValue();
@@ -231,5 +300,9 @@ public class TrabajadorGUI {
                 evt.consume();
             else evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
         }
-    }        
+    }    
+    public static void main(String[]args)
+    {
+        new TrabajadorGUI();
+    }
 }

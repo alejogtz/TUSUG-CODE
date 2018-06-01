@@ -170,6 +170,7 @@ public class AutobusGUI extends JFrame
                 case "actualizar_lista":
                     controlador.actualizarLista();
                     textField2(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos);
+                    btn_eliminar.setEnabled(false);
                     break;
                 case "Buscar":
                     controlador.buscar();
@@ -181,7 +182,6 @@ public class AutobusGUI extends JFrame
                         controlador.borrarAutobus();
                         controlador.actualizarLista();
                     }
-                        
                     break;
                 case "inicio":
                     controlador.inicio();

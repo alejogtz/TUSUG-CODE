@@ -111,93 +111,95 @@ JTextField e_mail
 *Posicion: (44,492).
 *Tamaño: 162 x 20 px.
 
+JLabel fecha_actual
+*Posicion: (300,79).
+*Tamaño: 144 x 15 px
+*Fuente letra: Segoe UI
+*Tamaño fuente: 11
+
 JLabel "descripcion_generica"
-*Posicion: (431,90).
+*Posicion: (431,120).
 *Tamaño: 143 x 20 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 14
 *Color de fuente: 333333 (hexadecimal)
 
 JLabel "codigo de autobus"
-*Posicion: (355,137).
+*Posicion: (355,167).
 *Tamaño: 97 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JListBox codigo_autobus
-*Posicion: (462,135).
+*Posicion: (462,165).
 *Tamaño: 139 x 22 px.
 
 JLabel "marca"
-*Posicion: (355,162).
+*Posicion: (355,192).
 *Tamaño: 34 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JTextField marca
-*Posicion: (355,177).
+*Posicion: (355,207).
 *Tamaño: 127 x 20 px.
 
 JLabel "matricula"
-*Posicion: (504,162).
+*Posicion: (504,192).
 *Tamaño: 49 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JTextField matricula
-*Posicion: (504,177).
+*Posicion: (504,207).
 *Tamaño: 127 x 20 px.
 
 JLabel "condiciones tecnicas"
-*Posicion: (355,207).
+*Posicion: (355,237).
 *Tamaño: 104 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JTextField condiciones_tecnicas
-*Posicion: (355,222).
+*Posicion: (355,252).
 *Tamaño: 165 x 20 px.
 
 JLabel "descripcion de equipo observaciones"
-*Posicion: (355,251).
+*Posicion: (355,281).
 *Tamaño: 183 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JTextArea descripcion_observaciones
-*Posicion: (355,266).
+*Posicion: (355,296).
 *Tamaño: 276 x 53 px.
 
 JLabel "plazo de entrega (fecha y hora)"
-*Posicion: (355,329).
+*Posicion: (355,359).
 *Tamaño: 155 x 15 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 11
 *Color de fuente: 333333 (hexadecimal)
 
 JCalendar plazo_entrega
-*Posicion: (355,344).
+*Posicion: (355,374).
 *Tamaño: 155 x 20 px.
 
 JLabel "NOTA"
-*Posicion: (345,374).
+*Posicion: (345,404).
 *Tamaño: 295 x 53 px.
 *Fuente: Segoe UI.
 *Tamaño fuente: 14
 *Color de fuente: 333333 (hexadecimal)
 
 JButton generar_reporte
-*Posicion: (440,447).
+*Posicion: (440,477).
 *Tamaño: 105 x 27 px.
-
-JButton cerrar sesion
-*Posicion: (460,506).
-*Tamaño: 201 x 63 px.
 
 JButton regresar
 *Posicion: (326,518).

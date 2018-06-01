@@ -47,6 +47,9 @@ public class GFacturas extends JFrame{
                 case "Cerrar Sesión":
                     LoginGUI l = new LoginGUI();
                     f.dispose();
+                case "Generar Factura":
+                    GFacturas1 g = new GFacturas1();
+                    f.dispose();
             }
         }
     }

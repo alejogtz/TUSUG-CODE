@@ -2,6 +2,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,12 +27,14 @@ public class GFacturas1 extends JFrame{
     ActionListener listener;
     public GFacturas1()
     {
+       
+       listener= new GFacturas1.CustomActionListener();
         f = Builder.construirFrame("Facturas", new Rectangle(0,0, 700, 600), false); 
         p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"img_fondo_ventana_facturas.png", false);
         fecha = LocalDate.now();
         String fechaN = fecha.format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
         
-        
+        listener= new GFacturas1.CustomActionListener();
         //etiquetas
         fEmision = Builder.crearLabel(p,"Fecha de Emisión: ",new Rectangle(446,89,200,15), null, null, new Font("Segoe UI", Font.PLAIN, 11));
         fechaE   = Builder.crearLabel(p,fechaN,new Rectangle(545,89,200,15), null, Color.blue, new Font("Segoe UI", Font.PLAIN, 11));
@@ -53,7 +56,7 @@ public class GFacturas1 extends JFrame{
         
         
         
-        
+         
         //botones
         b1 = Builder.crearButtonIcon(p,"1", ruta+"btn_1_selected.png",new Rectangle(77,106,36,36), listener, true,false);
         b2 = Builder.crearButtonIcon(p,"2", ruta+"btn_2.png",new Rectangle(156,106,36,36), listener, true,false);
@@ -74,17 +77,34 @@ public class GFacturas1 extends JFrame{
         juridica.setBounds(new Rectangle(511,211,75,16));
 
         //Jtext
-        nF = Builder.crearTextField(p,new Rectangle(444,152,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        cP = Builder.crearTextField(p,new Rectangle(444,184,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        rS = Builder.crearTextField(p,new Rectangle(444,237,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        Direc = Builder.crearTextField(p,new Rectangle(444,262,165,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        pob = Builder.crearTextField(p,new Rectangle(444,287,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        prov = Builder.crearTextField(p,new Rectangle(444,312,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        cp = Builder.crearTextField(p,new Rectangle(444,337,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        pContacto = Builder.crearTextField(p,new Rectangle(444,372,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        mail = Builder.crearTextField(p,new Rectangle(444,397,165,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        telefono = Builder.crearTextField(p,new Rectangle(444,422,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
+        nF = Builder.crearTextField(p,new Rectangle(444,152,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        cP = Builder.crearTextField(p,new Rectangle(444,184,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        rS = Builder.crearTextField(p,new Rectangle(444,237,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        Direc = Builder.crearTextField(p,new Rectangle(444,262,165,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        pob = Builder.crearTextField(p,new Rectangle(444,287,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        prov = Builder.crearTextField(p,new Rectangle(444,312,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        cp = Builder.crearTextField(p,new Rectangle(444,337,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        pContacto = Builder.crearTextField(p,new Rectangle(444,372,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        mail = Builder.crearTextField(p,new Rectangle(444,397,165,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        telefono = Builder.crearTextField(p,new Rectangle(444,422,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
         
+    }
+     class CustomActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String op = e.getActionCommand();
+            switch(op)
+            {                    
+                case "Regresar":
+                    f.dispose();
+                case "Cerrar Sesión":
+                    LoginGUI l = new LoginGUI();
+                    f.dispose();
+                case "Siguiente":
+                    GFacturas2 g2 = new GFacturas2();
+            }
+        }
     }
     public static void main (String []args)
     {

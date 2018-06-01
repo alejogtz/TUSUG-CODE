@@ -148,3 +148,7 @@
 >>Boton inactivos
 *Posicion: (446,463).
 *Tamaño: 71 x 32 px.
+
+>>Boton generar_expediente
+*Posicion: (218,336).
+*Tamaño: 32 x 32 px

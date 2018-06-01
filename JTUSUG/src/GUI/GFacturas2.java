@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +36,7 @@ public class GFacturas2 extends JFrame {
     ActionListener listener;
     public GFacturas2() 
     {
+        listener = new GFacturas2.CustomActionListener();
         f = Builder.construirFrame("Facturas", new Rectangle(0,0, 700, 600), false); 
         p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"fondo_vta_generar_factura_p_2.png", false);
         javax.swing.border.Border border = LineBorder.createGrayLineBorder();
@@ -75,10 +77,27 @@ public class GFacturas2 extends JFrame {
         p.add(scrollPane);
         
         //JTextField
-        subtotal = Builder.crearTextField(p,new Rectangle(383,365,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        total = Builder.crearTextField(p,new Rectangle(560,365,86,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        iva = Builder.crearTextField(p,new Rectangle(383,392,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
-        descuento = Builder.crearTextField(p,new Rectangle(383,422,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true,listener);
+        subtotal = Builder.crearTextField(p,new Rectangle(383,365,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        total = Builder.crearTextField(p,new Rectangle(560,365,86,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        iva = Builder.crearTextField(p,new Rectangle(383,392,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+        descuento = Builder.crearTextField(p,new Rectangle(383,422,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
+    }
+        class CustomActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String op = e.getActionCommand();
+            switch(op)
+            {                    
+                case "Regresar":
+                    f.dispose();
+                case "Cerrar Sesión":
+                    LoginGUI l = new LoginGUI();
+                    f.dispose();
+                case "anterior":
+                     f.dispose();
+            }
+        }
     }
      public static void main (String []args)
     {

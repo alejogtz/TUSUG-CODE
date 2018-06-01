@@ -140,8 +140,6 @@ public class TrabajadorGUI {
          fecha2 =   LocalDate.now();
          fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
          JLabel fondo    =   Builder.crearLabelImagen(p, "src/imagenes/fondo_ventana_2.png", new Rectangle(0,0,700,518));
-         
-         for (Component c: p.getComponents()) System.err.println(c.toString());
     }
     
     

@@ -8,6 +8,7 @@ package GUI;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -32,5 +33,11 @@ public class Fachada {
               System.out.println("No File Select");
           }
         return path;
+    }
+    
+    public static boolean isSomeEmpty(JTextComponent... fila){
+        for (JTextComponent actual: fila)
+            if (actual.getText().isEmpty())  return true;
+        return true;
     }
 }

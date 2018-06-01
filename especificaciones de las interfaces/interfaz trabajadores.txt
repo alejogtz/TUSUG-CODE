@@ -137,3 +137,14 @@
 *Posicion: (381,425).
 *Tamaño: 127 x 23 px.
 
+>>Boton activos
+*Posicion: (304,463).
+*Tamaño: 71 x 32 px.
+
+>>Boton inactivos
+*Posicion: (375,463).
+*Tamaño: 71 x 32 px.
+
+>>Boton inactivos
+*Posicion: (446,463).
+*Tamaño: 71 x 32 px.

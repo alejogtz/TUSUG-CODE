@@ -65,13 +65,13 @@ public class TrabajadorGUI {
     
     private void initComponents(){
         interfaz= new Trabajador(this);
-        x = Builder.construirFrame("Trabajador", new Rectangle(0,0, 700, 600), false); 
-        p = Builder.crearPanel(x, new Rectangle(0, 0, 700, 600),"src/imagenes/fondo_ventana_2.png", false);
+        x = Builder.construirFrame("Trabajador", new Rectangle(0,0,700,600), false); 
+        p = Builder.crearPanel(x, new Rectangle(0,0,700,518),"src/imagenes/fondo_ventana_2.png", false);
         
-
+        Color color = new Color(233,233,233);
         //etiquetas
         JLabel imagen=  Builder.crearLabelImagen( p,"src/imagenes/icono usuario.jpg",new Rectangle(539, 130, 128, 128));
-        trabajadores =  Builder.crearLabel( p, "Trabajadores",          new Rectangle(65, 160, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
+        trabajadores =  Builder.crearLabel( p, "Trabajadores",          new Rectangle(65, 130, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlrfc=   Builder.crearLabel( p, "RFC: ",                 new Rectangle(351,143,28, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlapp=   Builder.crearLabel( p, "Apellido Paterno: ",    new Rectangle(285,216,95, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlapm=   Builder.crearLabel( p, "Apellido Materno: ",    new Rectangle(282,245,100, 13), null, null, new Font("Segoe UI",Font.PLAIN,11));
@@ -84,13 +84,13 @@ public class TrabajadorGUI {
         
         //botones
         btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null,   true, false);
-        btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(20, 215, 33, 32) , null,   true, false);
+        btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(26,185,32,32) , null,   true, false);
         btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), accion4,true, false);
         sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null,   true, false);
         back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), accion6,true, false);
-        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), accion, true, false);
-        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), accion3,true, false);
-        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), accion2,   true, false); 
+        nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), accion, true, false,true,color);
+        agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), accion3,true, false,true,color);
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), accion2,   true, false,true,color); 
         btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null,   true, false); 
         btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null,   true, false); 
         Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
@@ -98,7 +98,7 @@ public class TrabajadorGUI {
         
         
         //Jtext
-         buscador = Builder.crearTextField(p, new Rectangle(60, 223, 125, 25),  null, null, null, null, true, true, true);
+         buscador = Builder.crearTextField(p, new Rectangle(68, 189, 106, 25),  null, null, null, null, true, true, true);
          tfrfc=     Builder.crearTextField(p, new Rectangle(381, 138, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20));
          tfapp=     Builder.crearTextField(p, new Rectangle(381, 207, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(20) );
          tfapm=     Builder.crearTextField(p, new Rectangle(381, 240, 127, 23), null, null, null, null, true, true, true, new KeyListenerValidation(10) );
@@ -125,6 +125,7 @@ public class TrabajadorGUI {
          fecha =    new Date(cb3.getItemCount(),cb2.getItemCount(),cb1.getItemCount());
          fecha2 =   LocalDate.now();
          fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
+         JLabel fondo    =   Builder.crearLabelImagen(p, "src/imagenes/fondo_ventana_2.png", new Rectangle(0,0,700,518));
     }
     public void disable(){
         for (Component c: p.getComponents()) c.setEnabled(false);
@@ -137,7 +138,18 @@ public class TrabajadorGUI {
                     }
                     l.setModel(modelo);
     }
-
+    static void textField(JTextField... text){
+        for(JTextField tf:text){
+            tf.setEnabled(true);
+            tf.setText(null);
+        }
+    }
+    static void textField2(JTextField... text){
+        for(JTextField tf:text){
+            tf.setEnabled(false);
+            tf.setText(null);
+        }
+    }
     
     ActionListener accion=new ActionListener() {
         public void actionPerformed(ActionEvent ae)

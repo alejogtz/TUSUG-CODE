@@ -1,23 +1,16 @@
 package GUI;
-import static GUI.VFacturas.datos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import javafx.scene.layout.Border;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 public class ReportesGUI {
     String ruta = "src/imagenes/";
@@ -54,6 +47,7 @@ public class ReportesGUI {
         cSesion = Builder.crearButtonIcon(p,"Cerrar Sesión", ruta+"boton_cerrar_sesion.png",new Rectangle(460,510, 142,45), listener, true, false);
         
         //label
+        reporte = Builder.crearLabel(p,"Reportes",new Rectangle(298,160,59,18),new Color(79,79,79), null, new Font("Segoe UI", Font.PLAIN, 14));
         nReporte = Builder.crearLabel(p,"Numero de Reporte:",new Rectangle(158,90,125,18),new Color(79,79,79), null, new Font("Segoe UI", Font.PLAIN, 14));
         nombre = Builder.crearLabel(p,"Nombre:",new Rectangle(451,90,55,18),new Color(79,79,79), null, new Font("Segoe UI", Font.PLAIN, 14));
         

@@ -18,14 +18,10 @@ public class Conexion {
 
     public void realizaConexion() {
 
-        String urlDatabase = "jdbc:postgresql://localhost:5432/Tusug";
+        String urlDatabase = "jdbc:postgresql://localhost:5435/sistemaTusug";
         try {
             Class.forName("org.postgresql.Driver");
-<<<<<<< HEAD
-            conn = DriverManager.getConnection(urlDatabase, "postgres", "crisTIAN9018");
-=======
-            conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
->>>>>>> ffaf972adf4194ea4b74e87401f6345b9312dce7
+            conn = DriverManager.getConnection(urlDatabase, "postgres", "root");
         } catch (SQLException e) {
             System.err.println("Ocurrio un error : " + e.getMessage());
         } catch (ClassNotFoundException ex) {

@@ -175,8 +175,8 @@ public class TrabajadorGUI {
         public void actionPerformed(ActionEvent ae)
         {
            
-           if(lista.getSelectedValue()==null){}
-                        baja.setEnabled(false);
+           if(lista.getSelectedValue()==null){
+                        baja.setEnabled(false);}
                     else{
                         baja.setEnabled(true);
                         interfaz.eliminaTrabajador(tfrfc.getText());

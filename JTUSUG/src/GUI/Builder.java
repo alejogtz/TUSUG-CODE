@@ -188,6 +188,31 @@ public class Builder {
         area.setForeground(fondo);
         return area;
     }
+    /**
+     * 
+     * @param ui
+     * @param params    V = visible, B = bounds, f = font, c = Foreground, b = Background
+     * @param args
+     * @return 
+     */
+    public static JTextArea crearTextArea(Container ui, String params, Object... args){
+        JTextArea producto = new JTextArea();
+        ui.add(producto);
+        
+        int index = 0;
+        for (Character op: params.toCharArray()){
+            switch (op){
+                case 'B': producto.setBounds    ( (Rectangle)args[index++]); break;
+                case 'V': producto.setVisible   ( (Boolean)args[index++]); break;
+                case 'f': producto.setFont      ( (Font)args[index++]); break;
+                case 'c': producto.setForeground( (Color)args[index++]); break;
+                case 'b': producto.setBackground( (Color)args[index++]); break;
+				case 'T': producto.setText		( (String)args[index++]); break;
+                default: index++;
+            }
+        }
+        return producto;
+    }
     
     public static void main(String[] args) {
         JFrame f = new JFrame();

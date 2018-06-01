@@ -11,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.filechooser.FileNameExtensionFilter;
 //import GUI.Builder;
 //import GUI.PanelImagen;
 public class AutobusGUI extends JFrame 
@@ -45,7 +48,7 @@ public class AutobusGUI extends JFrame
         JButton buscar =    Builder.crearButtonIcon(a,"buscar",ruta + "buscar.png",             new Rectangle(26,185,32,32) ,listener,false,false);
         txt_buscar=         Builder.crearTextField(a, new Rectangle(68, 189, 106, 25), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         list=new JList();
-        cargarLista(list);
+        controlador.cargarLista(list);
         list.setBounds(14,236,172,198);
         list.addMouseListener(new CustomMouseListener());
         a.add(list);
@@ -56,7 +59,7 @@ public class AutobusGUI extends JFrame
         btn_eliminar=       Builder.crearButtonIcon(a,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,true,false, true, color);
         btn_agregar_img=    Builder.crearButtonIcon(a,"cargarImagen",       ruta + "foto.png",      new Rectangle(626,215,32,32),listener,true,false, true, color);
         btn_regresar=       Builder.crearButtonIcon(a,"regresar",           ruta + "regresar.png",  new Rectangle(626,450,32,32),listener,true,false, true, color);
-        JLabel lb_imagen_autobus=   Builder.crearLabelImagen(a,"src/imagenes/autobu.png",  new Rectangle(354,162,245 , 139));
+        lb_imagen_autobus=   Builder.crearLabelImagen(a,"src/imagenes/autobu.png",  new Rectangle(354,162,245 , 139));
         JLabel lb_codigo_auto=      Builder.crearLabel(a, "(Matricula)",               new Rectangle(423,132, 107 , 13),   null,null);
         JLabel lb_Marca =           Builder.crearLabel(a, "Marca:",                    new Rectangle(335,350,101,13),      null,null);
         JLabel lb_Num_Eco =         Builder.crearLabel(a, "Numero Economico:",         new Rectangle(270,383,120,13),      null,null);
@@ -68,85 +71,63 @@ public class AutobusGUI extends JFrame
         txt_No_Eco      =   Builder.crearTextField(a, new Rectangle(389,378,108,23), "", null, null,null,true,true,true);
         txt_Km          =   Builder.crearTextField(a, new Rectangle(584,345,74,23),  "", null, null,null,true,true,true);
         txt_matricula   =   Builder.crearTextField(a, new Rectangle(389,411,108,23), "", null, null,null,true,true,true);
-        txt_asientos    =   Builder.crearTextField(a, new Rectangle(584,378,74,23),  "", null, null,null,true,true,true);
-        
+        txt_asientos    =   Builder.crearTextField(a, new Rectangle(584,378,74,23),  "", null, null,null,true,true,true);        
         
         JLabel fondo    =   Builder.crearLabelImagen(a, ruta + "fondo_ventana_2.png", new Rectangle(0,0,700,518));
         valida();
     }
     
+    static void p(Object o){
+        System.err.println(o.toString());
+    }
+    
     class CustomActionListener implements ActionListener{
-
         @Override
         public void actionPerformed(ActionEvent e) {
             String op = e.getActionCommand();
             switch(op)
             {
                 case "agregar":
-                    if(validaIngreso(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos)){
-                        controlador.ingresarAutobus();
-                        txt_marca.setText(null);
-                        txt_No_Eco.setText(null);
-                        txt_Km.setText(null);
-                        txt_matricula.setText(null);
-                        txt_asientos.setText(null);
-                    }
-                    else
-                        System.err.println("Error: Debe llenar todos los campos");
+                    controlador.evtAgregarAutobus();
                     break;
                 case "modificar":
-                    if(validaIngreso(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos))
-                        controlador.modificarAutobus();
-                    else
-                        System.err.println("Error: Debe llenar todos los campos");
+                    controlador.modificarAutobus();
                     break;             
                 case "cargarImagen":
-                    //controlador.seleccionarImg();
+                    controlador.evtCargarImagen();
                     break;
                 case "actualizar_lista":
-                    cargarLista(list);
-                    txt_marca.setText(null);
-                    txt_No_Eco.setText(null);
-                    txt_Km.setText(null);
-                    txt_matricula.setText(null);
-                    txt_asientos.setText(null);
+                    controlador.actualizarLista();
                     break;
                 case "Buscar":
+                    controlador.buscar();
                     break;
                 case "eliminar":
-                    SQLAutobus sql=new SQLAutobus();
-                    try {
-                        sql.borrarAutobusBy(txt_matricula.getText());
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AutobusGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    controlador.borrarAutobus();                    
                     break;
                 case "inicio":
+                    controlador.inicio();
                      break;
                 case "regresar":
-                   a.dispose();
+                   controlador.regresar();
                     break;
                 case "sesion":
                     LoginGUI l = new LoginGUI();
                     a.dispose();
+                    break;
             }
         }
     }
     
     public static void main(String []args)
     {
-        Conexion.setConfiguracion("postgres", "root");
+        //Conexion.setConfiguracion("postgres", "root");
+        Conexion.setRol("root");
         AutobusGUI a= new AutobusGUI();
+        //p(Fachada.getSelectedFileImage());
     }
     
-    public void cargarLista(JList l){
-        DefaultListModel modelo = new DefaultListModel();
-                    String lista[] = controlador.obtenerlista();
-                    for(int i = 0;i<lista.length;i++){
-                        modelo.addElement(lista[i]);
-                    }
-                    l.setModel(modelo);
-    }
+    
     
     public void valida()
     {
@@ -216,6 +197,5 @@ public class AutobusGUI extends JFrame
         
         };
 }
-    
-    
+     
 }

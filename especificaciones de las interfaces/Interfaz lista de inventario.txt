@@ -1,0 +1,44 @@
+>>JButton buscar
+*Posicion: (64,99)
+*Tamaño: 74 x 21 px.
+
+>>JJLabel "no. de inventario"
+*Posicion: (168,100)
+*Tamaño: 110 x 18 px.
+
+>>JLabel fecha
+*Posicion: (471,100)
+*Tamaño: 45 x 18 px.
+
+>>JCalendar fecha
+*Posicion: (526,98)
+*Tamaño: 131 x 22 px.
+
+
+>>JLabel "lista de inventario"
+*Posicion: (270,180)
+*Tamaño: 118 x 18 px.
+
+>>JTable tabla
+*Posicion: (79,220)
+*Tamaño: 515 x 277 px.
+
+>>JButton abrir
+*Posicion: (653,192)
+*Tamaño: 24 x 24 px.
+
+>>JButton imprimir
+*Posicion: (653,253)
+*Tamaño: 24 x 24 px.
+
+>>JButton guardar
+*Posicion: (653,311)
+*Tamaño: 24 x 24 px.
+
+>>JButton regresar
+*Posicion: (470,516)
+*Tamaño: 201 x 63 px.
+
+>>JJLabel "no. de inventario"
+*Posicion: (168,100)
+*Tamaño: 110 x 18 px.

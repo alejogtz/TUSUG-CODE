@@ -45,8 +45,8 @@ public class Reportes {
         reporte       = Builder.crearLabel(p, "Reporte",           new Rectangle(298,160,59,18), null, c,  new Font("Segoe UI",Font.PLAIN,14));
         
         //JTextField
-        nom =           Builder.crearTextField(p, new Rectangle(516,88,131,22), "Nombre",            null, null, null, true, true, true);
-        numero_reporte= Builder.crearTextField(p, new Rectangle(293,88,131,22), "Numero de Reporte", null, null, null, true, true, true);
+        nom =           Builder.crearTextField(p, new Rectangle(516,88,131,22), " ",            null, null, null, true, true, true);
+        numero_reporte= Builder.crearTextField(p, new Rectangle(293,88,131,22), " ", null, null, null, true, true, true);
         
         //JTable
         

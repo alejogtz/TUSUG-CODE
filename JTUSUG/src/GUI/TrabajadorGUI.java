@@ -90,7 +90,7 @@ public class TrabajadorGUI {
         back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), accion6,true, false);
         nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), accion, true, false);
         agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), accion3,true, false);
-        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), null,   true, false); 
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), accion2,   true, false); 
         btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null,   true, false); 
         btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null,   true, false); 
         Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
@@ -159,7 +159,7 @@ public class TrabajadorGUI {
     ActionListener accion2=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
-           interfaz.eliminaTrabajador(((String)cb6.getSelectedItem()), tfrfc.getText());
+           interfaz.eliminaTrabajador( tfrfc.getText().toLowerCase());
         }
     };
     

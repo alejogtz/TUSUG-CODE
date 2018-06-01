@@ -6,6 +6,7 @@
 package GUI;
 
 import CONTROLLERS.Conexion;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -54,11 +55,12 @@ public class LoginGUI {
                 "", null, null, null, true, true, true);
         txt_rfc.addKeyListener(new CustomKeyListener());
         txt_rfc.setFont(font);
-
+        txt_rfc.setBackground(new Color(0xe4, 0xe4, 0xe4));
         txt_password = Builder.crearPasswordField(loginUI, new Rectangle(205, 298, 293, 38),
                 "", null, null, null, true, true);
         txt_password.setFont(font);
         txt_password.addKeyListener(new CustomKeyListener());
+        txt_password.setBackground(new Color(0xe4, 0xe4, 0xe4));
         b = Builder.crearBoton(loginUI, "Ingresar", new Rectangle(257, 383, 185, 39),
                 escucha, false, false);
 

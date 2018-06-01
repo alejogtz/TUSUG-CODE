@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import Validacion.Validador;
 import static Validacion.Validador.*;
+import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -126,42 +127,7 @@ public class TrabajadorGUI {
          fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
     }
     public void disable(){
-        this.Cfoto.setEnabled(false);
-        this.agregar.setEnabled(false);
-        this.area1.setEnabled(false);
-        this.back.setEnabled(false);
-        this.baja.setEnabled(false);
-        this.btActualizar.setEnabled(false);
-        this.btBuscar.setEnabled(false);
-        this.btInicio.setEnabled(false);
-        this.btLT.setEnabled(false);
-        this.btactinac.setEnabled(false);
-        this.btlista.setEnabled(false);
-        this.buscador.setEnabled(false);
-        this.cb1.setEnabled(false);
-        this.cb2.setEnabled(false);
-        this.cb3.setEnabled(false);
-        this.cb4.setEnabled(false);
-        this.cb5.setEnabled(false);
-        this.cb6.setEnabled(false);
-        this.cb7.setEnabled(false);
-        this.cbPuesto.setEnabled(false);
-        this.lista.setEnabled(false);
-        this.nuevo.setEnabled(false);
-        this.sesion.setEnabled(false);
-        this.tfapm.setEnabled(false);
-        this.tfapp.setEnabled(false);
-        this.tfdir.setEnabled(false);
-        this.tfeda.setEnabled(false);
-        this.tfema.setEnabled(false);
-        this.tffin.setEnabled(false);
-        this.tffna.setEnabled(false);
-        this.tfgen.setEnabled(false);
-        this.tfnom.setEnabled(false);
-        this.tfrfc.setEnabled(false);
-        this.tfsa.setEnabled(false);
-        this.tftca.setEnabled(false);
-        this.tftce.setEnabled(false);
+        for (Component c: p.getComponents()) c.setEnabled(false);
     }
          public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();

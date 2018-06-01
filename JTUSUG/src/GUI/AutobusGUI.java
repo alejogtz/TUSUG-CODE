@@ -58,7 +58,7 @@ public class AutobusGUI extends JFrame
         btn_Act_List =      Builder.crearButtonIcon(p,"actualizar_lista",   ruta + "boton_actualizar_lista.png",new Rectangle(26,446,145,36),listener,true,false);
         btn_nuevo_autobus = Builder.crearButtonIcon(p,"agregar",            ruta + "anadir.png",    new Rectangle(218,136,32,32),listener,true,false, true, color);
         btn_modificar =     Builder.crearButtonIcon(p,"modificar",          ruta + "lapiz.png",     new Rectangle(218,202,32,32),listener,true,false, true, color);
-        btn_eliminar=       Builder.crearButtonIcon(p,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,true,false, true, color);
+        btn_eliminar=       Builder.crearButtonIcon(p,"eliminar",           ruta + "boton-x.png",   new Rectangle(218,255,32,32),listener,false,false, true, color);
         btn_cancelar=       Builder.crearButtonIcon(p,"cancelar",           ruta + "btn_cancelar.png",   new Rectangle(300,444,97,38),listener,true,false, true, color);
         btn_agregar_img=    Builder.crearButtonIcon(p,"cargarImagen",       ruta + "foto.png",      new Rectangle(626,215,32,32),listener,true,false, true, color);
         btn_regresar=       Builder.crearButtonIcon(p,"regresar",           ruta + "regresar.png",  new Rectangle(626,450,32,32),listener,true,false, true, color);
@@ -160,9 +160,7 @@ public class AutobusGUI extends JFrame
                     list.setEnabled(true);
                     btn_nuevo_autobus.setEnabled(true);
                     btn_eliminar.setEnabled(true);
-                    for (Component c: p.getComponents())
-                        if("JTextField".equals(c.getClass().getSimpleName()))
-                            c.setEnabled(true);
+                    textField2(txt_marca,txt_No_Eco,txt_Km,txt_matricula,txt_asientos);
                     btn_modificar.setEnabled(true);
                     break;
                 case "cargarImagen":
@@ -176,13 +174,19 @@ public class AutobusGUI extends JFrame
                     controlador.buscar();
                     break;
                 case "eliminar":
-                    ConfirmarAutobus con=new ConfirmarAutobus();
+                    if(list.getSelectedValue()==null)
+                        btn_eliminar.setEnabled(false);
+                    else{
+                        controlador.borrarAutobus();
+                        controlador.actualizarLista();
+                    }
+                        
                     break;
                 case "inicio":
                     controlador.inicio();
                      break;
                 case "regresar":
-                   controlador.regresar();
+                   x.dispose();
                     break;
                 case "sesion":
                     LoginGUI l = new LoginGUI();
@@ -268,6 +272,7 @@ public class AutobusGUI extends JFrame
                 txt_No_Eco.   setText(registro[3].toUpperCase());
                 txt_Km.       setText(registro[4].toUpperCase());
                 txt_asientos. setText(registro[5].toUpperCase());
+                btn_eliminar.setEnabled(true);
             }
             else
                 System.err.println("Nada que elegir");

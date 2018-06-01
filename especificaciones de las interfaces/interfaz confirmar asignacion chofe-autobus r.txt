@@ -1,0 +1,15 @@
+Tamaño ventana: 459 x 227 px.
+Fuente letra: Segoe UI
+Tamaño fuente: 13
+
+JLabel aviso
+*Posicion: (129,66).
+*Tamaño: 300 x 41 px.
+
+JButton salir
+*Posicion: (134,129).
+*Tamaño: 84 x 25 px.
+
+JButton cancelar
+*Posicion: (241,129).
+*Tamaño: 84 x 25 px.

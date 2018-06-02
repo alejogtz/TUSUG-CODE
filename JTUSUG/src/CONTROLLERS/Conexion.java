@@ -21,11 +21,8 @@ public class Conexion {
         String urlDatabase = "jdbc:postgresql://localhost:5435/sistemaTusug";
         try {
             Class.forName("org.postgresql.Driver");
-<<<<<<< HEAD
             conn = DriverManager.getConnection(urlDatabase, "postgres", "root");
-=======
             conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
->>>>>>> 3d20e8ace3684378993a2f1ba85c9b2ec24fa1a2
         } catch (SQLException e) {
             System.err.println("Ocurrio un error : " + e.getMessage());
         } catch (ClassNotFoundException ex) {

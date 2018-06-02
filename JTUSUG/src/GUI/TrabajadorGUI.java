@@ -191,7 +191,6 @@ public class TrabajadorGUI {
     
     
     ActionListener bajaT=new ActionListener() {
-<<<<<<< HEAD
         public void actionPerformed(ActionEvent ae)
         {
            
@@ -202,7 +201,8 @@ public class TrabajadorGUI {
                         interfaz.eliminaTrabajador(tfrfc.getText());
                         cargarLista(lista);
                     }
-=======
+        }
+    };
         public void actionPerformed(ActionEvent ae){
             if(lista.getSelectedValue()==null){
                 baja.setEnabled(false);
@@ -211,9 +211,8 @@ public class TrabajadorGUI {
                 interfaz.eliminaTrabajador(tfrfc.getText());
                 cargarLista(lista);
             }
->>>>>>> 3d20e8ace3684378993a2f1ba85c9b2ec24fa1a2
-        }
-    };
+        };
+    
     
     
     ActionListener modificarT=new ActionListener() {

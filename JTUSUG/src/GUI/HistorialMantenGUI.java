@@ -4,6 +4,7 @@ package GUI;
 import CONTROLLERS.Autobus;
 import CONTROLLERS.Conexion;
 import Validacion.Validador;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -32,6 +33,7 @@ public class HistorialMantenGUI {
     public JFileChooser url_img;
     public JButton      btn_buscar,btn_abrir,btn_imprimir,btn_guardar,btn_regresar,btn_cerrarSesion;
     public JLabel       lb_no_manten,lb_fecha,lb_historial_manten;
+    public JDateChooser dateChooser;
     
     JPanel p;
     JFrame a;
@@ -40,10 +42,15 @@ public class HistorialMantenGUI {
     {
         a=Builder.construirFrame("Historial de Mantenimiento", new Rectangle(200,50,700,610),false);
         inicializarComp();
+                
     }
     
     public void inicializarComp()
-    {  
+    {  p = Builder.crearPanel(a, new Rectangle(0, 0, 700, 600),"", false );
+        //JCalendar
+        dateChooser = new JDateChooser ();
+        a.add(dateChooser);
+        dateChooser.setBounds(500,90,170,22);
         btn_abrir        = Builder.crearButtonIcon(a,"abrir",ruta + "folder.png",                  new Rectangle(643,182,24,24) ,listener,false,false);
         btn_imprimir     = Builder.crearButtonIcon(a,"imprimir",ruta + "print.png",                new Rectangle(643,243,24,24) ,listener,false,false);
         btn_buscar       = Builder.crearButtonIcon(a,"buscar",ruta + "btn_buscar.png",             new Rectangle(54,89,74,21)   ,listener,false,false);
@@ -58,9 +65,8 @@ public class HistorialMantenGUI {
         
         
         txt_no_manten =    Builder.crearTextField(a, new Rectangle(293, 88, 131, 22), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
-        txt_fecha     =    Builder.crearTextField(a, new Rectangle(506, 88, 131, 22), "", null, null,new Font("Segoe UI", Font.BOLD, 10),true,true,true);
         
-        p = Builder.crearPanel(a, new Rectangle(0, 0, 700, 600),"", false );
+        
         
         
         JLabel fondo    =   Builder.crearLabelImagen(a, ruta + "fondo_mant.png", new Rectangle(0,0,700,600));

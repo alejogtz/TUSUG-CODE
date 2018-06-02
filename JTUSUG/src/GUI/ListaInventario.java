@@ -41,7 +41,7 @@ public class ListaInventario {
         
         //JCalendar
         dateChooser = new JDateChooser ();
-         p.add(dateChooser);
+        p.add(dateChooser);
         dateChooser.setBounds(480,90,170,22);
         
         //botones

@@ -1,4 +1,5 @@
 package GUI;
+import CONTROLLERS.Conexion;
 import CONTROLLERS.SQLAutobus;
 import CONTROLLERS.Trabajador;
 import java.awt.Color;
@@ -30,34 +31,36 @@ import javax.swing.JTextArea;
 import javax.swing.text.JTextComponent;
 
 public class TrabajadorGUI {
+    TrabajadorActionListener eventos;    
     Validador valida;
     String              dia[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
                             "15","16","17","18","19","20","21","22","23","24","25","26",
-                            "27","28","29","30","31"};
-    String              mes[]={"1","2","3","4","5","6","7", "8","9", "10", "11", "12"};
+                            "27","28","29","30","31"};        
+    String              mes[]={"1","2","3","4","5","6","7", "8","9", "10", "11", "12"};        
     String              anio[]={"1990", "1991", "1992", "1993", "1994", "1995", "1996", 
-                            "1997", "1998", "1999", "2000"};
-    String              Cargo[]={"secretaria", "chofer", "mantenimiento", "recursos humanos"};
-    String              Categoria[]= {"1","2","3","4","5"};
-    String              st[]={"activo", "pasivo", "baja"};
-    private JComboBox<String> cb4;
-    JFrame x;
-    JPanel p;
-    public JLabel       trabajadores;
-    public JTextField   tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa, 
-                        tfdir, tffin, tftce, tfema,tftca,buscador;
-    public JTextArea    area1;
+                            "1997", "1998", "1999", "2000"};        
+    String              Cargo[]={"secretaria", "chofer", "mantenimiento", "recursos humanos"};        
+    String              Categoria[]= {"1","2","3","4","5"};        
+    String              st[]={"activo", "pasivo", "baja"};        
+    private JComboBox<String> cb4;    
+    
+    JFrame x;    
+    JPanel p;    
+    public JLabel       trabajadores, lb_imagen;    
+    public JTextField   tfrfc, tfapp, tfapm, tfnom, tfgen,  tfeda, tffna, tfsa,             
+                        tfdir, tffin, tftce, tfema,tftca,buscador;    
+    public JTextArea    area1;    
     public JComboBox    cb1, cb2, cb3, cb5,cb6, cb7,cbPuesto;
 
     Trabajador          interfaz;
-
-    public LocalDate    fecha1,fecha2;
-    public int          dia1,mes1,anio1;
-    public JList        lista;
-    public JButton      btInicio,btLT,btBuscar,btActualizar,sesion,back,nuevo,
-                        agregar,baja,btlista,btactinac, Cfoto,btn_guardar,btn_cancelar,btn_guardar_mod;
-    public JScrollBar   scroll;
+    public LocalDate    fecha1,fecha2;    
+    public int          dia1,mes1,anio1;    
+    public JList        lista;    
+    public JButton      btInicio,btLT,btBuscar,btActualizar,sesion,back,nuevo,            
+                        agregar,baja,btlista,btactinac, Cfoto,btn_guardar,btn_cancelar,btn_guardar_mod;    
+    public JScrollBar   scroll;    
     public Date         fecha,fechaA;
+    
     public TrabajadorGUI(){
         initComponents();
         cargarLista(lista);
@@ -68,9 +71,13 @@ public class TrabajadorGUI {
         x = Builder.construirFrame("Trabajador", new Rectangle(0,0,700,600), false); 
         p = Builder.crearPanel(x, new Rectangle(0,0,700,518),"src/imagenes/fondo_ventana_2.png", false);
         
+        
+        eventos = new TrabajadorActionListener();
+        
+        
         Color color = new Color(233,233,233);
         //etiquetas
-        JLabel imagen=  Builder.crearLabelImagen( p,"src/imagenes/icono usuario.jpg",new Rectangle(539, 130, 128, 128));
+        lb_imagen = Builder.crearLabelImagen( p,"src/imagenes/icono usuario.jpg",new Rectangle(539, 130, 128, 128));
         trabajadores =  Builder.crearLabel( p, "Trabajadores",          new Rectangle(65, 130, 80, 20), null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlrfc=   Builder.crearLabel( p, "RFC: ",                 new Rectangle(351,143,28, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
         JLabel jlapp=   Builder.crearLabel( p, "Apellido Paterno: ",    new Rectangle(285,216,95, 13),  null, null, new Font("Segoe UI",Font.PLAIN,11));
@@ -85,21 +92,21 @@ public class TrabajadorGUI {
         //botones
         btInicio =      Builder.crearButtonIcon( p, "Inicio",               "src/imagenes/boton_inicio.png",                        new Rectangle(14, 63, 88, 43),   null,   true, false);
         btBuscar =      Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/buscar.png",                              new Rectangle(26,185,32,32) , null,   true, false);
-        btActualizar =  Builder.crearButtonIcon( p, "Buscar",               "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), actualizarT,true, false);
+        btActualizar =  Builder.crearButtonIcon( p, "Actualizar",           "src/imagenes/boton_actualizar_lista.png",              new Rectangle(26, 446, 145, 36), actualizarT,true, false);
         sesion =        Builder.crearButtonIcon( p, "Cerrar sesion",        "src/imagenes/boton_cerrar_sesion.png",                 new Rectangle(539, 65, 130, 27), null,   true, false);
         back =          Builder.crearButtonIcon( p, "Regresar",             "src/imagenes/regresar.png",                            new Rectangle(626, 452, 32, 32), regresarV,true, false);
         nuevo=          Builder.crearButtonIcon( p, "Nuevo Empleado",       "src/imagenes/agregar-usuario.png",                     new Rectangle(218, 140, 32, 32), nuevoT, true, false,true,color);
         agregar=        Builder.crearButtonIcon( p, "Modificar Empleado",   "src/imagenes/anadir-punto-de-anclaje.png",             new Rectangle(218, 202, 32, 32), modificarT,true, false,true,color);
         btn_cancelar=   Builder.crearButtonIcon( p, "cancelar",             "src/imagenes/btn_cancelar.png",                        new Rectangle(300,464,97,38),    cancel,true,false, true, color);
-        btn_guardar=    Builder.crearButtonIcon( p, "guardar",              "src/imagenes/btn_guardar.png",  new Rectangle(413,464,106,38),guardarN,true,false, true, color);
-        btn_guardar_mod=Builder.crearButtonIcon( p, "guardar_modificacion", "src/imagenes/btn_guardar.png",  new Rectangle(413,464,106,38),guardarMod,true,false, true, color);
+        btn_guardar=    Builder.crearButtonIcon( p, "guardar",              "src/imagenes/btn_guardar.png",                         new Rectangle(413,464,106,38),guardarN,true,false, true, color);
+        btn_guardar_mod=Builder.crearButtonIcon( p, "guardar_modificacion", "src/imagenes/btn_guardar.png",                         new Rectangle(413,464,106,38),guardarMod,true,false, true, color);
         btn_guardar.    setVisible(false);
         btn_cancelar.   setVisible(false);
         btn_guardar_mod.setVisible(false);
-        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/usuario.png",                             new Rectangle(218, 268, 32, 32), bajaT,   true, false,true,color); 
+        baja=           Builder.crearButtonIcon( p, "Eliminar Empleado",    "src/imagenes/boton-x.png",                             new Rectangle(218, 268, 32, 32), bajaT,   true, false,true,color); 
         btlista=        Builder.crearButtonIcon( p, "Lista Trabajadores",   "src/imagenes/boton_lista_trabajadores__selected_.png", new Rectangle(175, 67, 140, 27), null,   true, false); 
         btactinac=      Builder.crearButtonIcon( p, "Activos e Inactivos",  "src/imagenes/boton_activos_inactivos.png",             new Rectangle(342, 67, 130, 27), null,   true, false); 
-        Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),null, true, true);
+        Cfoto=          Builder.crearBoton(      p, "Cambiar Foto",         new Rectangle(547, 273, 109, 20),eventos, true, true);
         Cfoto.setBackground(Color.white);
         
         
@@ -134,10 +141,14 @@ public class TrabajadorGUI {
          fechaA =   new Date(fecha2.getYear(),fecha2.getMonthValue(),fecha2.getDayOfMonth());
          JLabel fondo    =   Builder.crearLabelImagen(p, "src/imagenes/fondo_ventana_2.png", new Rectangle(0,0,700,518));
     }
+    
+    
     public void disable(){
         for (Component c: p.getComponents()) c.setEnabled(false);
     }
-         public void cargarLista(JList l){
+    
+    
+    public void cargarLista(JList l){
         DefaultListModel modelo = new DefaultListModel();
                     String list[] = interfaz.listatrabajador();
                     for(int i = 0;i<list.length;i++){
@@ -145,18 +156,23 @@ public class TrabajadorGUI {
                     }
                     l.setModel(modelo);
     }
+    
+    
     static void textField(JTextField... text){
         for(JTextField tf:text){
             tf.setEnabled(true);
             tf.setText(null);
         }
     }
+    
+    
     static void textField2(JTextField... text){
         for(JTextField tf:text){
             tf.setEnabled(false);
             tf.setText(null);
         }
     }
+    
     
     ActionListener nuevoT=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
@@ -171,6 +187,7 @@ public class TrabajadorGUI {
         }
     };
     
+    
     ActionListener bajaT=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
@@ -178,12 +195,24 @@ public class TrabajadorGUI {
            if(lista.getSelectedValue()==null){
                         baja.setEnabled(false);
            } else{
+
                         baja.setEnabled(true);
                         interfaz.eliminaTrabajador(tfrfc.getText());
                         cargarLista(lista);
                     }
         }
     };
+        public void actionPerformed(ActionEvent ae){
+            if(lista.getSelectedValue()==null){
+                baja.setEnabled(false);
+            }else{
+                baja.setEnabled(true);
+                interfaz.eliminaTrabajador(tfrfc.getText());
+                cargarLista(lista);
+            }
+        };
+    
+    
     
     ActionListener modificarT=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
@@ -204,17 +233,19 @@ public class TrabajadorGUI {
                     }
         }
     };
+    
+    
     ActionListener actualizarT=new ActionListener() {
         public void actionPerformed(ActionEvent ag)
         {
-            //interfaz.agregaTrabajador(); 
-            //actualizarLista(lista);
             textField2(tfrfc,tfapp,tfapm,tfnom);
             cargarLista(lista);
             baja.setEnabled(false);
             
         }
     };
+    
+    
     ActionListener cancel=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
@@ -228,12 +259,16 @@ public class TrabajadorGUI {
             
         }
     };
+    
+    
     ActionListener regresarV=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
             x.dispose();
         }
     };
+    
+    
     ActionListener guardarN=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
@@ -252,6 +287,8 @@ public class TrabajadorGUI {
                 JOptionPane.showMessageDialog(null,"Campos vacios");
         }
     };
+    
+    
     ActionListener guardarMod=new ActionListener() {
         public void actionPerformed(ActionEvent ae)
         {
@@ -269,22 +306,41 @@ public class TrabajadorGUI {
         }
     };
     
-        class CustomMouseListener extends MouseAdapter{
+    
+    class TrabajadorActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String op = e.getActionCommand();
+            switch(op){
+                case "Cambiar Foto":
+                    interfaz.cambiarImagen();
+                    break;
+            }
+        }
+        
+    }
+    
+    
+    class CustomMouseListener extends MouseAdapter{
         public void mouseClicked(MouseEvent me){
             String matricula = (String)lista.getSelectedValue();
             interfaz.listaParametro(matricula);
+            //interfaz.cargarImagen();
         };
         
    
     
-    public void actualizarLista(JList lista){
+        public void actualizarLista(JList lista){
         lista.removeAll();
         
         for(String s: interfaz.listaTrabajador()){
             lista.add(s,null);
         }
     }    
-}
+    }
+    
+    
     class KeyListenerValidation extends KeyAdapter{
         int numLetrasValidas;
         public KeyListenerValidation(int length){
@@ -300,9 +356,15 @@ public class TrabajadorGUI {
                 evt.consume();
             else evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
         }
-    }    
-    public static void main(String[]args)
-    {
-        new TrabajadorGUI();
+    }
+    
+    
+    public static void main(String [] args){
+        Conexion.setRol("root");
+        //RootGUI r = new RootGUI("secretaria", "Alejo Gutierrez");
+        //RootGUI s = new RootGUI("almacen", "Alejo Gutierrez");
+        //RootGUI t = new RootGUI("mantenimiento", "GURA96");        
+        //RootGUI u = new RootGUI("recursos humanos", "Alejo Gutierrez");
+        TrabajadorGUI t = new TrabajadorGUI();
     }
 }

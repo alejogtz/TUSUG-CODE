@@ -1,16 +1,20 @@
 package GUI;
 
+import CONTROLLERS.ReporteMantenimiento;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class GUIReporteManten{
+    private ReporteMantenimiento controlador;
     private JFrame          ventana;
-    private JPanel          panel;
-    private JTextField      txt_responsable, txt_solicitante, txt_areaTrabajo,
+    public JPanel          panel;
+    public JTextField      txt_responsable, txt_solicitante, txt_areaTrabajo,
                             txt_prioridad, txt_tipoManten, txt_direccion, txt_telefono, txt_email, txt_descripGenerica,
                             txt_marca, txt_matricula, txt_condiTecn;
-    private JComboBox<String> cbx_codAutobus;
-    private JTextArea       text_descripcionEquipos, text_solicitud;
-    private JButton         btn_genReporte, btn_cerrarsesion, btn_regresar;
+    public JComboBox<String> cbx_codAutobus;
+    public JTextArea       text_descripcionEquipos, text_solicitud;
+    public JButton         btn_genReporte, btn_cerrarsesion, btn_regresar;
     
     //private JCalendar       calendario;
     public GUIReporteManten(){
@@ -32,7 +36,7 @@ public class GUIReporteManten{
         JLabel lb_tipoManten     = Builder.crearLabel(  panel, "Tipo de mantenimiento",     new Rectangle(44,343,127,15),   null, c, f);
         JLabel lb_direccion      = Builder.crearLabel(  panel, "Direccion:",                new Rectangle(44,388,58,15),    null, c, f);
         JLabel lb_telefono       = Builder.crearLabel(  panel, "Telefono:",                 new Rectangle(44,432,54,15),    null, c, f);
-        JLabel lb_email          = Builder.crearLabel(  panel, "E - Mail @:",               new Rectangle(44,477,54,15),    null, c, f);
+        JLabel lb_email          = Builder.crearLabel(  panel, "E - Mail",               new Rectangle(44,477,54,15),    null, c, f);
         JLabel lb_descripGenerica= Builder.crearLabel(  panel, "Descripcion_generica",      new Rectangle(431,90,153,20),   null, c, f);
         JLabel lb_codAutobus     = Builder.crearLabel(  panel, "Codigo del Autobus",        new Rectangle(355,137,107,15),   null, c, f);
         JLabel lb_marca          = Builder.crearLabel(  panel, "Marca",                     new Rectangle(355,162,44,15),   null, c, f);
@@ -48,7 +52,7 @@ public class GUIReporteManten{
         //text_solicitud  =       Builder.crearTextArea(panel, new Rectangle(44,222,219,66), c);
         text_solicitud  =       Builder.crearTextArea(panel, "B", new Rectangle(44,222,219,66));
         txt_areaTrabajo=        Builder.crearTextField( panel, new Rectangle(44,313,110,20), "", null, null, f, true, true, true);
-        txt_prioridad  =        Builder.crearTextField( panel, new Rectangle(171,310,92,20), "", null, null, f, true, true, true);
+        txt_prioridad  =        Builder.crearTextField( panel, new Rectangle(171,313,92,20), "", null, null, f, true, true, true);
         txt_tipoManten =        Builder.crearTextField( panel, new Rectangle(44,358,135,20), "", null, null, f, true, true, true);
         txt_direccion  =        Builder.crearTextField( panel, new Rectangle(44,402,186,20), "", null, null, f, true, true, true);
         txt_telefono   =        Builder.crearTextField( panel, new Rectangle(44,447,135,20), "", null, null, f, true, true, true);
@@ -65,5 +69,23 @@ public class GUIReporteManten{
     
     public static void main(String[] args){
         new GUIReporteManten();
+    }
+    
+    class ReportCustomListener implements ActionListener{
+        String op;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            op = e.getActionCommand();
+            switch (op){
+                case "Generar Reporte": 
+                    controlador.generarReporte();
+                    break;
+                case "Cerrar Sesion":
+                    break;
+                case "Regresar":
+                    break;
+            }
+        }
+        
     }
 }

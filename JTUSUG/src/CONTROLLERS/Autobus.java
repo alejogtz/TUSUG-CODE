@@ -123,7 +123,7 @@ public class Autobus {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void putImageProfile(String path) {
+    public void putImageProfile(String path) {
         // Replace los simbolos        '\'       por '/'
         String Path = path.replace('\u005C\u005C' ,  '\u002F');
         Icon icon = new ImageIcon(Path);

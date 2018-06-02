@@ -1,0 +1,31 @@
+JButton listado de siniestro
+*posicion: (135,69).
+*Tamaño: 142 x 43 px.
+
+JButton reportar siniestro
+*posicion: (313,69).
+*Tamaño: 142 x 43 px.
+
+Menu desplegable (usuario)
+*Posicion: (513,68).
+*Tamaño: 142 x 43 px.
+
+JTable tabla
+*Posicion: (54,145).
+*Tamaño: 576 x 329 px.
+
+Jbutton abrir
+*Posicion: (663,182).
+*Tamaño: 24 x 24 px.
+
+JButton imprimir
+*Posicion: (663 x 243).
+*Tamaño: 24 x 24 px.
+
+Jbutton guardar
+*Posicion: (663,301).
+*Tamaño: 24 x 24 px.
+
+JButton regresar
+*Posicion: (326,518).
+*Tamaño: 39 x 39 px.

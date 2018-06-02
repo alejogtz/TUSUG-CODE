@@ -107,8 +107,16 @@ create table mantenimiento(
 	matricula varchar(10) references autobus(matricula),
 	fecha_ingreso date not null,
 	fecha_salida date not null,
-	costo_reparacion numeric(8,2) not null,
-	check (fecha_ingreso>fecha_salida)
+	solicitante varchar(25),
+	responsable varchar (25),
+	solicitud varchar(25),
+	area_trabajo varchar(25),
+	prioridad varchar(25),
+	tipo_de_mantenimiento(25), 
+	direccion varchar(50), 
+	telefono varchar(25), 
+	email(25),
+
 );
 
 create table servicio(
@@ -141,6 +149,24 @@ create table reporte(
 	tipo_reporte varchar(50),--{mantenimiento}{almacen}
 	url_formato varchar (100)
 );
+
+create table compras(
+	numero_factura int primary key not null,
+	cod_provedor varchar(20),
+	razon_social varchar(20),
+	direccion varchar(20),
+	poblacion varchar(20),
+	provincia varchar(20),
+	cp int ,
+	persona_contacto varchar(25),
+	email varchar (25),
+	telefono int,
+	subtotal int,
+	iva int , 
+	descuento int, 
+	total int
+	);
+
 
 create table control_nomina(
 	fecha date,

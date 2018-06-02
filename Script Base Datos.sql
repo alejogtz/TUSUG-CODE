@@ -88,8 +88,21 @@ create table mantenimiento(
 	matricula varchar(10) references autobus(matricula),
 	fecha_ingreso date not null,
 	fecha_salida date not null,
+<<<<<<< HEAD
+	solicitante varchar(25),
+	responsable varchar (25),
+	solicitud varchar(25),
+	area_trabajo varchar(25),
+	prioridad varchar(25),
+	tipo_de_mantenimiento(25), 
+	direccion varchar(50), 
+	telefono varchar(25), 
+	email(25),
+
+=======
 	costo_reparacion numeric(8,2) not null,
 	--check (fecha_ingreso<fecha_salida)
+>>>>>>> 1986fb0f3af70ff3e75331193214d099bf8753df
 );
 create table servicio(
 	id_servicio int primary key not null,
@@ -121,6 +134,31 @@ create table reporte(
 	nombre_reporte varchar(50),
 	url_formato varchar (100)
 );
+<<<<<<< HEAD
+
+create table compras(
+	numero_factura int primary key not null,
+	cod_provedor varchar(20),
+	razon_social varchar(20),
+	direccion varchar(20),
+	poblacion varchar(20),
+	provincia varchar(20),
+	cp int ,
+	persona_contacto varchar(25),
+	email varchar (25),
+	telefono int,
+	subtotal int,
+	iva int , 
+	descuento int, 
+	total int
+	);
+
+
+create table control_nomina(
+	fecha date,
+	url_nomina varchar(100)
+);
+=======
 --Verificado
 -- Como se genera una archivo
 create table control_factura
@@ -134,3 +172,4 @@ create table control_mantenimiento
 	responsable varchar (50),
 	fecha_emision date 
 }
+>>>>>>> 1986fb0f3af70ff3e75331193214d099bf8753df

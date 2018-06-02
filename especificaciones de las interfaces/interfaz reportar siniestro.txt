@@ -1,0 +1,115 @@
+Tamaño ventana: 700 x 649 px.
+
+JButton listado de siniestros
+*Posicion: (135,69).
+*Tamaño: 142 x 43 px.
+
+JButton reportar siniestro
+*Posicion: (313,69).
+*Tamaño: 142 x 43 px.
+
+Menu desplegable usuario
+*Posicion: (513,68).
+*Tamaño: 142 x 43 px.
+
+JLabel "Fechas"
+*Posicion: (31,155).
+*Tamaño: 61 x 18 px.
+
+JCalendar siniestro
+*Posicion: (92,153).
+*Tamaño: 114 x 22 px
+
+JLabel "ingreso"
+*Posicion: (232,157).
+*Tamaño: 52 x 18 px.
+
+JCalendar ingreso
+*Posicion: (293,155).
+*Tamaño: 114 x 22 px.
+
+JLabel "indenmizado"
+*Posicion: (424,157).
+*Tamaño: 85 x 18 px.
+
+JCalendar indenmizado
+*Posicion: (509,155).
+*Tamaño: 114 x 22 px.
+
+JLabel "detalle del siniestro"
+*Posicion: (285, 216).
+*Tamaño: 127 x 18 px.
+
+JLabel "comentarios adicionales"
+*Posicion: (39,239).
+*Tamaño: 162 x 18 px.
+
+JTextArea comentarios adicionales
+*Posicion: (39,267).
+*Tamaño: 622 x 61 px.
+
+JLabel "tipo"
+*Posicion: (430,239).
+*Tamaño: 33 x 18 px.
+
+JComboBox tipo
+*Posicion: (463,237).
+*Tamaño: 198 x 22 px
+
+JLabel "importe"
+*Posicion: (216,364).
+*Tamaño: 48 x 18 px
+
+JLabel "reclamado"
+*Posicion: (24,393).
+*Tamaño: 77 x 18 px.
+
+JTextField reclamado
+*Posicion: (101,389).
+*Tamaño: 137 x 25 px.
+
+JLabel "pagado"
+*Posicion: (255,393).
+*Tamaño: 55 x 18 px.
+
+JTextField pagado
+*Posicion: (320,389).
+*Tamaño: 137 x 25 px.
+
+JLabel "estado"
+*Posicion: (553,364).
+*Tamaño: 46 x 18 px.
+
+JComboBox estado
+*Posicion: (519,389).
+*Tamaño: 114 x 22 px.
+
+JLabel reclamante
+*Posicion: (305,436).
+*Tamaño: 77 x 18 px.
+
+JRadioButton cliente
+*Posicion: (31,474).
+*Tamaño: 100 x 16 px.
+
+JRadioButton tercero
+*Posicion: (31,500).
+*Tamaño: 100 x 16 px.
+
+JTextArea descripcion reclamante
+*Posicion: (124,464).
+*Tamaño: 537 x 70 px.
+
+JButton regresar
+*Posicion: (53,584).
+*Tamaño: 39 x 39 px.
+
+JButton guardar
+*Posicion: (426,584).
+*Tamaño: 101 x 39 px.
+
+JButton cerrar
+*Posicion: (554,585).
+*Tamaño: 101 x 39 px.
+
+

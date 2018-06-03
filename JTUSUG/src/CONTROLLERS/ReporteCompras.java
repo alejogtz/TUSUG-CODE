@@ -5,6 +5,7 @@ import GUI.GFacturas2;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class ReporteCompras {
      Connection c;
      GFacturas2 interfaz;
      ArrayList<String> datos= new ArrayList();
+     int x;
      
      public ReporteCompras(GFacturas2 ui){
             interfaz = ui;
@@ -31,7 +33,7 @@ public class ReporteCompras {
 
              public void creaRepor() throws JRException{
                try{
-            String ruta="JTUSUG\\src\\reportes\\report1.jasper";
+          
             Map parametros = new HashMap();
             parametros.clear();
             parametros.put("para1", Integer.parseInt(datos.get(0)));
@@ -55,8 +57,8 @@ public class ReporteCompras {
 
             PreparedStatement pstm = c.prepareStatement("insert into "
                     + "sistemaTusug.compras(numero_factura,cod_provedor, razon_social,direccion,poblacion,provincia,cp,persona_contacto,email,telefono,subtotal,iva,descuento,total) "
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            System.out.print("agregado");
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) returning numero_factura");
+            ResultSet res;
             pstm.setInt(1, Integer.parseInt(datos.get(0)));
             pstm.setString(2, datos.get(1));
             pstm.setString(3, datos.get(2));
@@ -71,7 +73,12 @@ public class ReporteCompras {
             pstm.setInt(12,Integer.parseInt(datos.get(11)));
             pstm.setInt(13,Integer.parseInt(datos.get(12)));
             pstm.setInt(14,Integer.parseInt(datos.get(13)));
-            pstm.execute();
+            res=pstm.executeQuery();
+            if(res.next()){
+            
+            x=res.getInt(1);
+            System.out.print(x);
+            }
         } catch (SQLException e) {
             System.out.println(e);
         }

@@ -123,13 +123,13 @@ public class GFacturas1 extends JFrame {
                     f.dispose();
                     break;
                 case "Siguiente":
-                    //GFacturas2 g2 = new GFacturas2();
+                    arre();
+                    f.dispose();
+                    GFacturas2 g2 = new GFacturas2(pagina1);
                     break;
                 case "fisica":
                 case "juridica":
-                    f.dispose();
-                    arre();
-                    GFacturas2 g3 = new GFacturas2(pagina1);
+                  
             }
         }
     }

@@ -44,11 +44,17 @@ public class GFacturas extends JFrame{
             {                    
                 case "Regresar":
                     f.dispose();
+                    break;
                 case "Cerrar Sesión":
                     LoginGUI l = new LoginGUI();
                     f.dispose();
+                    break;
                 case "Generar Factura":
                     GFacturas1 g = new GFacturas1();
+                    f.dispose();
+                    break;
+                case "Visualizar Factura":
+                    VFacturas v= new VFacturas();
                     f.dispose();
             }
         }

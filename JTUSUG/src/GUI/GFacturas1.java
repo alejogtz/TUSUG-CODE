@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -22,6 +23,7 @@ public class GFacturas1 extends JFrame{
     public JCheckBox nFact,cProv;
     public LocalDate fecha;
     public JRadioButton fisica,juridica;
+     ButtonGroup group;
     JFrame f;
     JPanel p;
     ActionListener listener;
@@ -69,10 +71,13 @@ public class GFacturas1 extends JFrame{
         
         
         //RadioButton
+        group = new ButtonGroup();
         fisica = new JRadioButton("Fisica");
         p.add(fisica);
+        group.add(fisica);        
         fisica.setBounds(new Rectangle(444,211,70,16));
         juridica = new JRadioButton("Juridica");
+        group.add(juridica);
         p.add(juridica);
         juridica.setBounds(new Rectangle(511,211,75,16));
 
@@ -98,11 +103,16 @@ public class GFacturas1 extends JFrame{
             {                    
                 case "Regresar":
                     f.dispose();
+                    break;
                 case "Cerrar Sesión":
                     LoginGUI l = new LoginGUI();
                     f.dispose();
+                    break;
                 case "Siguiente":
                     GFacturas2 g2 = new GFacturas2();
+                case "fisica": 
+                case "juridica":;
+            
             }
         }
     }

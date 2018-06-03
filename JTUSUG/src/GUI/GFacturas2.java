@@ -91,11 +91,14 @@ public class GFacturas2 extends JFrame {
             {                    
                 case "Regresar":
                     f.dispose();
+                    break;
                 case "Cerrar Sesión":
                     LoginGUI l = new LoginGUI();
                     f.dispose();
+                    break;
                 case "anterior":
                      f.dispose();
+                    break;
             }
         }
     }

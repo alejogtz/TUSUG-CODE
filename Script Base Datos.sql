@@ -5,7 +5,7 @@ set search_path to sistemaTusug;--Configura la ruta hacia donde se ejecutaran la
 create table insumo(
 	codigo_producto      int primary key not null,
 	descripción_producto varchar(100)  not null,
-	cantidad_producto    int,
+	cantidad_producto    int
 	--check(codigo_producto>=1 and codigo_producto <=800)
 );
 
@@ -33,7 +33,7 @@ create table trabajador
 	fecha_nac date,
 	fecha_contratacion date,
 	estado varchar (6)not null, -- (Activo, Pasivo, Baja)
-	url_img varchar (100),
+	url_img varchar (100)
 	--check(estado = 'activo'or estado = 'pasivo'or estado = 'baja'),
 	--check(puesto = 'activo'or puesto = 'pasivo'or puesto = 'baja')
 	--check(fecha_nac<current_date)
@@ -74,7 +74,7 @@ create table expediente_permanente(
 --o declarar autoincrement
 create table siniestro(
 	codigo_accidente SERIAL primary key,
-	id_posesion int references ruta_autobus(id_posesion),
+	id_posesion int ,
 	fecha date not null,
 	descripcion varchar(250) not null,
 	lugar varchar(100),
@@ -84,25 +84,21 @@ create table siniestro(
 -- Un disparador que genere automaticamente un codigo_mantenimiento
 --
 create table mantenimiento(
-	codigo_m int primary key,
+	codigo_m serial primary key,
 	matricula varchar(10) references autobus(matricula),
 	fecha_ingreso date not null,
 	fecha_salida date not null,
-<<<<<<< HEAD
 	solicitante varchar(25),
 	responsable varchar (25),
 	solicitud varchar(25),
 	area_trabajo varchar(25),
 	prioridad varchar(25),
-	tipo_de_mantenimiento(25), 
+	tipo_de_mantenimiento varchar(25), 
 	direccion varchar(50), 
 	telefono varchar(25), 
-	email(25),
+	email varchar(25),
+	costo_reparacion numeric(8) not null
 
-=======
-	costo_reparacion numeric(8,2) not null,
-	--check (fecha_ingreso<fecha_salida)
->>>>>>> 1986fb0f3af70ff3e75331193214d099bf8753df
 );
 create table servicio(
 	id_servicio int primary key not null,
@@ -134,7 +130,7 @@ create table reporte(
 	nombre_reporte varchar(50),
 	url_formato varchar (100)
 );
-<<<<<<< HEAD
+
 
 create table compras(
 	numero_factura int primary key not null,
@@ -158,18 +154,19 @@ create table control_nomina(
 	fecha date,
 	url_nomina varchar(100)
 );
-=======
+
 --Verificado
 -- Como se genera una archivo
 create table control_factura
-{
+(
 	numero_factura int primary key,
 	codigo_proveedor int 
-}
+);
 create table control_mantenimiento
-{
+(
 	codigo_m int references mantenimiento(codigo_m),
 	responsable varchar (50),
 	fecha_emision date 
-}
->>>>>>> 1986fb0f3af70ff3e75331193214d099bf8753df
+);
+
+

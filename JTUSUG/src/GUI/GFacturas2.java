@@ -118,6 +118,7 @@ public class GFacturas2 extends JFrame {
                 case "confirmar":
                      array();
                     controlador= new ReporteCompras(g);
+                    dispose();
 
                   
                    

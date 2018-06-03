@@ -5,7 +5,7 @@
  */
 package CONTROLLERS;
 
-import GUI.Fachada;
+import Servicios.Fachada;
 import GUI.GUIReporteManten;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

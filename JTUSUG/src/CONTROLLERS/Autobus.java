@@ -1,7 +1,7 @@
 package CONTROLLERS;
 
 import GUI.AutobusGUI;
-import GUI.Fachada;
+import Servicios.Fachada;
 import static Validacion.Validador.validaIngreso;
 import java.io.File;
 import java.sql.Connection;

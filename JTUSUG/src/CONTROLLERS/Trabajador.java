@@ -1,6 +1,6 @@
 package CONTROLLERS;
 
-import GUI.Fachada;
+import Servicios.Fachada;
 import java.sql.Date;
 import GUI.TrabajadorGUI;
 import java.sql.Connection;

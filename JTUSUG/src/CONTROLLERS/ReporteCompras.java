@@ -45,13 +45,7 @@ public class ReporteCompras {
                  }
                
                }
-             
-             public void h(){
-    for(String s: datos){
-        System.out.print(s);
-    }
-}
-
+           
   
         public void addC() {
             

@@ -124,7 +124,7 @@ public class GFacturas2 extends JFrame {
                      array();
                     controlador= new ReporteCompras(g);
 
-                    controlador.h();
+                  
                    
                 controlador.addC();
             {

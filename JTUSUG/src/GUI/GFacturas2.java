@@ -119,14 +119,10 @@ public class GFacturas2 extends JFrame {
                     f.dispose();
                     break;
                 case "confirmar":
-<<<<<<< HEAD
+
                      array();
                     controlador= new ReporteCompras(g);
                     dispose();
-=======
-                    array();
-                    controlador = new ReporteCompras(g);
->>>>>>> 253d6b26560b1e31e33297a0f33af7e44e6ed463
 
                     controlador.addC();
                      {

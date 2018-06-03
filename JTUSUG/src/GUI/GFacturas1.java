@@ -6,7 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+<<<<<<< HEAD
 import javax.swing.ButtonGroup;
+=======
+import java.util.ArrayList;
+>>>>>>> 703adc73433964982b408b3d62754a95f87d53f8
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -14,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 public class GFacturas1 extends JFrame{
     String ruta = "src/imagenes/";
     public JLabel factura,fEmision,fechaE,gF,dEmisor,pestaña,nFactura,cProveedor,tPersona,rSocial,direccion,poblacion,provincia,postal,contacto,email,phone;
@@ -27,6 +30,8 @@ public class GFacturas1 extends JFrame{
     JFrame f;
     JPanel p;
     ActionListener listener;
+    
+    ArrayList<String> pagina1= new ArrayList<>();
     public GFacturas1()
     {
        
@@ -94,6 +99,20 @@ public class GFacturas1 extends JFrame{
         telefono = Builder.crearTextField(p,new Rectangle(444,422,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
         
     }
+    public void arre(){
+        pagina1.add(nF.getText());
+        pagina1.add(cP.getText());
+        pagina1.add(rS.getText());
+        pagina1.add(Direc.getText());
+        pagina1.add(pob.getText());
+        pagina1.add(prov.getText());
+        pagina1.add(cp.getText());
+        pagina1.add(pContacto.getText());
+        pagina1.add(mail.getText());
+        pagina1.add(telefono.getText());
+             
+        
+    }
      class CustomActionListener implements ActionListener{
 
         @Override
@@ -109,10 +128,16 @@ public class GFacturas1 extends JFrame{
                     f.dispose();
                     break;
                 case "Siguiente":
+<<<<<<< HEAD
                     GFacturas2 g2 = new GFacturas2();
                 case "fisica": 
                 case "juridica":;
             
+=======
+                    f.dispose();
+                    arre();
+                    GFacturas2 g2 = new GFacturas2(pagina1);
+>>>>>>> 703adc73433964982b408b3d62754a95f87d53f8
             }
         }
     }

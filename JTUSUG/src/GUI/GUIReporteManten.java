@@ -1,6 +1,8 @@
 package GUI;
 
 import CONTROLLERS.ReporteMantenimiento;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,13 +12,14 @@ public class GUIReporteManten{
     private JFrame          ventana;
     public JPanel          panel;
     public JTextField      txt_responsable, txt_solicitante, txt_areaTrabajo,
-                            txt_prioridad, txt_tipoManten, txt_direccion, txt_telefono, txt_email, txt_descripGenerica,
+                            txt_prioridad, txt_tipoManten, txt_direccion, txt_telefono, txt_email, 
+                            txt_descripGenerica,
                             txt_marca, txt_matricula, txt_condiTecn;
     public JComboBox<String> cbx_codAutobus;
     public JTextArea       text_descripcionEquipos, text_solicitud;
     public JButton         btn_genReporte, btn_cerrarsesion, btn_regresar;
     
-    //private JCalendar       calendario;
+    public JDateChooser    calendario;
     public GUIReporteManten(){
         initComponents();
     }
@@ -26,6 +29,9 @@ public class GUIReporteManten{
         Color c = new Color(33,33,33);
         ventana =       Builder.construirFrame("Reporte de Matenimiento", new Rectangle(200,50,700,600),false);
         panel   =       Builder.crearPanel(ventana, new Rectangle(0,0,700,600), "src/imagenes/fondo_frame_ter.png", true);
+        calendario      =       new JDateChooser();
+        panel.add(calendario);
+        calendario.setBounds(355,354,155, 22);
         JLabel lb_fecha          = Builder.crearLabel(  panel, "Fecha:",                    new Rectangle(517,57,154,15),   null, c, f);
         JLabel lb_datosGenerales = Builder.crearLabel(  panel, "Datos generales",           new Rectangle(83,90,120,20),    null, c, f);
         JLabel lb_responsable    = Builder.crearLabel(  panel, "Responsable de trabajo",    new Rectangle(44,162,129,15),   null, c, f);

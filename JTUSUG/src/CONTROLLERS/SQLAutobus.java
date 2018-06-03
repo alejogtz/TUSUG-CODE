@@ -59,7 +59,7 @@ public class SQLAutobus {
     }
     
     public String[] obtenerRegistro(String matricula){
-        String[] registro = new String[6];
+        String[] registro = new String[7];
         String sql = "select * from sistemaTusug.autobus where matricula = '" + matricula + "'";
         PreparedStatement pst = null;
         try {
@@ -72,6 +72,7 @@ public class SQLAutobus {
             registro[3] = res.getString("numero_economico");
             registro[4] = Integer.toString(res.getInt("kilometraje"));
             registro[5] = Integer.toString(res.getInt("asientos"));
+            registro[6] = res.getString("url_img");
             res.close();
 
         } catch (SQLException ex) {

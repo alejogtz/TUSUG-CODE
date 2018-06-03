@@ -1,4 +1,4 @@
-package GUI;
+package CustomComponents;
 
 import java.awt.Graphics;
 import java.awt.Image;

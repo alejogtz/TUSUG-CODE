@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Servicios.Encriptar;
 import CONTROLLERS.Conexion;
 import java.awt.Color;
 import java.awt.Font;

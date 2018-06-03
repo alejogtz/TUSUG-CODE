@@ -172,7 +172,9 @@ public class RootGUI {
                     AutobusGUI auto = new AutobusGUI();
                     break;
                 case "facturas":
-                    javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    //javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");
+                    GFacturas facuras = new GFacturas();
+                    root.dispose();
                     break;
                 case "reportes":
                     javax.swing.JOptionPane.showMessageDialog(null, "Esta funcion aun no esta implementada");

@@ -1,4 +1,4 @@
-package GUI;
+package Servicios;
 
 import java.awt.Color;
 import java.awt.Component;

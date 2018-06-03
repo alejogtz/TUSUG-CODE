@@ -1,5 +1,6 @@
 package GUI;
 
+import CustomComponents.PanelImagen;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -67,6 +68,7 @@ public class Builder {
         JLabel rtn = new JLabel(icon);
         context.add(rtn);
         rtn.setBounds(bounds);
+        rtn.setVisible(true);
         return rtn;
     }
 

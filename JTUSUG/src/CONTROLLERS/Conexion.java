@@ -21,9 +21,6 @@ public class Conexion {
         String urlDatabase = "jdbc:postgresql://localhost:5435/sistemaTusug";
         try {
             Class.forName("org.postgresql.Driver");
-
-            conn = DriverManager.getConnection(urlDatabase, "postgres", "root");
-
             conn = DriverManager.getConnection(urlDatabase, rol, contrasena);
 
         } catch (SQLException e) {

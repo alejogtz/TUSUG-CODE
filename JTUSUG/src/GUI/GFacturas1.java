@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -13,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 public class GFacturas1 extends JFrame{
     String ruta = "src/imagenes/";
     public JLabel factura,fEmision,fechaE,gF,dEmisor,pestaña,nFactura,cProveedor,tPersona,rSocial,direccion,poblacion,provincia,postal,contacto,email,phone;
@@ -25,6 +25,8 @@ public class GFacturas1 extends JFrame{
     JFrame f;
     JPanel p;
     ActionListener listener;
+    
+    ArrayList<String> pagina1= new ArrayList<>();
     public GFacturas1()
     {
        
@@ -89,6 +91,20 @@ public class GFacturas1 extends JFrame{
         telefono = Builder.crearTextField(p,new Rectangle(444,422,127,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
         
     }
+    public void arre(){
+        pagina1.add(nF.getText());
+        pagina1.add(cP.getText());
+        pagina1.add(rS.getText());
+        pagina1.add(Direc.getText());
+        pagina1.add(pob.getText());
+        pagina1.add(prov.getText());
+        pagina1.add(cp.getText());
+        pagina1.add(pContacto.getText());
+        pagina1.add(mail.getText());
+        pagina1.add(telefono.getText());
+             
+        
+    }
      class CustomActionListener implements ActionListener{
 
         @Override
@@ -102,7 +118,9 @@ public class GFacturas1 extends JFrame{
                     LoginGUI l = new LoginGUI();
                     f.dispose();
                 case "Siguiente":
-                    GFacturas2 g2 = new GFacturas2();
+                    f.dispose();
+                    arre();
+                    GFacturas2 g2 = new GFacturas2(pagina1);
             }
         }
     }

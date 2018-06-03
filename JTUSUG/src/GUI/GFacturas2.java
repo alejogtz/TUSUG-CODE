@@ -1,4 +1,5 @@
 package GUI;
+import CONTROLLERS.ReporteCompras;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -7,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 public class GFacturas2 extends JFrame {
     String ruta = "src/imagenes/";
@@ -29,16 +34,23 @@ public class GFacturas2 extends JFrame {
                                 {"","","","","",""},
                                 {"","","","","",""},
                                 {"","","","","",""}};
+    public ArrayList<String> datos_com;
     DefaultTableModel dtm;
     public LocalDate fecha;
     JFrame f;
     JPanel p;
+    ReporteCompras controlador;
     ActionListener listener;
-    public GFacturas2() 
+    GFacturas2 g;
+    public GFacturas2(ArrayList<String> array) 
     {
+        g=this;
+        datos_com=array;
+     
         listener = new GFacturas2.CustomActionListener();
         f = Builder.construirFrame("Facturas", new Rectangle(0,0, 700, 600), false); 
         p = Builder.crearPanel(f, new Rectangle(0, 0, 700, 600),ruta+"fondo_vta_generar_factura_p_2.png", false);
+        
         javax.swing.border.Border border = LineBorder.createGrayLineBorder();
         fecha = LocalDate.now();
         String fechaN = fecha.format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy"));
@@ -82,6 +94,13 @@ public class GFacturas2 extends JFrame {
         iva = Builder.crearTextField(p,new Rectangle(383,392,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
         descuento = Builder.crearTextField(p,new Rectangle(383,422,82,20), "", null, null, new Font("Segoe UI", Font.PLAIN, 11), true,true, true);
     }
+    
+    public void array(){
+        datos_com.add(subtotal.getText());
+        datos_com.add(iva.getText());
+        datos_com.add(descuento.getText());
+        datos_com.add(total.getText());      
+    }
         class CustomActionListener implements ActionListener{
 
         @Override
@@ -96,11 +115,21 @@ public class GFacturas2 extends JFrame {
                     f.dispose();
                 case "anterior":
                      f.dispose();
+                case "confirmar":
+                     array();
+                    controlador= new ReporteCompras(g);
+
+                    controlador.h();
+                   
+                controlador.addC();
+            {
+                try {
+                    controlador.creaRepor();
+                } catch (JRException ex) {
+                    Logger.getLogger(GFacturas2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             }
         }
-    }
-     public static void main (String []args)
-    {
-        GFacturas2 g = new GFacturas2();
     }
 }

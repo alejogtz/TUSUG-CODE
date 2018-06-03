@@ -62,7 +62,7 @@ public class Autobus {
     }
 
     public void cargarvariables() {
-        matricula = ui.txt_matricula.getText();//.toLowerCase();
+        matricula = ui.txt_matricula.getText().toLowerCase();
         id = "";//ui.txt_id.getText().toLowerCase();
         marca = ui.txt_marca.getText();//.toLowerCase();
         num_eco = ui.txt_No_Eco.getText();//.toLowerCase();
@@ -99,7 +99,7 @@ public class Autobus {
         ui.txt_Km.setText(null);
         ui.txt_matricula.setText(null);
         ui.txt_asientos.setText(null);
-
+        putImageProfile("src/imagenes/autobu.png");
     }
 
     public void buscar() {
@@ -135,7 +135,7 @@ public class Autobus {
             // Obtener la ruta de la imagen
             String absPathImg = Fachada.getSelectedFileImage();
             // Cargar las variables
-            matricula = ui.txt_matricula.getText().toLowerCase();
+            matricula = ui.txt_matricula.getText();//.toLowerCase();
             // Actualizar dato en la Base de datos
             // Preparar Consulta
             Connection conn = Conexion.getConexion();

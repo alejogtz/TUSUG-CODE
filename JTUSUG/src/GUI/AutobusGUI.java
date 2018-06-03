@@ -60,6 +60,7 @@ public class AutobusGUI extends JFrame
         btn_guardar.    setVisible(false);
         btn_cancelar.   setVisible(false);
         btn_guardar_mod.setVisible(false);
+        btn_eliminar.setEnabled(false);
         lb_imagen_autobus=   Builder.crearLabelImagen(p,"src/imagenes/autobu.png",  new Rectangle(354,162,245 , 139));
         JLabel lb_codigo_auto=      Builder.crearLabel(p, "(Matricula)",               new Rectangle(423,132, 107 , 13),   null,null);
         JLabel lb_Marca =           Builder.crearLabel(p, "Marca:",                    new Rectangle(335,350,101,13),      null,null);

@@ -82,7 +82,6 @@ public class SQLAutobus {
     }
     
     public String[] listaAutobuses(){
-        
             String sql = "select count(matricula) as total from sistemaTusug.autobus ";
             PreparedStatement pst;
             ResultSet res;

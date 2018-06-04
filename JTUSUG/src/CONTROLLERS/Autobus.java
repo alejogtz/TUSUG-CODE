@@ -3,7 +3,6 @@ package CONTROLLERS;
 import GUI.AutobusGUI;
 import Servicios.Fachada;
 import static Validacion.Validador.validaIngreso;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,9 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JList;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**

@@ -1,8 +1,8 @@
 
 package GUI;
 
-import CONTROLLERS.Autobus;
 import CONTROLLERS.Conexion;
+import CONTROLLERS.SQLHistMant;
 import Validacion.Validador;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
@@ -26,7 +26,6 @@ import javax.swing.table.DefaultTableModel;
 public class HistorialMantenGUI {
     String              ruta = "src/imagenes/";
     ActionListener      listener;
-    Autobus             controlador;
     Validador           valida;
     public JTable        tabla;
     public JTextField   txt_no_manten,txt_fecha;
@@ -34,6 +33,7 @@ public class HistorialMantenGUI {
     public JButton      btn_buscar,btn_abrir,btn_imprimir,btn_guardar,btn_regresar,btn_cerrarSesion;
     public JLabel       lb_no_manten,lb_fecha,lb_historial_manten;
     public JDateChooser dateChooser;
+    public SQLHistMant controlador;
     
     JPanel p;
     JFrame a;
@@ -72,26 +72,8 @@ public class HistorialMantenGUI {
         JLabel fondo    =   Builder.crearLabelImagen(a, ruta + "fondo_mant.png", new Rectangle(0,0,700,600));
         
         String lista[] = {"num. de manten","Responsable","Fecha de emision"};
-        Object[][] datos ={{"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""},
-                           {"","",""}};
+        controlador=new SQLHistMant();
+        Object[][] datos =controlador.obtenerRegistro();
         
         tabla = new JTable(datos,lista);
         tabla.setPreferredSize(new Dimension(515,277));
@@ -111,7 +93,8 @@ public class HistorialMantenGUI {
         // se utiliza la funcion
         //dtPer = p.getDatos();
         // se colocan los datos en la tabla
-        DefaultTableModel datos = new DefaultTableModel(null,columNames);                        
+        Object[][] registro =controlador.obtenerRegistro();
+        DefaultTableModel datos = new DefaultTableModel(registro,columNames);                        
         tabla.setModel(datos); 
     }
     
@@ -119,5 +102,15 @@ public class HistorialMantenGUI {
     {
         //Conexion.setConfiguracion("postgres", "root");
         HistorialMantenGUI a= new HistorialMantenGUI();
+    }
+    public void registro(){
+        txt_no_manten.addKeyListener(new java.awt.event.KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) 
+            {
+               
+            }
+        });
     }
 }
